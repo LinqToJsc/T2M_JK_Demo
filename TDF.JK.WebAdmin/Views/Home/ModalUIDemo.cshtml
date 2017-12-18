@@ -1,0 +1,443 @@
+﻿
+@{
+    ViewBag.Title = "ModalUIDemo";
+}
+@section styles{
+
+<style>
+    .t2m-filter-box {
+        display: none;
+        box-shadow: none;
+        border-color: #eee;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        float: left;
+        min-height: 160px;
+        padding: 5px 5px;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    }
+</style>
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        弹出框 Demo
+        @*<small>工作台</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-book"></i> 弹出框</a></li>
+        <li class="active">弹出框 Demo</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+
+
+
+    <div class="box box-primary">
+
+        <div class="box-body">
+           
+                <div class="row" style="margin-top: 40px;">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-default btn-xs btn-box-tool" type="button" data-toggle="modal" data-target="#autoModalDemo">
+                            自动弹出框
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="btn_bootbox" class="btn btn-default btn-xs btn-box-tool" type="button">
+                            提示框
+                        </button>
+                        <br />
+                        <span>
+                            需要引用1个JS<br />
+                            /Scripts/t2m_adminlte/bower_components/bootbox/bootbox.min.js<br />
+                            注意 > 请在全局 JS  设置 bootbox的语言 例如简体中文： bootbox.setDefaults("locale", "zh_CN");
+                        </span>
+                        <div class="t2m-filter-box" style="width: 500px;">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-3">
+                        <button id="btn_toast" class="btn btn-default btn-xs btn-box-tool" type="button">
+                            浮动提示框
+                        </button>
+                        <br/>
+                        <span> 需要引用1个样式和2个JS<br/>
+                            /Scripts/t2m_adminlte/bower_components/bootstrap-toastr/toastr.min.css<br />
+                            /Scripts/t2m_adminlte/bower_components/bootstrap-toastr/toastr.min.js<br/>
+                            /Scripts/t2m_adminlte/js/Custom.js</span>
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <button id="btn_bootbox1" class="btn btn-default btn-xs btn-box-tool" type="button">
+                            询问提示框
+                        </button>
+                        
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-3">
+                        <button id="btn_filter" type="button" class="btn btn-default btn-sm open" data-t2mFilterBox="t2m_filter">筛选 <i class="fa fa-angle-down"></i></button>
+                        <div id="t2m_filter" class="t2m-filter-box" style="width: 380px; margin-left: 15px;display: block;">
+                            <!--自定义UI布局-->
+                            <span style="color: red;">
+                                使用时 必须引入 .t2m-filter-box 样式，样式代码见本页面源码
+                                <br />
+                                你可以将 t2m-filter-box 放置在任何你需要的布局位置，通过其他控件(如：按钮)来触发 t2m-filter-box 的隐藏和显示;<br />
+                                注意 > 在触发控件中加入 自定义属性 data-t2mFilterBox="弹出框的ID"
+                                <br /><br />
+                                弹出框内容》自定义UI布局，可通过 style内部样式的时候对 弹出框位置大小进行微调
+                            </span>
+
+                        </div>
+                        
+                        <br/>
+                        <span>
+                            
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        @*<button id="btn_filter1" type="button" class="btn btn-default btn-sm open" >筛选 <i class="fa fa-angle-down"></i></button>*@
+
+                        <a id="btn_filter1" href="JavaScript:;" data-t2mFilterBox="t2m_filter1">
+                            <img src="~/Scripts/t2m_adminlte/dist/img/user2-160x160.jpg" style="width: 40px;" class="img-circle" alt="User Image">
+                        </a>
+                        <label> 这是一个实际应用场景的 Demo</label>
+                            <div id="t2m_filter1" class="t2m-filter-box" style="width: 500px; padding: 0; margin-left: 15px; display: block;">
+                            <div class="box box-solid" style="margin-bottom: 0;">
+                                <div class="box-header with-border" style="background-color: #f5f5f5;">
+                                    <h3 class="box-title">蒋世春 简介</h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool">
+                                            @*<i class="fa fa-minus"></i>*@
+                                            <span style="font-size: 14px;">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body" style="min-height: 120px;">
+                                    <div class="user-panel">
+                                        <div class="pull-left image">
+                                            <img src="~/Scripts/t2m_adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        </div>
+                                        <div class="pull-left" style="margin-left: 20px;">
+                                            <p>蒋世春</p>
+                                            <a href="JavaScript:;"> 运营管理中心</a>
+                                        </div>
+                                    </div>
+                                    <!--此处 form 纯粹是布局需要-->
+                                    <form class="form-horizontal">
+
+                                        <div class="row" style="border-top: 1px solid #f4f4f4; height: 80px;">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">邮箱：</label>
+                                                    <p class="form-control-static">1234567@qq.com</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">邮箱：</label>
+                                                    <p class="form-control-static">1234567@qq.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">岗位：</label>
+                                                    <p class="form-control-static">XXXXXXX</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">岗位：</label>
+                                                    <p class="form-control-static">XXXXXXX</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="border-top: 1px solid #f4f4f4; height: 80px;">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">邮箱：</label>
+                                                    <p class="form-control-static">1234567@qq.com</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">邮箱：</label>
+                                                    <p class="form-control-static">1234567@qq.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">岗位：</label>
+                                                    <p class="form-control-static">XXXXXXX</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">岗位：</label>
+                                                    <p class="form-control-static">XXXXXXX</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div style="clear: both;"></div>
+
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fa fa-inbox"></i> Inbox
+                                                <span class="label label-primary pull-right">12</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+
+        @*<div class="box-footer">
+
+            dds
+        </div>*@
+
+    </div>
+
+</section>
+
+<!-- 一个弹出模态框 -->
+<div class="modal fade" id="autoModalDemo" data-backdrop="false" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="pull-right">
+                    <div class="pull-left" style="padding-left: 3px; padding-right: 13px; height: 23px; border-right: 1px solid #ccc;">
+                        <a href="JavaScript:void;"><i class="fa fa-floppy-o"></i> 保 存</a>
+                    </div>
+
+                    <button type="button" style="margin-left: 15px;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <h4 class="modal-title">编 辑</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 自定义内容表单区域 -->
+                <form id="form1" class="form-horizontal">
+
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">项目名称</label>
+                                <div class="col-sm-9">
+                                    <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">项目名称</label>
+                                <div class="col-sm-9">
+                                    <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">类型</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control input-sm ">
+                                        <option value="住宅">住宅</option>
+                                        <option value="商铺">商铺</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">所在地</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control input-sm input-inline" style="width: 50%;">
+                                        <option value="">省</option>
+                                        <option value="北京市">北京市</option>
+                                        <option value="重庆市">重庆市</option>
+                                        <option value="四川省">四川省</option>
+                                    </select>
+                                    <select class="form-control input-sm input-inline" style="width: 49%;">
+                                        <option value="">市</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">管辖区</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control input-sm ">
+                                        <option value="">选择</option>
+                                        <option value="东南">东南</option>
+                                        <option value="西南">西南</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">面积</label>
+                                <div class="col-sm-9">
+                                    <input name="dd" type="text" class="form-control input-sm" placeholder="平方米">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">拿地</label>
+                                <div class="col-sm-9 date">
+                                    <input name="t1" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">展示</label>
+                                <div class="col-sm-9 date">
+                                    <input name="t3" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">开盘</label>
+
+                                <div class="col-sm-9 date">
+                                    <input name="t2" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">交房</label>
+                                <div class="col-sm-9 date">
+                                    <input name="t4" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span style="color: red;">使用注意：<br /></span>
+                            <span style="color: red;">一个页面上可以有多个这样的模态框 大小可自定义，modal-body 为内容UI自定义区域， modal-footer 不是必须的，根据自己使用情况<br /><br />
+                                模态框属性 data-backdrop="false"使用控制是否 在点击空白区域自动隐藏模态框<br /><br/>
+                             通过这两个属性data-toggle="modal" data-target="#模态框的ID" 可以自动触发Open 和Close;也可以使用JS的方式手动触发；<br/>更多介绍见：http://v3.bootcss.com/javascript/#modals</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn  btn-default btn-sm" data-dismiss="modal" aria-label="Close">取 消</button>
+                <button type="button" class="btn  btn-primary btn-sm">保 存</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function() {
+
+            $('#btn_bootbox').click(function() {
+                // context 支持一定的 HTML 格式布局
+                bootbox.alert('<a href="">SD</a>有一个提示');
+            });
+            $('#btn_bootbox1').click(function() {
+                //context 支持一定的 HTML 格式布局
+                bootbox.confirm("确定要删除？", function(result) {
+                    if (!result)
+                        return;
+
+                    // 如果点击的OK
+                    //???
+                });
+            });
+
+
+            // 浮动提示框
+            $('#btn_toast').click(function() {
+
+                showToast(0, '系统消息', '成功');
+                showToast(1, '系统消息', '默认');
+                showToast(2, '系统消息', '警告');
+                showToast(3, '系统消息', '错误');
+            });
+
+            // 筛选弹出框
+            $('#btn_filter').click(function() {
+                var filterBoxId = $(this).attr('data-t2mFilterBox');
+                if ($(this).hasClass('open')) {
+                    $('#' + filterBoxId).hide();
+                    $(this).removeClass('open');
+                } else {
+                    $('#' + filterBoxId).css('display', 'block');
+                    $(this).addClass('open');
+                }
+
+            });
+
+            $('#btn_filter1').click(function () {
+                var filterBoxId = $(this).attr('data-t2mFilterBox');
+                if ($(this).hasClass('open')) {
+                    $('#' + filterBoxId).hide();
+                    $(this).removeClass('open');
+                } else {
+                    $('#' + filterBoxId).css('display', 'block');
+                    $(this).addClass('open');
+                }
+
+            });
+        });
+
+    </script>
+
+
+
+
+}
+
