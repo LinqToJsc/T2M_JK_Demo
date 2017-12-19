@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section styles{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
+
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        项目列表
+        @*<small>工作台</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-book"></i> 项目计划</a></li>
+        <li class="active">项目列表</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+
+        <div class="box-body">
+
+
+
+
+
+            <table id="example1" class="table table-bordered table-striped table-hover"></table>
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts{
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
+    <script src="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/Scripts/t2m_adminlte/js/datatables/dataTablesForTDF.js"></script>
+    <style>
+        .progressBar{
+    width: 80%;
+    height: 10px;
+    background-color: #ccc;
+    margin: 0 auto;
+    /* margin-top: 50px; */
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    margin-top:5px;
+        }
+
+        .progressBar_Track {
+   
+    height: 10px;
+    background-color: #55a2ce;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+        .left{
+            float:left;
+        }
+    </style>
+    <script>
+
+
+        var tabColumns = [
+            { "data": "Id", "title": "排名" }, //{}
+            { "data": "Item1", "title": "所属区域", orderable: true },//
+            { "data": "Item2", "title": "所属城市" },
+            { "data": "Item3", "title": "项目名称", orderable: true },
+            { "data": "Item4", "title": "项目经理", orderable: true },
+            { "data": "Item5", "title": "达成率", orderable: true, render: function (data, type, row, meta) { return "<div class='progressBar left'><div style=\"width:" + data + "%\" class='progressBar_Track'></div></div><div class='left'>&nbsp;"+ data+"%<div>"; } },
+
+            //{ "data": "Id", "title": "操作", render: function (data, type, row, meta) { return "<a href=\"@Url.Action("Index4")\">详 情</a>"; } }
+        ];
+
+        //通常用于对参数的额外加工 回调函数
+        var serverParam = function(dataParams) {
+            return dataParams;
+        }
+
+        var opts = {
+            showButtons: false, // 是否显示操作按钮组
+            buttons: [], //操作按钮组 在showButtons==true时 默认会有一个 刷新按钮
+            lengthChange: true, //是否允许用户改变 PageSize
+            pageSize: 15, //PageSize 设置 默认为 10
+            searching: false, //是否开启 默认关键词搜索
+            searchPlaceholder: "关键词", //默认搜索框提示文字
+            searchTextWidth: "200px" //默认搜索框的宽度 默认值：标准宽度
+        };
+
+        var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/DemoJson2.json', tabColumns, opts, serverParam);
+
+    </script>
+
+}

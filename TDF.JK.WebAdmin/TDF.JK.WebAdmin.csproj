@@ -144,6 +144,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DemoJson1.json" />
     <None Include="Properties\PublishProfiles\webJK.pubxml" />
+    <Content Include="Scripts\DemoJson2.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2072,6 +2073,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2186,6 +2188,8 @@
     <Content Include="Scripts\t2m_adminlte\bower_components\jquery-knob\LICENSE" />
     <Content Include="Scripts\t2m_adminlte\bower_components\jquery-knob\package.json" />
     <Content Include="Scripts\t2m_adminlte\bower_components\jquery-knob\README.md" />
+    <Content Include="Views\Demo\Index.cshtml" />
+    <Content Include="Views\Demo\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
