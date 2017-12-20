@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
 
+<link href="~/Scripts/t2m_adminlte/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -29,49 +31,59 @@
                     <div class="pull-left" style="padding-left: 14px;">
 
                         <button id="btn_filter" type="button" class="btn btn-default btn-sm" data-t2mFilterBox="t2m_filter">筛选 <i class="fa fa-angle-down"></i></button>
-                        <div id="t2m_filter" class="t2m-filter-box" style="background-color:#fff;width:480px;height:180px; display: block;position:absolute;opacity:1;z-index: 9;border:1px solid #ccc;overflow:hidden">
+                        <div id="t2m_filter" class="t2m-filter-box" style="background-color:#fff;width:480px;height:180px; display: block;position:absolute;opacity:1;z-index: 9;border:1px solid #ccc;">
                             <!--自定义UI布局-->
                             <div class="row">
-                               
-                                <div class="col-md-6" style="padding-top: 10px;border-right:1px solid #ccc;height:180px;" >
+
+                                <div class="col-md-6" style="padding-top: 10px;border-right:1px solid #ccc;height:180px;">
                                     <div class="form-group">
-                                     
-                                            <div class="col-sm-12" style="margin-left:7px">
-                                                <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+
+                                        <div class="col-sm-10 col-sm-offset-1" >
+                                            <div class="form-group">
+                                                <label>....</label>
+                                                <select class="form-control select2  " style="width: 100%;">
+                                                    <option selected="selected">Alabama</option>
+                                                    <option>Alaska</option>
+                                                    <option>California</option>
+                                                    <option>Delaware</option>
+                                                    <option>Tennessee</option>
+                                                    <option>Texas</option>
+                                                    <option>Washington</option>
+                                                </select>
                                             </div>
-                                        <div class="col-sm-11" style="margin-left:10px;margin-top:100px;">
-                                         
+                                        </div>
+                                        <div class="col-sm-11" style="margin-left:10px;">
+
                                             <div class="col-sm-10 col-sm-offset-2">
                                                 <button type="button" class="btn btn-default ">取消</button>
                                                 <button type="button" class="btn btn-primary">确定</button>
                                             </div>
-                                       
-                                        </div>
-                                       
-                                        </div>
-                                
-                                </div>
 
-                                <div class="col-md-6" style="height:180px;">
-                                    <div class="form-group">
-                                        <label>Multiple</label>
-                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                            <option>Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
-                                        </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Select a State" style="width: 794.5px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        </div>
+
                                     </div>
-                                 
 
                                 </div>
-                              
+
+                                <div class="col-md-6" style="height:180px;overflow-y:scroll">
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+                                    <h5>h6. Bootstrap heading</h5>
+
+                                </div>
+
                             </div>
                         </div>
-                        
+
                         <button type="button" class="btn btn-default btn-sm">排序 <i class="fa fa-angle-down"></i></button>
 
                         <button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-search icon-search"></i></button>
@@ -99,11 +111,13 @@
 </section>
 
 @section scripts{
+<script src="~/Scripts/t2m_adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
     <script src="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
     <script src="~/Scripts/t2m_adminlte/js/datatables/dataTablesForTDF.js"></script>
+
     <style>
         .progressBar {
             width: 80%;
@@ -129,64 +143,69 @@
             float: left;
         }
     </style>
+    
     <script>
+        $(function () {
+            //选择框
+            $('.select2').select2();
+
+            // 筛选弹出框
+            $('#btn_filter').click(function () {
+                var filterBoxId = $(this).attr('data-t2mFilterBox');
+                if ($(this).hasClass('open')) {
+                    $('#' + filterBoxId).hide();
+                    $(this).removeClass('open');
+                } else {
+                    $('#' + filterBoxId).css('display', 'block');
+                    $(this).addClass('open');
+                }
+
+            });
+            //width 可以去定义这个列的占比宽度
+            var StatusRe = function (data, type, row, meta) {
+                if (data == 1)
+                    return "<img src='/Scripts/Demo/u1264.png'/>";
+            };
+            var tabColumns = [
+                { "data": "name", "title": " ", "width": "6%" }, //{}
+                { "data": "Item1", "title": "成立物业前介专项小组", orderable: true, render: StatusRe },
+                { "data": "Item2", "title": "参加地产公司项目启动会", orderable: true, render: StatusRe },
+                { "data": "Item3", "title": "确定储备项目负责人1-2人", orderable: true, render: StatusRe },
+                { "data": "Item4", "title": "参加地产公司方案评审会", orderable: true, render: StatusRe },
+                { "data": "Item5", "title": "完成前介报告（设计）", orderable: true, render: StatusRe },
+                { "data": "Item6", "title": "召开物业项目启动会", orderable: true, render: StatusRe },
+                { "data": "Item7", "title": "完成销售手册、临时管理规约...", orderable: true, render: StatusRe },
+                { "data": "Item8", "title": "完成物业公司所在地注册...", orderable: true, render: StatusRe },
+                { "data": "Item9", "title": "VI制作完成情况巡检...", orderable: true, render: StatusRe }
 
 
-        // 筛选弹出框
-        $('#btn_filter').click(function () {
-            var filterBoxId = $(this).attr('data-t2mFilterBox');
-            if ($(this).hasClass('open')) {
-                $('#' + filterBoxId).hide();
-                $(this).removeClass('open');
-            } else {
-                $('#' + filterBoxId).css('display', 'block');
-                $(this).addClass('open');
+                //{ "data": "Id", "title": "操作", render: function (data, type, row, meta) { return "<a href=\"@Url.Action("Index4")\">详 情</a>"; } }
+            ];
+
+            //通常用于对参数的额外加工 回调函数
+            var serverParam = function (dataParams) {
+                return dataParams;
             }
 
-        });
-        //width 可以去定义这个列的占比宽度
-        var StatusRe = function (data, type, row, meta) {
-            if(data==1)
-            return "<img src='/Scripts/Demo/u1264.png'/>";
-        };
-        var tabColumns = [
-            { "data": "name", "title": " ", "width": "6%" }, //{}
-            { "data": "Item1", "title": "成立物业前介专项小组", orderable: true ,render:StatusRe},
-            { "data": "Item2", "title": "参加地产公司项目启动会", orderable: true, render: StatusRe },
-            { "data": "Item3", "title": "确定储备项目负责人1-2人", orderable: true, render: StatusRe },
-            { "data": "Item4", "title": "参加地产公司方案评审会", orderable: true, render: StatusRe },
-            { "data": "Item5", "title": "完成前介报告（设计）", orderable: true, render: StatusRe },
-            { "data": "Item6", "title": "召开物业项目启动会", orderable: true, render: StatusRe },
-            { "data": "Item7", "title": "完成销售手册、临时管理规约...", orderable: true, render: StatusRe },
-            { "data": "Item8", "title": "完成物业公司所在地注册...", orderable: true, render: StatusRe },
-            { "data": "Item9", "title": "VI制作完成情况巡检...", orderable: true, render: StatusRe }
+            var opts = {
+                showButtons: false, // 是否显示操作按钮组
+                buttons: [], //操作按钮组 在showButtons==true时 默认会有一个 刷新按钮
+                lengthChange: true, //是否允许用户改变 PageSize
+                pageSize: 15, //PageSize 设置 默认为 10
+                searching: false, //是否开启 默认关键词搜索
+                searchPlaceholder: "关键词", //默认搜索框提示文字
+                searchTextWidth: "200px",//默认搜索框的宽度 默认值：标准宽度
+                TableResize: {                //添加监听去自适应窗口大小
+                    ResizeFlg: true,           //状态值默认为false不启动
+                    ResizeTime: 0              //窗口每次变化的间隔 单位毫秒
+                }
 
+            };
 
-            //{ "data": "Id", "title": "操作", render: function (data, type, row, meta) { return "<a href=\"@Url.Action("Index4")\">详 情</a>"; } }
-        ];
+            var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/Demo/DemoJson.json', tabColumns, opts, serverParam);
 
-        //通常用于对参数的额外加工 回调函数
-        var serverParam = function (dataParams) {
-            return dataParams;
-        }
-
-        var opts = {
-            showButtons: false, // 是否显示操作按钮组
-            buttons: [], //操作按钮组 在showButtons==true时 默认会有一个 刷新按钮
-            lengthChange: true, //是否允许用户改变 PageSize
-            pageSize: 15, //PageSize 设置 默认为 10
-            searching: false, //是否开启 默认关键词搜索
-            searchPlaceholder: "关键词", //默认搜索框提示文字
-            searchTextWidth: "200px",//默认搜索框的宽度 默认值：标准宽度
-            TableResize: {                //添加监听去自适应窗口大小
-                ResizeFlg: true,           //状态值默认为false不启动
-                ResizeTime: 0              //窗口每次变化的间隔 单位毫秒
-            }
-
-        };
-
-        var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/Demo/DemoJson.json', tabColumns, opts, serverParam);
-
+        })
+       
     </script>
 
 }
