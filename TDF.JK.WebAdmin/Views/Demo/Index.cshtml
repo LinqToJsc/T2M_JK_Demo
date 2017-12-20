@@ -69,11 +69,11 @@
     </style>
     <script>
 
-
+        //width 可以去定义这个列的占比宽度
         var tabColumns = [
-            { "data": "Id", "title": "排名" }, //{}
-            { "data": "Item1", "title": "所属区域", orderable: true },//
-            { "data": "Item2", "title": "所属城市" },
+            { "data": "Id", "title": "排名","width":"6%" }, //{}
+            { "data": "Item1", "title": "所属区域", "width": "10%", orderable: true },//
+            { "data": "Item2", "title": "所属城市", "width": "10%" }, 
             { "data": "Item3", "title": "项目名称", orderable: true },
             { "data": "Item4", "title": "项目经理", orderable: true },
             { "data": "Item5", "title": "达成率", orderable: true, render: function (data, type, row, meta) { return "<div class='progressBar left'><div style=\"width:" + data + "%\" class='progressBar_Track'></div></div><div class='left'>&nbsp;"+ data+"%<div>"; } },
@@ -93,11 +93,16 @@
             pageSize: 15, //PageSize 设置 默认为 10
             searching: false, //是否开启 默认关键词搜索
             searchPlaceholder: "关键词", //默认搜索框提示文字
-            searchTextWidth: "200px" //默认搜索框的宽度 默认值：标准宽度
+            searchTextWidth: "200px",//默认搜索框的宽度 默认值：标准宽度
+            TableResize: {                //添加监听去自适应窗口大小
+                ResizeFlg:true,           //状态值默认为false不启动
+                ResizeTime:0              //窗口每次变化的间隔 单位毫秒
+            }
+
         };
 
         var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/DemoJson2.json', tabColumns, opts, serverParam);
-
+   
     </script>
 
 }

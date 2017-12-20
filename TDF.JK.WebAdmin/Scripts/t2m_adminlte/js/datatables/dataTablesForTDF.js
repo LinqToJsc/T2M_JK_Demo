@@ -113,6 +113,24 @@
          * rowCallBack [function 可选] 表格行绘制 回调函数
          */
         CreateDataTable: function (domTabId, searchFormId, serverUrl, columns, opts, serverParamsCallBack, rowCallBack) {
+
+            if (opts.TableResize.ResizeFlg == true) {
+                resizeFlg = true;
+                $(window).on('resize', function () {
+                    //
+                    if (resizeFlg) {
+                        resizeFlg = false;
+                        setTimeout(function () {
+                            $("#" +domTabId +"").width("100%");//
+
+                            resizeFlg = true;
+                        }, opts.TableResize.ResizeTime || 0);
+                    }
+                    // end)(
+
+                });
+            }
+           
             return $('#' + domTabId).DataTable(_getTabOpts(serverUrl, searchFormId, columns, opts, serverParamsCallBack, rowCallBack));
         }
     };

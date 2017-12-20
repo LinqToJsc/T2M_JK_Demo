@@ -145,7 +145,10 @@
     <Content Include="Scripts\DemoJson1.json" />
     <None Include="Properties\PublishProfiles\webJK.pubxml" />
     <Content Include="Scripts\DemoJson2.json" />
+    <Content Include="Scripts\Demo\DemoJson.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Demo\echarts.min.js" />
+    <Content Include="Scripts\Demo\u1264.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -2190,6 +2193,7 @@
     <Content Include="Scripts\t2m_adminlte\bower_components\jquery-knob\README.md" />
     <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Demo\Index2.cshtml" />
+    <Content Include="Views\Demo\Index3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2200,6 +2204,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\t2m_adminlte\bower_components\select2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
