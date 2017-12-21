@@ -2428,6 +2428,8 @@
     <Content Include="Views\Demo\Index2.cshtml" />
     <Content Include="Views\Demo\Index0.cshtml" />
     <Content Include="Views\Demo\Index4.cshtml" />
+    <Content Include="Views\Demo\Index6.cshtml" />
+    <Content Include="Views\Demo\Index7.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
