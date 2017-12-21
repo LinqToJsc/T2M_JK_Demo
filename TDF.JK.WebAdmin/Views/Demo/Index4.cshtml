@@ -213,7 +213,7 @@
         var myChart = echarts.init(document.getElementById('TestE'));
         option = {
             title: {
-                text: '城区公司节点达成率',
+                text: '区域公司达成率',
 
             },
             tooltip: {
@@ -260,16 +260,44 @@
                 {
                     name: '2011年',
                     type: 'bar',
+                    stack: '总量',
                     barWidth: '30%',
-                    data:data,
+                    data:[1,0,0,0,0,0],
                     label: {  //文本显示
                         normal: {
                             show: true,
                             position:'right',
-                            formatter:'{c}%',
+                            formatter: function (res) {
+                                if (res.value != 0) {
+                                    return res.value + "%"
+                                } else {
+                                    return ''
+                                }
+                            },
                         }
                     }
-                }
+                },
+                  {
+                      name: '2011年',
+                      type: 'bar',
+                      barWidth: '30%',
+                      stack: '总量',
+                      data: ['',1,0,0,0,0],
+                      label: {  //文本显示
+                          normal: {
+                              show: true,
+                              position: 'right',
+                              formatter: function (res) {
+                                  if (res.value != 0) {
+                                      return res.value + "%"
+                                  } else {
+                                      return ''
+                                  }
+                              },
+                          }
+                      }
+                  }
+
             ]
         };
         myChart.setOption(option);

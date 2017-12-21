@@ -1,12 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "报表1";
+    ViewBag.Title = "城区公司节点达成率";
 }
 @section styles{
     <!-- DataTables -->
     <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
-
+    <link href="~/Scripts/t2m_adminlte/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -24,7 +24,88 @@
     <div class="box box-primary">
 
         <div class="box-body">
+            <form id="form_search" class="form-horizontal">
+                <div class="row">
+                    <div class="pull-left" style="padding-left: 14px;">
 
+                        <button id="btn_filter" type="button" class="btn btn-default btn-sm" data-t2mFilterBox="t2m_filter">项目 <i class="fa fa-angle-down"></i></button>
+                        <div id="t2m_filter" class="t2m-filter-box" style="background-color:#fff;width:480px;height:180px; display: none;position:absolute;opacity:1;z-index: 9;border:1px solid #ccc;">
+                            <!--自定义UI布局-->
+                            <div class="row">
+
+                                <div class="col-md-6" style="padding-top: 10px;border-right:1px solid #ccc;height:180px;">
+                                    <div class="form-group">
+
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select class="form-control select2" id="alert-select2" style="width: 100%;">
+                                                    <option selected="selected">Alabama</option>
+                                                    <option>Alaska</option>
+                                                    <option>California</option>
+                                                    <option>Delaware</option>
+                                                    <option>Tennessee</option>
+                                                    <option>Texas</option>
+                                                    <option>Washington</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11" style="margin-left:10px;margin-top:66px">
+
+                                            <div class="col-sm-10 col-sm-offset-2">
+                                                <button type="button" class="btn btn-default ">取消</button>
+                                                <button id="alert-con" type="button" class="btn btn-primary">确定</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!--右边文本框的样式 -->
+                                <style>
+                                    .alert-right-text h5 {
+                                        border-bottom: 1px dashed #808080;
+                                    }
+                                </style>
+                                <div class="col-md-6 alert-right-text" style="height:180px;overflow-y:scroll">
+                                    <h5>1 <span class="pull-right del" style="cursor:pointer">x</span></h5>
+                                    <h5>2 <span class="pull-right del" style="cursor:pointer">x</span></h5>
+                                    <h5>3 <span class="pull-right del" style="cursor:pointer">x</span></h5>
+                                    <h5>4<span class="pull-right del" style="cursor:pointer">x</span></h5>
+                                    <h5>5 <span class="pull-right del" style="cursor:pointer">x</span></h5>
+                                    <h5>6 <span class="pull-right del" style="cursor:pointer">x</span></h5>
+
+                                </div>
+                                <!--  -->
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="pull-right" style="padding-right: 15px">
+                        <div class="pull-left">
+                            <select class="form-control">
+                                <option>视图</option>
+                                <option>列表</option>
+
+                            </select>
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary ">下载</a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </form>
 
             <div id="TestE" style="width:100%;height:500px">
 
@@ -36,6 +117,7 @@
 </section>
 
 @section scripts{
+    <script src="~/Scripts/t2m_adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
@@ -68,43 +150,278 @@
         }
     </style>
     <script>
+        //选择框
+        $('.select2').select2();
 
-       // app.title = '世界人口总量 - 条形图';
+        // 筛选弹出框
+        $('#btn_filter').click(function () {
+            var filterBoxId = $(this).attr('data-t2mFilterBox');
+            if ($(this).hasClass('open')) {
+                $('#' + filterBoxId).hide();
+                $(this).removeClass('open');
+            } else {
+                $('#' + filterBoxId).css('display', 'block');
+                $(this).addClass('open');
+            }
+
+        });
+        $('#alert-con').on('click', function () {
+            $('.alert-right-text').append("<h5>" + $('#select2-alert-select2-container').text() + "<span class=\"pull-right del\" style=\"cursor:pointer\">x</span></h5>")
+        })
+        //弹出框右边文本框 移除
+        $(document).on('click', '.alert-right-text .del', function () {
+            $(this).parent().remove();
+        })
+        //end 筛选弹出框
+
+
+        // app.title = '城区公司节点达成率 - 条形图';
+        var aredata = [
+                     { id: 1, name: '  金科.天湖小镇', name1: "万盛", name2: '华北公司', data: '67' },
+                     { id: 2, name: '  金科.中央公园城', name1: "成都", name2: '华北公司', data: '17' },
+                     { id: 3, name: '  金科.中华养生城', name1: "济南", name2: '华北公司', data: '57' },
+                     { id: 4, name: '  金科.中华养生城', name1: "长沙", name2: '华北公司', data: '77' },
+                     { id: 5, name: '  金科.中华养生城', name1: "合川", name2: '华北公司', data: '40' },
+                     { id: 5, name: '  金科.中华养生城', name1: "遵义", name2: '华北公司', data: '86' }
+        ];
+        //组合自己需要数据格式
+        function pullArrayForJson(data,name) {
+            var aryJson = [];
+            var data = data;
+            if (name == "name") {
+                for (var p in data) {
+                    if (data[p].name != null && data[p].name && data[p].name != "") {
+                       // var obj = { value: data[p].name };
+                        aryJson.push(data[p].name);
+                    }
+                }
+            }
+            if (name == "data") {
+                var aryJson = [];
+                for (var p in data) {
+                    if (data[p].data != null && data[p].data && data[p].data != "") {
+
+                        aryJson.push(data[p].data)
+                    }
+                }
+            }
+            if (name == "name1") {
+                var aryJson = [];
+                for (var p in data) {
+                    if (data[p].name1 != null && data[p].name1 && data[p].name1 != "") {
+
+                        aryJson.push(data[p].name1)
+                    }
+                }
+            }
+            if (name == "name2") {
+                var aryJson = [];
+                for (var p in data) {
+                    if (data[p].name2 != null && data[p].name2 && data[p].name2 != "") {
+
+                        aryJson.push(data[p].name2)
+                    }
+                }
+            }
+           // console.log(aryJson);
+            return aryJson;
+        }
+        var data = pullArrayForJson(aredata, 'data');
+        var rename = pullArrayForJson(aredata, 'name');
+        var rename1 = pullArrayForJson(aredata, 'name1');
+        var rename2 = pullArrayForJson(aredata, 'name2');
         var myChart = echarts.init(document.getElementById('TestE'));
         option = {
+         
             title: {
-                text: '世界人口总量',
-                subtext: '数据来自网络'
+                text: '项目回款率',
+
             },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
                     type: 'shadow'
+                },
+                formatter: function (res) {
+                  //  console.log(res);
+                    return "";
                 }
             },
             legend: {
-               
+                data: [{ name: '展示回款率' }, { name: '开办费回款率' }]
             },
             grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
+                left: '300',
+               
             },
             xAxis: {
                 type: 'value',
-                boundaryGap: [0, 0.01]
+                max: 100,
+                interval: 10,
+                axisLabel: {   //显示名称用这个进行返回
+                    show: true,
+                    formatter: function (value, index) {
+                        return value+'%';
+                    }
+                },
+                axisLine: {
+                    lineStyle: { color: '#ccc' }
+                },
             },
-            yAxis: {
-                type: 'category',
-                data: ['重庆第一城区', '重庆第二城区', '重庆第三城区', '重庆第四城区', '重庆第五城区', '渝西城区公司']
-            },
+ 
+            yAxis: [{
+                inverse: true,
+                data: rename, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    show: true,
+                    formatter :function (value, index) {
+                        return rename[index];
+                    },
+                   color: '#000' 
+                },
+                splitLine: {
+                    show: true
+                },
+                axisTick: {
+                    length: 100,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLine: {
+                    lineStyle: { color: '#ccc' }
+                },
+               
+            }, {
+                name: '                     城市',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 260,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLabel: {
+                    inside: true
+                },
+                inverse: true,
+                data: rename2, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
+                    formatter: function (value, index) {
+                        return rename1[index];
+                    },
+                    color: '#000'
+                },
+            }, {
+                name: '                     ',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 60,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLabel: {
+                    inside: true
+                },
+                inverse: true,
+                data: rename2, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
+                    formatter: function (value, index) {
+                        return '';
+                    },
+                    color: '#000'
+                },
+            }, {
+                name: '                区域',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 180,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },             
+                inverse: true,
+                data: rename, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
+                    formatter: function (value, index) {
+                        return rename2[index];
+                    },
+                    color: '#000'
+                }
+            }],
             series: [
                 {
-                    name: '2011年',
+                    name: '展示回款率',
                     type: 'bar',
-                    data: [48693, 4119, 49399, 13428, 7748, 55472]
-                }
+                    barWidth: '30%',
+                    data:data,
+                    label: {  //文本显示
+                        normal: {
+                            show: true,
+                            position:'right',
+                            formatter:'{c}%',
+                        }
+                    }
+                },
+                {
+                    name: '开办费回款率',
+                    type: 'bar',
+                    barWidth: '30%',
+                    data:data,
+                    label: {  //文本显示
+                        normal: {
+                            show: true,
+                            position:'right',
+                            formatter:'{c}%',
+                        }
+                    },
+                    itemStyle: {  //图形
+                        normal: {
+                            color: '#eb7d22'
+                        }
+                    },
+
+                },
+                {
+                    type: 'bar',
+                    data: ['-', '-', '-', '-', '-'],
+                    yAxisIndex: 1
+                }, {
+                    type: 'bar',
+                    data: ['-', '-', '-', '-', '-'],
+                    yAxisIndex: 2
+                },
+            {
+            type: 'bar',
+        data: ['-', '-', '-', '-', '-'],
+        yAxisIndex: 3
+        }
             ]
         };
         myChart.setOption(option);

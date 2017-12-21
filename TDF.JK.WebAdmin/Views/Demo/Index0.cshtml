@@ -1,12 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "城区公司节点达成率";
+    ViewBag.Title = "报表1";
 }
 @section styles{
     <!-- DataTables -->
     <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
-    <link href="~/Scripts/t2m_adminlte/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+
+<link href="~/Scripts/t2m_adminlte/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -36,7 +38,7 @@
                                 <div class="col-md-6" style="padding-top: 10px;border-right:1px solid #ccc;height:180px;">
                                     <div class="form-group">
 
-                                        <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="col-sm-10 col-sm-offset-1" >
                                             <div class="form-group">
                                                 <label></label>
                                                 <select class="form-control select2" id="alert-select2" style="width: 100%;">
@@ -65,9 +67,9 @@
 
                                 <!--右边文本框的样式 -->
                                 <style>
-                                    .alert-right-text h5 {
-                                        border-bottom: 1px dashed #808080;
-                                    }
+                                .alert-right-text h5{
+                                    border-bottom:1px dashed #808080
+                                }
                                 </style>
                                 <div class="col-md-6 alert-right-text" style="height:180px;overflow-y:scroll">
                                     <h5>1 <span class="pull-right del" style="cursor:pointer">x</span></h5>
@@ -79,7 +81,7 @@
 
                                 </div>
                                 <!--  -->
-
+                             
                             </div>
                         </div>
 
@@ -87,18 +89,18 @@
 
                     </div>
 
-                    <div class="pull-right" style="padding-right: 15px">
+                    <div class="pull-right" style="padding-right: 15px" >
                         <div class="pull-left">
                             <select class="form-control">
                                 <option>视图</option>
                                 <option>列表</option>
-
+                                
                             </select>
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary ">下载</a>
                         </div>
-
+                       
                     </div>
                 </div>
 
@@ -107,9 +109,10 @@
 
             </form>
 
-            <div id="TestE" style="width:100%;height:500px">
 
-            </div>
+
+
+            <table id="example1" class="table table-bordered table-striped table-hover"></table>
         </div>
 
     </div>
@@ -117,13 +120,13 @@
 </section>
 
 @section scripts{
-    <script src="~/Scripts/t2m_adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="~/Scripts/t2m_adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
     <script src="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
     <script src="~/Scripts/t2m_adminlte/js/datatables/dataTablesForTDF.js"></script>
-    <script src="~/Scripts/Demo/echarts.min.js"></script>
+
     <style>
         .progressBar {
             width: 80%;
@@ -149,130 +152,78 @@
             float: left;
         }
     </style>
+    
     <script>
-        //选择框
-        $('.select2').select2();
+        $(function () {
+            //选择框
+            $('.select2').select2();
+            
+            // 筛选弹出框
+            $('#btn_filter').click(function () {
+                var filterBoxId = $(this).attr('data-t2mFilterBox');
+                if ($(this).hasClass('open')) {
+                    $('#' + filterBoxId).hide();
+                    $(this).removeClass('open');
+                } else {
+                    $('#' + filterBoxId).css('display', 'block');
+                    $(this).addClass('open');
+                }
 
-        // 筛选弹出框
-        $('#btn_filter').click(function () {
-            var filterBoxId = $(this).attr('data-t2mFilterBox');
-            if ($(this).hasClass('open')) {
-                $('#' + filterBoxId).hide();
-                $(this).removeClass('open');
-            } else {
-                $('#' + filterBoxId).css('display', 'block');
-                $(this).addClass('open');
+            });
+            $('#alert-con').on('click', function () {
+                $('.alert-right-text').append("<h5>" + $('#select2-alert-select2-container').text() + "<span class=\"pull-right del\" style=\"cursor:pointer\">x</span></h5>")
+                            })
+            //弹出框右边文本框 移除
+            $(document).on('click', '.alert-right-text .del', function () {
+                $(this).parent().remove();
+            })
+            //end 筛选弹出框
+
+            //width 可以去定义这个列的占比宽度
+            var StatusRe = function (data, type, row, meta) {
+                if (data == 1)
+                    return "<img src='/Scripts/Demo/u1264.png'/>";
+            };
+            var tabColumns = [
+                { "data": "name", "title": " ", "width": "6%" }, //{}
+                { "data": "Item1", "title": "成立物业前介专项小组", orderable: true, render: StatusRe },
+                { "data": "Item2", "title": "参加地产公司项目启动会", orderable: true, render: StatusRe },
+                { "data": "Item3", "title": "确定储备项目负责人1-2人", orderable: true, render: StatusRe },
+                { "data": "Item4", "title": "参加地产公司方案评审会", orderable: true, render: StatusRe },
+                { "data": "Item5", "title": "完成前介报告（设计）", orderable: true, render: StatusRe },
+                { "data": "Item6", "title": "召开物业项目启动会", orderable: true, render: StatusRe },
+                { "data": "Item7", "title": "完成销售手册、临时管理规约...", orderable: true, render: StatusRe },
+                { "data": "Item8", "title": "完成物业公司所在地注册...", orderable: true, render: StatusRe },
+                { "data": "Item9", "title": "VI制作完成情况巡检...", orderable: true, render: StatusRe }
+
+
+                //{ "data": "Id", "title": "操作", render: function (data, type, row, meta) { return "<a href=\"@Url.Action("Index4")\">详 情</a>"; } }
+            ];
+
+            //通常用于对参数的额外加工 回调函数
+            var serverParam = function (dataParams) {
+                return dataParams;
             }
 
-        });
-        $('#alert-con').on('click', function () {
-            $('.alert-right-text').append("<h5>" + $('#select2-alert-select2-container').text() + "<span class=\"pull-right del\" style=\"cursor:pointer\">x</span></h5>")
+            var opts = {
+                showButtons: false, // 是否显示操作按钮组
+                buttons: [], //操作按钮组 在showButtons==true时 默认会有一个 刷新按钮
+                lengthChange: true, //是否允许用户改变 PageSize
+                pageSize: 15, //PageSize 设置 默认为 10
+                searching: false, //是否开启 默认关键词搜索
+                searchPlaceholder: "关键词", //默认搜索框提示文字
+                searchTextWidth: "200px",//默认搜索框的宽度 默认值：标准宽度
+                TableResize: {                //添加监听去自适应窗口大小
+                    ResizeFlg: true,           //状态值默认为false不启动
+                    ResizeTime: 0              //窗口每次变化的间隔 单位毫秒
+                }
+
+            };
+
+            var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/Demo/DemoJson.json', tabColumns, opts, serverParam);
+
         })
-        //弹出框右边文本框 移除
-        $(document).on('click', '.alert-right-text .del', function () {
-            $(this).parent().remove();
-        })
-        //end 筛选弹出框
-
-
-        // app.title = '城区公司节点达成率 - 条形图';
-        var aredata = [
-                     { id: 1, name: '金科.天湖小镇', data: '44',data2:'58' },
-                     { id: 2, name: '金科.中央公园城', data: '96', data2: '6' },
-                     { id: 3, name: '金科.中华养生城', data: '95', data2: '71' },
-                     { id: 4, name: '金科.金科中心', data: '6', data2: '45' },
-                     { id: 5, name: '金科.金科城', data: '92', data2: '58' },
-                     { id: 5, name: ' 金科.时代中心', data: '86', data2: '58' }
-        ];
-        //组合自己需要数据格式
-        function pullArrayForJson(data,name) {
-            var aryJson = [];
-            var data = data;
-            if (name == "name") {
-                for (var p in data) {
-                    if (data[p].name != null && data[p].name && data[p].name != "") {
-                       // var obj = { value: data[p].name };
-                        aryJson.push(data[p].name);
-                    }
-                }
-            }
-            if (name == "data") {
-                var aryJson = [];
-                for (var p in data) {
-                    if (data[p].data != null && data[p].data && data[p].data != "") {
-
-                        aryJson.push(data[p].data)
-                    }
-                }
-            }
-           // console.log(aryJson);
-            return aryJson;
-        }
-        var data = pullArrayForJson(aredata, 'data');
-        var rename = pullArrayForJson(aredata, 'name');
-        var myChart = echarts.init(document.getElementById('TestE'));
-        option = {
-            title: {
-                text: '城区公司节点达成率',
-
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                formatter: function (res) {
-                  //  console.log(res);
-                    return "";
-                }
-            },
-            legend: {
-
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                max: 100,
-                interval: 10,
-                axisLabel: {   //显示名称用这个进行返回
-                    show: true,
-                    formatter: function (value, index) {
-                        return value+'%';
-                    }
-                }
-            },
-            yAxis: {
-                type: 'category',
-                data: rename, //这个data没有生效不知道为什么
-                axisLabel: {   //显示名称用这个进行返回
-                    show:true,
-                    formatter :function (value, index) {
-                        return rename[index].split(" ").join("\n");
-                        }
-                }
-            },
-            series: [
-                {
-                    name: '2011年',
-                    type: 'bar',
-                    barWidth: '30%',
-                    data:data,
-                    label: {  //文本显示
-                        normal: {
-                            show: true,
-                            position:'right',
-                            formatter:'{c}%',
-                        }
-                    }
-                }
-            ]
-        };
-        myChart.setOption(option);
+       
     </script>
 
 }

@@ -177,36 +177,36 @@
 
         // app.title = '城区公司节点达成率 - 条形图';
         var aredata = [
-                     { id: 1, name: '金科.天湖小镇', data: '44',data2:'58' },
-                     { id: 2, name: '金科.中央公园城', data: '96', data2: '6' },
-                     { id: 3, name: '金科.中华养生城', data: '95', data2: '71' },
-                     { id: 4, name: '金科.金科中心', data: '6', data2: '45' },
-                     { id: 5, name: '金科.金科城', data: '92', data2: '58' },
-                     { id: 5, name: ' 金科.时代中心', data: '86', data2: '58' }
+                     { id: 1, name: '重庆第一城区', data: '48693', pro: '44.37' },
+                     { id: 2, name: '重庆第二城区', data: '4119', pro: '4.59' },
+                     { id: 3, name: '重庆第三城区', data: '49399', pro: '52.74' },
+                     { id: 4, name: '重庆第四城区', data: '13428', pro: '30.70' },
+                     { id: 5, name: '重庆第五城区', data: '7748', pro: '65.88' },
+                     { id: 5, name: '渝西城区公司', data: '55472', pro: '55.99' }
         ];
         //组合自己需要数据格式
         function pullArrayForJson(data,name) {
             var aryJson = [];
             var data = data;
-            if (name == "name") {
+            if (name == "name") {               
                 for (var p in data) {
                     if (data[p].name != null && data[p].name && data[p].name != "") {
                        // var obj = { value: data[p].name };
                         aryJson.push(data[p].name);
                     }
-                }
+                }              
             }
             if (name == "data") {
                 var aryJson = [];
                 for (var p in data) {
                     if (data[p].data != null && data[p].data && data[p].data != "") {
-
+                        
                         aryJson.push(data[p].data)
                     }
                 }
-            }
+            }         
            // console.log(aryJson);
-            return aryJson;
+            return aryJson;         
         }
         var data = pullArrayForJson(aredata, 'data');
         var rename = pullArrayForJson(aredata, 'name');
@@ -237,14 +237,7 @@
             },
             xAxis: {
                 type: 'value',
-                max: 100,
-                interval: 10,
-                axisLabel: {   //显示名称用这个进行返回
-                    show: true,
-                    formatter: function (value, index) {
-                        return value+'%';
-                    }
-                }
+
             },
             yAxis: {
                 type: 'category',
@@ -252,23 +245,17 @@
                 axisLabel: {   //显示名称用这个进行返回
                     show:true,
                     formatter :function (value, index) {
-                        return rename[index].split(" ").join("\n");
+                        return rename[index];
                         }
                 }
-            },
+            }  ,
             series: [
                 {
                     name: '2011年',
                     type: 'bar',
                     barWidth: '30%',
-                    data:data,
-                    label: {  //文本显示
-                        normal: {
-                            show: true,
-                            position:'right',
-                            formatter:'{c}%',
-                        }
-                    }
+                    data:data
+                    
                 }
             ]
         };
