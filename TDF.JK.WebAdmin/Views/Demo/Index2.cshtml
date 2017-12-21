@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "城区公司节点达成率";
+    ViewBag.Title = "项目达成率";
 }
 @section styles{
     <!-- DataTables -->
@@ -175,7 +175,7 @@
         //end 筛选弹出框
 
 
-        // app.title = '城区公司节点达成率 - 条形图';
+        // app.title = '项目达成率 - 条形图';
         var aredata = [
                      { id: 1, name: '金科.天湖小镇', data: '44',data2:'58' },
                      { id: 2, name: '金科.中央公园城', data: '96', data2: '6' },
@@ -213,7 +213,7 @@
         var myChart = echarts.init(document.getElementById('TestE'));
         option = {
             title: {
-                text: '城区公司节点达成率',
+                text: '项目达成率',
 
             },
             tooltip: {

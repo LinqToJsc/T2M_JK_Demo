@@ -177,24 +177,21 @@
 
         // app.title = '城区公司节点达成率 - 条形图';
         var aredata = [
-                     { id: 1, name: '重庆区域公司', data: '44.37', data2: '58' },
-                     { id: 2, name: '云贵区域公司', data: '4.59', data2: '6' },
-                     { id: 3, name: '华南区域公司', data: '52.74', data2: '71' },
-                     { id: 4, name: '渝东区域公司', data: '30.70', data2: '45' },
-                     { id: 5, name: '华东区域公司', data: '65.88', data2: '45' },
-                      { id: 6, name: '华中区域公司', data: '55.99', data2: '45' },
-                       { id: 7, name: '西部区域公司', data: '17.51', data2: '45' },
-                        { id: 8, name: '华北区域公司', data: '31.12', data2: '45' },
-                         { id: 9, name: '中原区域公司', data: '44.90', data2: '45' },
+                     { id: 1, name: '  金科.天湖小镇', name1: "万盛", name2: '华北公司', data: '67' },
+                     { id: 2, name: '  金科.中央公园城', name1: "成都", name2: '华北公司', data: '17' },
+                     { id: 3, name: '  金科.中华养生城', name1: "济南", name2: '华北公司', data: '57' },
+                     { id: 4, name: '  金科.中华养生城', name1: "长沙", name2: '华北公司', data: '77' },
+                     { id: 5, name: '  金科.中华养生城', name1: "合川", name2: '华北公司', data: '40' },
+                     { id: 5, name: '  金科.中华养生城', name1: "遵义", name2: '华北公司', data: '86' }
         ];
         //组合自己需要数据格式
-        function pullArrayForJson(data, name,index) {
+        function pullArrayForJson(data,name) {
             var aryJson = [];
             var data = data;
             if (name == "name") {
                 for (var p in data) {
                     if (data[p].name != null && data[p].name && data[p].name != "") {
-                        // var obj = { value: data[p].name };
+                       // var obj = { value: data[p].name };
                         aryJson.push(data[p].name);
                     }
                 }
@@ -203,33 +200,41 @@
                 var aryJson = [];
                 for (var p in data) {
                     if (data[p].data != null && data[p].data && data[p].data != "") {
-                        if (index == p) {
-                            aryJson.push(data[p].data);
-                            //console.log(index+"  "+p)
-                        } else {
-                            aryJson.push(0)
-                        }
-                        
+
+                        aryJson.push(data[p].data)
+                    }
+                }
+            }
+            if (name == "name1") {
+                var aryJson = [];
+                for (var p in data) {
+                    if (data[p].name1 != null && data[p].name1 && data[p].name1 != "") {
+
+                        aryJson.push(data[p].name1)
+                    }
+                }
+            }
+            if (name == "name2") {
+                var aryJson = [];
+                for (var p in data) {
+                    if (data[p].name2 != null && data[p].name2 && data[p].name2 != "") {
+
+                        aryJson.push(data[p].name2)
                     }
                 }
             }
            // console.log(aryJson);
             return aryJson;
         }
-        var data1 = pullArrayForJson(aredata, 'data', 0);
-        var data2 = pullArrayForJson(aredata, 'data', 1);
-        var data3 = pullArrayForJson(aredata, 'data', 2);
-        var data4 = pullArrayForJson(aredata, 'data', 3);
-        var data5 = pullArrayForJson(aredata, 'data', 4);
-        var data6 = pullArrayForJson(aredata, 'data', 5);
-        var data7 = pullArrayForJson(aredata, 'data', 6);
-        var data8 = pullArrayForJson(aredata, 'data', 7);
-        var data9 = pullArrayForJson(aredata, 'data', 8);
+        var data = pullArrayForJson(aredata, 'data');
         var rename = pullArrayForJson(aredata, 'name');
+        var rename1 = pullArrayForJson(aredata, 'name1');
+        var rename2 = pullArrayForJson(aredata, 'name2');
         var myChart = echarts.init(document.getElementById('TestE'));
         option = {
+         
             title: {
-                text: '区域公司达成率',
+                text: '项目回款率',
 
             },
             tooltip: {
@@ -238,18 +243,16 @@
                     type: 'shadow'
                 },
                 formatter: function (res) {
-                    //  console.log(res);
+                  //  console.log(res);
                     return "";
                 }
             },
             legend: {
-                data: rename
+                data: [{ name: '展示回款率' }, { name: '开办费回款率' }]
             },
             grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
+                left: '300',
+               
             },
             xAxis: {
                 type: 'value',
@@ -258,203 +261,167 @@
                 axisLabel: {   //显示名称用这个进行返回
                     show: true,
                     formatter: function (value, index) {
-                        return value + '%';
+                        return value+'%';
                     }
-                }
+                },
+                axisLine: {
+                    lineStyle: { color: '#ccc' }
+                },
             },
-            yAxis: {
-                type: 'category',
+ 
+            yAxis: [{
+                inverse: true,
                 data: rename, //这个data没有生效不知道为什么
                 axisLabel: {   //显示名称用这个进行返回
                     show: true,
+                    formatter :function (value, index) {
+                        return rename[index];
+                    },
+                   color: '#000' 
+                },
+                splitLine: {
+                    show: true
+                },
+                axisTick: {
+                    length: 100,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLine: {
+                    lineStyle: { color: '#ccc' }
+                },
+               
+            }, {
+                name: '                     城市',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 260,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLabel: {
+                    inside: true
+                },
+                inverse: true,
+                data: rename2, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
                     formatter: function (value, index) {
-                        return rename[index].split(" ").join("\n");
-                    }
+                        return rename1[index];
+                    },
+                    color: '#000'
+                },
+            }, {
+                name: '                     ',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 60,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },
+                axisLabel: {
+                    inside: true
+                },
+                inverse: true,
+                data: rename2, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
+                    formatter: function (value, index) {
+                        return '';
+                    },
+                    color: '#000'
+                },
+            }, {
+                name: '                区域',
+                nameLocation: 'start',
+                nameTextStyle: {
+                    fontWeight: 'bold'
+                },
+                position: 'left',
+                offset: 180,
+                axisLine: {
+                    onZero: false,
+                    show: false
+                },
+                axisTick: {
+                    length: 100,
+                    inside: true,
+                    lineStyle: { color: '#ccc' }
+                },             
+                inverse: true,
+                data: rename, //这个data没有生效不知道为什么
+                axisLabel: {   //显示名称用这个进行返回
+                    inside: true,
+                    formatter: function (value, index) {
+                        return rename2[index];
+                    },
+                    color: '#000'
                 }
-            },
+            }],
             series: [
-                //用了stack属性  重叠
                 {
-                    name: aredata[0].name,
+                    name: '展示回款率',
                     type: 'bar',
-                    stack: '总量',
                     barWidth: '30%',
-                    data: data1,
+                    data:data,
                     label: {  //文本显示
                         normal: {
                             show: true,
-                            position: 'right',
-                            formatter: function (res) {
-                                if (res.value != 0) {
-                                    return res.value + "%"
-                                } else {
-                                    return ''
-                                }
-                            },
+                            position:'right',
+                            formatter:'{c}%',
                         }
                     }
                 },
-                  {
-                      name: aredata[1].name,
-                      type: 'bar',
-                      barWidth: '30%',
-                      stack: '总量',
-                      data:data2,
-                      label: {  //文本显示
-                          normal: {
-                              show: true,
-                              position: 'right',
-                              formatter: function (res) {
-                                  if (res.value != 0) {
-                                      return res.value + "%"
-                                  } else {
-                                      return ''
-                                  }
-                              },
-                          }
-                      }
-                  },
-                   {
-                       name: aredata[2].name,
-                       type: 'bar',
-                       barWidth: '30%',
-                       stack: '总量',
-                       data: data3,
-                       label: {  //文本显示
-                           normal: {
-                               show: true,
-                               position: 'right',
-                               formatter: function (res) {
-                                   if (res.value != 0) {
-                                       return res.value + "%"
-                                   } else {
-                                       return ''
-                                   }
-                               },
-                           }
-                       }
-                   },
-                    {
-                        name: aredata[3].name,
-                        type: 'bar',
-                        barWidth: '30%',
-                        stack: '总量',
-                        data: data4,
-                        label: {  //文本显示
-                            normal: {
-                                show: true,
-                                position: 'right',
-                                formatter: function (res) {
-                                    if (res.value != 0) {
-                                        return res.value + "%"
-                                    } else {
-                                        return ''
-                                    }
-                                },
-                            }
+                {
+                    name: '开办费回款率',
+                    type: 'bar',
+                    barWidth: '30%',
+                    data:data,
+                    label: {  //文本显示
+                        normal: {
+                            show: true,
+                            position:'right',
+                            formatter:'{c}%',
                         }
                     },
-                     {
-                         name: aredata[4].name,
-                         type: 'bar',
-                         barWidth: '30%',
-                         stack: '总量',
-                         data: data5,
-                         label: {  //文本显示
-                             normal: {
-                                 show: true,
-                                 position: 'right',
-                                 formatter: function (res) {
-                                     if (res.value != 0) {
-                                         return res.value + "%"
-                                     } else {
-                                         return ''
-                                     }
-                                 },
-                             }
-                         }
-                     },
-                      {
-                          name: aredata[5].name,
-                          type: 'bar',
-                          barWidth: '30%',
-                          stack: '总量',
-                          data: data6,
-                          label: {  //文本显示
-                              normal: {
-                                  show: true,
-                                  position: 'right',
-                                  formatter: function (res) {
-                                      if (res.value != 0) {
-                                          return res.value + "%"
-                                      } else {
-                                          return ''
-                                      }
-                                  },
-                              }
-                          }
-                      },
-                       {
-                           name: aredata[6].name,
-                           type: 'bar',
-                           barWidth: '30%',
-                           stack: '总量',
-                           data: data7,
-                           label: {  //文本显示
-                               normal: {
-                                   show: true,
-                                   position: 'right',
-                                   formatter: function (res) {
-                                       if (res.value != 0) {
-                                           return res.value + "%"
-                                       } else {
-                                           return ''
-                                       }
-                                   },
-                               }
-                           }
-                       },
-                        {
-                            name: aredata[7].name,
-                            type: 'bar',
-                            barWidth: '30%',
-                            stack: '总量',
-                            data: data8,
-                            label: {  //文本显示
-                                normal: {
-                                    show: true,
-                                    position: 'right',
-                                    formatter: function (res) {
-                                        if (res.value != 0) {
-                                            return res.value + "%"
-                                        } else {
-                                            return ''
-                                        }
-                                    },
-                                }
-                            }
-                        },
-                         {
-                             name: aredata[8].name,
-                             type: 'bar',
-                             barWidth: '30%',
-                             stack: '总量',
-                             data: data9,
-                             label: {  //文本显示
-                                 normal: {
-                                     show: true,
-                                     position: 'right',
-                                     formatter: function (res) {
-                                         if (res.value != 0) {
-                                             return res.value + "%"
-                                         } else {
-                                             return ''
-                                         }
-                                     },
-                                 }
-                             }
-                         }
+                    itemStyle: {  //图形
+                        normal: {
+                            color: '#eb7d22'
+                        }
+                    },
 
+                },
+                {
+                    type: 'bar',
+                    data: ['-', '-', '-', '-', '-'],
+                    yAxisIndex: 1
+                }, {
+                    type: 'bar',
+                    data: ['-', '-', '-', '-', '-'],
+                    yAxisIndex: 2
+                },
+            {
+            type: 'bar',
+        data: ['-', '-', '-', '-', '-'],
+        yAxisIndex: 3
+        }
             ]
         };
         myChart.setOption(option);
