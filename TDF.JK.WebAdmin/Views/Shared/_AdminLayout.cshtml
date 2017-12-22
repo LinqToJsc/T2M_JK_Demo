@@ -33,7 +33,11 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+    <style>
+        *{
+            font-family:Microsoft YaHei,Arial,sans-serif;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -274,16 +278,16 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li>
+                            @*<li>
                                 <a href="@Url.Action("Index", "Demo", new {area = ""})"><i class="fa fa-circle-o"></i>0</a>
-                            </li>
+                            </li>*@
                             <li >
                                 <a href="@Url.Action("Index2", "Demo", new {area = ""})"><i class="fa fa-circle-o"></i>项目达成率</a>
                             </li>
                             <li class="">
                                 <a href="@Url.Action("Index3", "Demo", new {area = ""})"><i class="fa fa-circle-o"></i>项目回款率</a>
                             </li>
-                            <li class="">
+                            @*<li class="">
                                 <a href="@Url.Action("Index4", "Demo", new {area = ""})"><i class="fa fa-circle-o"></i>区域公司达成率</a>
 
                             </li>
@@ -295,7 +299,7 @@
                             </li>
                             <li class="">
                                 <a href="@Url.Action("Index7", "Demo", new {area = ""})"><i class="fa fa-circle-o"></i>城区公司回款率</a>
-                            </li>
+                            </li>*@
                         </ul>
                     </li>
 

@@ -16,7 +16,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-book"></i> 项目计划</a></li>
-        <li class="active">项目列表</li>
+        <li class="active">index2.cshtml</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -24,88 +24,7 @@
     <div class="box box-primary">
 
         <div class="box-body">
-            <form id="form_search" class="form-horizontal">
-                <div class="row">
-                    <div class="pull-left" style="padding-left: 14px;">
-
-                        <button id="btn_filter" type="button" class="btn btn-default btn-sm" data-t2mFilterBox="t2m_filter">项目 <i class="fa fa-angle-down"></i></button>
-                        <div id="t2m_filter" class="t2m-filter-box" style="background-color:#fff;width:480px;height:180px; display: none;position:absolute;opacity:1;z-index: 9;border:1px solid #ccc;">
-                            <!--自定义UI布局-->
-                            <div class="row">
-
-                                <div class="col-md-6" style="padding-top: 10px;border-right:1px solid #ccc;height:180px;">
-                                    <div class="form-group">
-
-                                        <div class="col-sm-10 col-sm-offset-1">
-                                            <div class="form-group">
-                                                <label></label>
-                                                <select class="form-control select2" id="alert-select2" style="width: 100%;">
-                                                    <option selected="selected">Alabama</option>
-                                                    <option>Alaska</option>
-                                                    <option>California</option>
-                                                    <option>Delaware</option>
-                                                    <option>Tennessee</option>
-                                                    <option>Texas</option>
-                                                    <option>Washington</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-11" style="margin-left:10px;margin-top:66px">
-
-                                            <div class="col-sm-10 col-sm-offset-2">
-                                                <button type="button" class="btn btn-default ">取消</button>
-                                                <button id="alert-con" type="button" class="btn btn-primary">确定</button>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!--右边文本框的样式 -->
-                                <style>
-                                    .alert-right-text h5 {
-                                        border-bottom: 1px dashed #808080;
-                                    }
-                                </style>
-                                <div class="col-md-6 alert-right-text" style="height:180px;overflow-y:scroll">
-                                    <h5>1 <span class="pull-right del" style="cursor:pointer">x</span></h5>
-                                    <h5>2 <span class="pull-right del" style="cursor:pointer">x</span></h5>
-                                    <h5>3 <span class="pull-right del" style="cursor:pointer">x</span></h5>
-                                    <h5>4<span class="pull-right del" style="cursor:pointer">x</span></h5>
-                                    <h5>5 <span class="pull-right del" style="cursor:pointer">x</span></h5>
-                                    <h5>6 <span class="pull-right del" style="cursor:pointer">x</span></h5>
-
-                                </div>
-                                <!--  -->
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="pull-right" style="padding-right: 15px">
-                        <div class="pull-left">
-                            <select class="form-control">
-                                <option>视图</option>
-                                <option>列表</option>
-
-                            </select>
-                        </div>
-                        <div class="pull-left">
-                            <a class="btn btn-primary ">下载</a>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-
-            </form>
+         
 
             <div id="TestE" style="width:100%;height:500px">
 
@@ -150,34 +69,14 @@
         }
     </style>
     <script>
-        //选择框
-        $('.select2').select2();
-
-        // 筛选弹出框
-        $('#btn_filter').click(function () {
-            var filterBoxId = $(this).attr('data-t2mFilterBox');
-            if ($(this).hasClass('open')) {
-                $('#' + filterBoxId).hide();
-                $(this).removeClass('open');
-            } else {
-                $('#' + filterBoxId).css('display', 'block');
-                $(this).addClass('open');
-            }
-
-        });
-        $('#alert-con').on('click', function () {
-            $('.alert-right-text').append("<h5>" + $('#select2-alert-select2-container').text() + "<span class=\"pull-right del\" style=\"cursor:pointer\">x</span></h5>")
-        })
-        //弹出框右边文本框 移除
-        $(document).on('click', '.alert-right-text .del', function () {
-            $(this).parent().remove();
-        })
-        //end 筛选弹出框
-
+        //bar的宽度
+        var barHeight = 60;
+        var barOthHeight = 70;//一定距离的留白
+        var APPID = 'TestE';  //div的ID
 
         // app.title = '项目达成率 - 条形图';
         var aredata = [
-                     { id: 1, name: '金科.天湖小镇', data: '44',data2:'58' },
+                     { id: 1, name: '金科.天湖小镇', data: '44', data2: '58' },
                      { id: 2, name: '金科.中央公园城', data: '96', data2: '6' },
                      { id: 3, name: '金科.中华养生城', data: '95', data2: '71' },
                      { id: 4, name: '金科.金科中心', data: '6', data2: '45' },
@@ -185,13 +84,13 @@
                      { id: 5, name: ' 金科.时代中心', data: '86', data2: '58' }
         ];
         //组合自己需要数据格式
-        function pullArrayForJson(data,name) {
+        function pullArrayForJson(data, name) {
             var aryJson = [];
             var data = data;
             if (name == "name") {
                 for (var p in data) {
                     if (data[p].name != null && data[p].name && data[p].name != "") {
-                       // var obj = { value: data[p].name };
+                        // var obj = { value: data[p].name };
                         aryJson.push(data[p].name);
                     }
                 }
@@ -205,11 +104,15 @@
                     }
                 }
             }
-           // console.log(aryJson);
+            // console.log(aryJson);
             return aryJson;
         }
         var data = pullArrayForJson(aredata, 'data');
         var rename = pullArrayForJson(aredata, 'name');
+        var myChart = echarts.init(document.getElementById('TestE'));
+        //初始定义图表高度
+        $('#' + APPID).height(((aredata.length + 1) * barHeight + barOthHeight) + "px");
+        //初始化图表组件
         var myChart = echarts.init(document.getElementById('TestE'));
         option = {
             title: {
@@ -222,7 +125,7 @@
                     type: 'shadow'
                 },
                 formatter: function (res) {
-                  //  console.log(res);
+                    //  console.log(res);
                     return "";
                 }
             },
@@ -242,7 +145,7 @@
                 axisLabel: {   //显示名称用这个进行返回
                     show: true,
                     formatter: function (value, index) {
-                        return value+'%';
+                        return value + '%';
                     }
                 }
             },
@@ -250,29 +153,51 @@
                 type: 'category',
                 data: rename, //这个data没有生效不知道为什么
                 axisLabel: {   //显示名称用这个进行返回
-                    show:true,
-                    formatter :function (value, index) {
+                    show: true,
+                    formatter: function (value, index) {
                         return rename[index].split(" ").join("\n");
-                        }
+                    },
+                    fontSize: '14'
                 }
             },
+           
             series: [
                 {
                     name: '2011年',
                     type: 'bar',
                     barWidth: '30%',
-                    data:data,
+                    data: data,
                     label: {  //文本显示
                         normal: {
                             show: true,
-                            position:'right',
-                            formatter:'{c}%',
+                            position: 'right',
+                            formatter: '{c}%',
                         }
-                    }
+                    },
+                    itemStyle: {  //文本显示
+                        normal: {
+                            color: '#61a0a8'
+                        }
+                    },
+
                 }
             ]
         };
+        //载入option 绘制
         myChart.setOption(option);
+        //自适应改变图表的宽度
+       var  flgResize = true;
+        $(window).resize(function () {
+            if (flgResize) {
+                flgResize = false;
+                window.setTimeout(function () {
+                    //可以在这里设置div长度宽度
+                    //$(xx).width  height
+                    myChart.resize();
+                    flgResize = true;
+                }, 200);
+            }
+        });
     </script>
 
 }
