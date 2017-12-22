@@ -1,6 +1,7 @@
 ﻿var TdfDataTableParams = function () {
     var _getTabOpts = function (serverUrl, searchFormId, columns, opts, serverParamsFunction, rowCallbackFunction) {
         opts = opts || {};
+
         opts.searchPlaceholder = opts.searchPlaceholder || "关键词";
         opts.dom = opts.dom || "frt<'row'<'col-sm-6'il><'col-sm-6'p>>";
         //是否显示操作按钮 默认true
@@ -113,15 +114,17 @@
          * rowCallBack [function 可选] 表格行绘制 回调函数
          */
         CreateDataTable: function (domTabId, searchFormId, serverUrl, columns, opts, serverParamsCallBack, rowCallBack) {
+            opts = opts || {};
+            opts.TableResize = opts.TableResize || { ResizeFlg: true, ResizeTime: 0 };
+            opts.TableResize.ResizeFlg = (opts.TableResize.ResizeFlg == null || opts.TableResize.ResizeFlg == undefined) ? true : opts.TableResize.ResizeFlg;
 
             if (opts.TableResize.ResizeFlg == true) {
                 resizeFlg = true;
                 $(window).on('resize', function () {
-                    //
                     if (resizeFlg) {
                         resizeFlg = false;
                         setTimeout(function () {
-                            $("#" +domTabId +"").width("100%");//
+                            $("#" + domTabId + "").width("100%");//
 
                             resizeFlg = true;
                         }, opts.TableResize.ResizeTime || 0);
@@ -130,7 +133,6 @@
 
                 });
             }
-           
             return $('#' + domTabId).DataTable(_getTabOpts(serverUrl, searchFormId, columns, opts, serverParamsCallBack, rowCallBack));
         }
     };
