@@ -13,6 +13,10 @@ namespace TDF.JK.WebAdmin.Controllers
         {
             return View();
         }
+        public ActionResult Index0()
+        {
+            return View();
+        }
         //项目达成率
         public ActionResult Index2()
         {
