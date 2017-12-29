@@ -5,8 +5,31 @@
 @section styles{
     <!-- DataTables -->
     <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
-    <link href="~/Scripts/t2m_adminlte/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .progressBar {
+        width: 80%;
+        height: 10px;
+        background-color: #ccc;
+        margin: 0 auto;
+        /* margin-top: 50px; */
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius: 2em;
+        margin-top: 5px;
+    }
+
+    .progressBar_Track {
+        height: 10px;
+        background-color: #55a2ce;
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius: 2em;
+    }
+
+    .left {
+        float: left;
+    }
+</style>
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -36,329 +59,311 @@
 </section>
 
 @section scripts{
-    <script src="~/Scripts/t2m_adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
-    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
-    <script src="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
-    <script src="~/Scripts/t2m_adminlte/js/datatables/dataTablesForTDF.js"></script>
+
     <script src="~/Scripts/Demo/echarts.min.js"></script>
-    <style>
-        .progressBar {
-            width: 80%;
-            height: 10px;
-            background-color: #ccc;
-            margin: 0 auto;
-            /* margin-top: 50px; */
-            -webkit-border-radius: 2em;
-            -moz-border-radius: 2em;
-            border-radius: 2em;
-            margin-top: 5px;
-        }
 
-        .progressBar_Track {
-            height: 10px;
-            background-color: #55a2ce;
-            -webkit-border-radius: 2em;
-            -moz-border-radius: 2em;
-            border-radius: 2em;
-        }
-
-        .left {
-            float: left;
-        }
-    </style>
     <script>
 
         //bar的宽度
         var barHeight = 60;
-        var barOthHeight = 70;//一定距离的留白
-        var APPID = 'TestE';  //div的ID
+        var barOthHeight = 70; //一定距离的留白
+        var APPID = 'TestE'; //div的ID
         // app.title = '城区公司节点达成率 - 条形图';
-        //数据
-        var aredata = [
-                     { id: 1, name: '  金科.天湖小镇', name1: "万盛", name2: '华北公司', data: '67',data2:'30' },
-                     { id: 2, name: '  金科.中央公园城', name1: "成都", name2: '华北公司', data: '17', data2: '12' },
-                     { id: 3, name: '  金科.中华养生城', name1: "济南", name2: '华北公司', data: '57', data2: '51' },
-                     { id: 4, name: '  金科.中华养生城', name1: "长沙", name2: '华北公司', data: '77', data2: '22' },
-                     { id: 5, name: '  金科.中华养生城', name1: "合川", name2: '华北公司', data: '40', data2: '3' },
-                     { id: 5, name: '  金科.中华养生城', name1: "遵义", name2: '华北公司', data: '86', data2: '56' }
-        ];
-        //组合自己需要数据格式  这个需要自己去组合 格式['xx','xx','xx','xx']
-        function pullArrayForJson(data,name) {
-            var aryJson = [];
-            var data = data;
-            if (name == "name") {
-                for (var p in data) {
-                    if (data[p].name != null && data[p].name && data[p].name != "") {
-                       // var obj = { value: data[p].name };
-                        aryJson.push(data[p].name);
-                    }
-                }
-            }
-            if (name == "data") {
-                var aryJson = [];
-                for (var p in data) {
-                    if (data[p].data != null && data[p].data && data[p].data != "") {
 
-                        aryJson.push(data[p].data)
-                    }
-                }
-            }
-            if (name == "name1") {
-                var aryJson = [];
-                for (var p in data) {
-                    if (data[p].name1 != null && data[p].name1 && data[p].name1 != "") {
-
-                        aryJson.push(data[p].name1)
-                    }
-                }
-            }
-            if (name == "name2") {
-                var aryJson = [];
-                for (var p in data) {
-                    if (data[p].name2 != null && data[p].name2 && data[p].name2 != "") {
-
-                        aryJson.push(data[p].name2)
-                    }
-                }
-            }
-            if (name == "data2") {
-                var aryJson = [];
-                for (var p in data) {
-                    if (data[p].data2 != null && data[p].data2 && data[p].data2 != "") {
-                        aryJson.push(data[p].data2)
-                    }
-                }
-            }
-           // console.log(aryJson);
-            return aryJson;
-        }
-        //数据
-        var data = pullArrayForJson(aredata, 'data');
-        var data2 = pullArrayForJson(aredata, 'data2');
-        var rename = pullArrayForJson(aredata, 'name');
-        var rename1 = pullArrayForJson(aredata, 'name1');
-        var rename2 = pullArrayForJson(aredata, 'name2');
-        //初始定义图表高度
-        $('#' + APPID).height(((aredata.length + 1) * barHeight + barOthHeight) + "px");
         //初始化图表组件
         var myChart = echarts.init(document.getElementById('TestE'));
-       
-        //配置选项
-        option = {
-         
-            title: {
-                text: '项目回款率',
 
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                formatter: function (res) {
-                  //  console.log(res);
-                    return "";
-                }
-            },
-            legend: {
-                data: [{ name: '展示回款率' }, { name: '开办费回款率' }] //图例的名称对应bar的name
-            },
-            grid: {
-                left: '300',
-               
-            },
-            xAxis: {
-                type: 'value',
-                max: 100,
-                interval: 10,
-                axisLabel: {   //显示名称用这个进行返回
-                    show: true,
-                    formatter: function (value, index) {
-                        return value+'%';
-                    }
-                },
-                axisLine: {
-                    lineStyle: { color: '#ccc' }
-                },
-            },
- 
-            yAxis: [{
-                inverse: true,
-                data: rename, //这个data没有生效不知道为什么
-                axisLabel: {   //显示名称用这个进行返回
-                    show: true,
-                    formatter :function (value, index) {
-                        return rename[index];
-                    },
-                    color: '#000',
-                    fontSize: '14'
-                },
-                splitLine: {
-                    show: true
-                },
-                axisTick: {
-                    length: 100,
-                    lineStyle: { color: '#ccc' }
-                },
-                axisLine: {
-                    lineStyle: { color: '#ccc' }
-                },
-               
-            }, {
-                name: '             城市',
-                nameLocation: 'start',
-                nameTextStyle: {
-                    fontWeight: 'bold',
-                    fontSize: '14'
-                },
-                position: 'left',
-                offset: 260,
-                axisLine: {
-                    onZero: false,
-                    show: false
-                },
-                axisTick: {
-                    length: 130,
-                    inside: true,
-                    lineStyle: { color: '#ccc' }
-                },
-                axisLabel: {
-                    inside: true,
-                   
-                },
-                inverse: true,
-                data: rename2, //这个data没有生效不知道为什么
-                axisLabel: {   //显示名称用这个进行返回
-                    inside: true,
-                    formatter: function (value, index) {
-                        return rename1[index];
-                    },
-                    color: '#000',
-                    fontSize: '14'
-                },
-            }, {
-                name: '                     ',
-                nameLocation: 'start',
-                nameTextStyle: {
-                    fontWeight: 'bold'
-                },
-                position: 'left',
-                offset: 60,
-                axisLine: {
-                    onZero: false,
-                    show: false
-                },
-                axisTick: {
-                    length: 100,
-                    inside: true,
-                    lineStyle: { color: '#ccc' }
-                },
-                axisLabel: {
-                    inside: true,
-                    fontSize: '14'
-                },
-                inverse: true,
-                data: rename2, //这个data没有生效不知道为什么
-                axisLabel: {   //显示名称用这个进行返回
-                    inside: true,
-                    formatter: function (value, index) {
-                        return '';
-                    },
-                    color: '#000'
-                },
-            }, {
-                name: '                区域',
-                nameLocation: 'start',
-                nameTextStyle: {
-                    fontWeight: 'bold',
-                    fontSize: '14'
-                },
-                position: 'left',
-                offset: 202,
-                axisLine: {
-                    onZero: false,
-                    show: false
-                },
-                axisTick: {
-                    length: 130,
-                    inside: true,
-                    lineStyle: { color: '#ccc' }
-                },             
-                inverse: true,
-                data: rename, //这个data没有生效不知道为什么
-                axisLabel: {   //显示名称用这个进行返回
-                    inside: true,
-                    formatter: function (value, index) {
-                        return rename2[index];
-                    },
-                    color: '#000',
-                    fontSize: '14'
-                }
-            }],
-           
-            series: [
-                {
-                    name: '展示回款率',
-                    type: 'bar',
-                    barWidth: '30%',
-                    data:data,
-                    label: {  //文本显示
-                        normal: {
-                            show: true,
-                            position:'right',
-                            formatter:'{c}%',
-                        }
-                    }, itemStyle: {  //图形
-                        normal: {
-                            color: '#61a0a8'
-                        }
-                    }
-                },
-                {
-                    name: '开办费回款率',
-                    type: 'bar',
-                    barWidth: '30%',
-                    data: data2,
-                    label: {  //文本显示
-                        normal: {
-                            show: true,
-                            position:'right',
-                            formatter:'{c}%',
-                        }
-                    },
-                    itemStyle: {  //图形
-                        normal: {
-                            color: '#D48265'
-                        }
-                    },
+        /**
+         * 绘制统计图
+         * aredata [ArrayObject]统计数据
+         * isRefresh [boolean]是否是刷新统计图
+         */
+        var loadReportEcharts = function(aredata, isRefresh) {
+            isRefresh = (isRefresh == null || isRefresh == undefined) ? false : isRefresh;
+            if (!isRefresh) {
+                //初始定义图表高度
+                $('#' + APPID).height(((aredata.length + 1) * barHeight + barOthHeight) + "px");
+            }
+            
+
+            //组合自己需要数据格式  这个需要自己去组合 格式['xx','xx','xx','xx']
+            var pullArrayForJson = function(data) {
+                var dataModel = { data: [], data2: [], rename: [], rename1: [], rename2: [] };
+                $.each(data, function(i, item) {
+                    dataModel.data.push(item.zsFeePaymentRate);
+                    dataModel.data2.push(item.kbFeePaymentRate);
+                    dataModel.rename.push(item.projectName);
+                    dataModel.rename1.push(item.city);
+                    dataModel.rename2.push(item.areaCompany);
+                });
+                return dataModel;
+            }
+
+            //数据
+            var dataModel = pullArrayForJson(aredata);
+            var data = dataModel.data;
+            var data2 = dataModel.data2;
+            var rename = dataModel.rename;
+            var rename1 = dataModel.rename1;
+            var rename2 = dataModel.rename2;
+
+            //配置选项
+            var option = {
+                title: {
+                    text: '项目回款率',
 
                 },
-                {
-                    type: 'bar',  //占位
-                    data: ['-', '-', '-', '-', '-'],
-                    yAxisIndex: 1
-                }, {
-                    type: 'bar',//占位
-                    data: ['-', '-', '-', '-', '-'],
-                    yAxisIndex: 2
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: function(res) {
+                        //  console.log(res);
+                        return "";
+                    }
                 },
-            {
-               type: 'bar',//占位
-               data: ['-', '-', '-', '-', '-'],
-               yAxisIndex: 3
+                legend: {
+                    data: [{ name: '展示回款率' }, { name: '开办费回款率' }] //图例的名称对应bar的name
+                },
+                grid: {
+                    left: '300',
+
+                },
+                xAxis: {
+                    type: 'value',
+                    max: 100,
+                    interval: 10,
+                    axisLabel: {
+                        //显示名称用这个进行返回
+                        show: true,
+                        formatter: function(value, index) {
+                            return value + '%';
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: { color: '#ccc' }
+                    },
+                },
+
+                yAxis: [
+                    {
+                        inverse: true,
+                        data: rename, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            show: true,
+                            formatter: function(value, index) {
+                                return rename[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        },
+                        splitLine: {
+                            show: true
+                        },
+                        axisTick: {
+                            length: 100,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        axisLine: {
+                            lineStyle: { color: '#ccc' }
+                        },
+
+                    }, {
+                        name: '             城市',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '14'
+                        },
+                        position: 'left',
+                        offset: 260,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 130,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        axisLabel: {
+                            inside: true,
+
+                        },
+                        inverse: true,
+                        data: rename2, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            formatter: function(value, index) {
+                                return rename1[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        },
+                    }, {
+                        name: '                     ',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold'
+                        },
+                        position: 'left',
+                        offset: 60,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 100,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        axisLabel: {
+                            inside: true,
+                            fontSize: '14'
+                        },
+                        inverse: true,
+                        data: rename2, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            formatter: function(value, index) {
+                                return '';
+                            },
+                            color: '#000'
+                        },
+                    }, {
+                        name: '                区域',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '14'
+                        },
+                        position: 'left',
+                        offset: 202,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 130,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        inverse: true,
+                        data: rename, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            formatter: function(value, index) {
+                                return rename2[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        }
+                    }
+                ],
+
+                series: [
+                    {
+                        name: '展示回款率',
+                        type: 'bar',
+                        barWidth: '30%',
+                        data: data,
+                        label: {
+                            //文本显示
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{c}%',
+                            }
+                        },
+                        itemStyle: {
+                            //图形
+                            normal: {
+                                color: '#61a0a8'
+                            }
+                        }
+                    },
+                    {
+                        name: '开办费回款率',
+                        type: 'bar',
+                        barWidth: '30%',
+                        data: data2,
+                        label: {
+                            //文本显示
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{c}%',
+                            }
+                        },
+                        itemStyle: {
+                            //图形
+                            normal: {
+                                color: '#D48265'
+                            }
+                        },
+
+                    },
+                    {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 1
+                    }, {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 2
+                    },
+                    {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 3
+                    }
+                ]
+            };
+
+            if (isRefresh) {
+                myChart.clear();
+            }
+            //载入option 绘制
+            myChart.setOption(option,true);
         }
-            ]
-        };
-        //载入option 绘制
-        myChart.setOption(option);
+
+        //Ajax数据
+        var aredata = [
+            { id: 1, projectName: '金科.天湖小镇', city: "万盛", areaCompany: '华北公司', zsFeePaymentRate: '67', kbFeePaymentRate: '30' },
+            { id: 2, projectName: '  金科.中央公园城', city: "成都", areaCompany: '华北公司', zsFeePaymentRate: '17', kbFeePaymentRate: '12' },
+            { id: 3, projectName: '金科.中华养生城', city: "济南", areaCompany: '华北公司', zsFeePaymentRate: '57', kbFeePaymentRate: '51' },
+            { id: 4, projectName: '  金科.中华养生城', city: "长沙", areaCompany: '华北公司', zsFeePaymentRate: '77', kbFeePaymentRate: '22' },
+            { id: 5, projectName: '  金科.中华养生城', city: "合川", areaCompany: '华北公司', zsFeePaymentRate: '40', kbFeePaymentRate: '3' },
+            { id: 5, projectName: '  金科.中华养生城', city: "遵义", areaCompany: '华北公司', zsFeePaymentRate: '86', kbFeePaymentRate: '56' }
+        ];
+
+
+        loadReportEcharts(aredata);
+        $.ajax({
+            type: "POST",
+            url: "../d.action",
+            data: data,
+            async: false,
+            success: function(result) {
+
+            },
+            error: function(request) {
+
+            }
+        });
+
+
         //自适应改变图表的宽度
         var flgResize = true;
-        $(window).resize(function () {
+        $(window).resize(function() {
             if (flgResize) {
                 flgResize = false;
-                window.setTimeout(function () {
+                window.setTimeout(function() {
                     //可以在这里设置div长度宽度
                     //$(xx).width  height
                     myChart.resize();
