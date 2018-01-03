@@ -127,7 +127,7 @@
                     data: [{ name: '展示回款率' }, { name: '开办费回款率' }] //图例的名称对应bar的name
                 },
                 grid: {
-                    left: '300',
+                    left: '150',
 
                 },
                 xAxis: {
@@ -170,41 +170,8 @@
                             lineStyle: { color: '#ccc' }
                         },
 
-                    }, {
-                        name: '             城市',
-                        nameLocation: 'start',
-                        nameTextStyle: {
-                            fontWeight: 'bold',
-                            fontSize: '14'
-                        },
-                        position: 'left',
-                        offset: 260,
-                        axisLine: {
-                            onZero: false,
-                            show: false
-                        },
-                        axisTick: {
-                            length: 130,
-                            inside: true,
-                            lineStyle: { color: '#ccc' }
-                        },
-                        axisLabel: {
-                            inside: true,
-
-                        },
-                        inverse: true,
-                        data: rename2, //这个data没有生效不知道为什么
-                        axisLabel: {
-                            //显示名称用这个进行返回
-                            inside: true,
-                            formatter: function(value, index) {
-                                return rename1[index];
-                            },
-                            color: '#000',
-                            fontSize: '14'
-                        },
-                    }, {
-                        name: '                     ',
+                    },  {
+                        name: '              sss ',
                         nameLocation: 'start',
                         nameTextStyle: {
                             fontWeight: 'bold'
@@ -234,35 +201,6 @@
                             },
                             color: '#000'
                         },
-                    }, {
-                        name: '                区域',
-                        nameLocation: 'start',
-                        nameTextStyle: {
-                            fontWeight: 'bold',
-                            fontSize: '14'
-                        },
-                        position: 'left',
-                        offset: 202,
-                        axisLine: {
-                            onZero: false,
-                            show: false
-                        },
-                        axisTick: {
-                            length: 130,
-                            inside: true,
-                            lineStyle: { color: '#ccc' }
-                        },
-                        inverse: true,
-                        data: rename, //这个data没有生效不知道为什么
-                        axisLabel: {
-                            //显示名称用这个进行返回
-                            inside: true,
-                            formatter: function(value, index) {
-                                return rename2[index];
-                            },
-                            color: '#000',
-                            fontSize: '14'
-                        }
                     }
                 ],
 
@@ -312,15 +250,6 @@
                         type: 'bar', //占位
                         data: ['-', '-', '-', '-', '-'],
                         yAxisIndex: 1
-                    }, {
-                        type: 'bar', //占位
-                        data: ['-', '-', '-', '-', '-'],
-                        yAxisIndex: 2
-                    },
-                    {
-                        type: 'bar', //占位
-                        data: ['-', '-', '-', '-', '-'],
-                        yAxisIndex: 3
                     }
                 ]
             };
