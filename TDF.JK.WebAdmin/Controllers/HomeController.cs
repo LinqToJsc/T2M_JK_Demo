@@ -8,6 +8,12 @@ namespace TDF.JK.WebAdmin.Controllers
 {
     public class HomeController : Controller
     {
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         // GET: Home
         public ActionResult Index()
         {

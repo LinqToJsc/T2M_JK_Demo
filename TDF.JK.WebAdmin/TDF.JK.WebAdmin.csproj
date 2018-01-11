@@ -132,7 +132,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jinke-logo.png" />
+    <Content Include="Content\login_bg.png" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\logo_login.png" />
     <Content Include="Content\proj.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -143,6 +146,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DemoJson1.json" />
+    <Content Include="Content\ygy_pen.ttf" />
+    <Content Include="Content\JinKeYGY.css" />
     <None Include="Properties\PublishProfiles\webJK.pubxml" />
     <Content Include="Scripts\DemoJson2.json" />
     <Content Include="Scripts\Demo\DemoJson.json" />
@@ -2430,6 +2435,7 @@
     <Content Include="Views\Demo\Index4.cshtml" />
     <Content Include="Views\Demo\Index6.cshtml" />
     <Content Include="Views\Demo\Index7.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

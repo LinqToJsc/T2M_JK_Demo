@@ -16,7 +16,7 @@ namespace TDF.JK.WebAdmin
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index2", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
                 //defaults: new { controller = "Home", action = "ModalUIDemo", id = UrlParameter.Optional }
                 
             );
