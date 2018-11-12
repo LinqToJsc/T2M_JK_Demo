@@ -14,6 +14,12 @@ namespace TDF.JK.WebAdmin.Controllers
             return View();
         }
 
+        public ActionResult NewUI()
+        {
+            return View();
+        }
+
+
         // GET: Home
         public ActionResult Index()
         {
@@ -41,6 +47,11 @@ namespace TDF.JK.WebAdmin.Controllers
         }
 
         public ActionResult ProjectPlaneDemo()
+        {
+            return View();
+        }
+
+        public ActionResult ProjectList()
         {
             return View();
         }

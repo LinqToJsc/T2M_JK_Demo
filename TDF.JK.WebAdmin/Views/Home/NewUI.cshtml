@@ -1,0 +1,357 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "NewUI-金科iframe";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link href="~/Scripts/t2m_adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/dist/css/skins/_all-skins.min.css"/>
+    <!-- Bootstrap toastr 浮动提示框 -->
+    <link href="~/Scripts/t2m_adminlte/bower_components/bootstrap-toastr/toastr.min.css" rel="stylesheet"/>
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/plugins/iCheck/all.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        * {
+            font-family: Microsoft YaHei, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+<div class="wrapper">
+
+
+
+
+
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="height: 100%; border: 1px solid red;">
+        费德勒开发基地附近登陆<br/>
+        <br/>
+
+        <nav aria-label="pagination example" id="HHHHH">
+            <ul class="pagination justify-content-center">
+                @*<li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">上页</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item "><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">7</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    
+                    <li class="page-item">
+                        <a class="page-link" href="#">下页</a>
+                    </li>*@
+
+            </ul>
+        </nav>
+
+        <br/>
+    </div>
+</div>
+
+
+<!-- jQuery 3 -->
+<script src="~/Scripts/t2m_adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="~/Scripts/t2m_adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jQuery-Validation 1.14.0 -->
+<script src="~/Scripts/t2m_adminlte/bower_components/jquery-validation/js/jquery.validate.min.js"></script>
+<script src="~/Scripts/t2m_adminlte/bower_components/jquery-validation/js/localization/messages_zh.min.js"></script>
+<!-- Bootstrap toastr 浮动提示框 -->
+<script src="~/Scripts/t2m_adminlte/bower_components/bootstrap-toastr/toastr.min.js"></script>
+<!-- Bootstrap bootbox 弹出框 -->
+<script src="~/Scripts/t2m_adminlte/bower_components/bootbox/bootbox.min.js"></script>
+<!-- Slimscroll -->
+<script src="~/Scripts/t2m_adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="~/Scripts/t2m_adminlte/dist/js/adminlte.js"></script>
+
+<!-- iCheck 1.0.1 -->
+<script src="~/Scripts/t2m_adminlte/plugins/iCheck/icheck.min.js"></script>
+<script src="~/Scripts/t2m_adminlte/dist/js/demo1.js" charset="UTF-8"></script>
+<!-- 自定义公共JS-->
+<script src="~/Scripts/t2m_adminlte/js/Custom.js"></script>
+
+<script>
+    bootbox.setDefaults("locale", "zh_CN");
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+
+    /**
+ * ajaxUrl [String Ajax数据访问地址，不带参数]
+ * ajaxParams {Object Ajax请求参数，不包含 pageIndex 和 PageSize 参数}
+ * opts [Objdect {pageSize:10,loadUICallBack:function(data),loadAnimationCallBack:function(), stopAnimationCallBack:function() }]
+ * opts: pageSize 可选，默认10; loadUICallBack(data) 必须,数据UI绑定回调函数; loadAnimationCallBack() 可选,加载动画; stopAnimationCallBack() 可选,停止加载动画
+ * AJax 数据返回JSON格式： {data:Object, state:0, msg:"",totalCount:100 }
+ */
+    $.fn.bootstrapPaginator = function (ajaxUrl, ajaxParams, opts) {
+        var $PaginationJQ = $(this);
+        var jqPagination = $PaginationJQ.find(".pagination");
+        opts = opts || {};
+
+        var _options = { currentPage: 1, totalPageCount: 1, ajaxUrl: ajaxUrl, pageSize: 10, loadUICallBack: function (data) { alert(data); }, loadAnimationCallBack: function () { }, stopAnimationCallBack: function () { } };
+        _options.ajaxParams = ajaxParams || {};
+        if ((typeof opts.loadUICallBack == 'function')) {
+            _options.loadUICallBack = opts.loadUICallBack;
+        }
+        if ((typeof opts.loadAnimationCallBack == 'function')) {
+            _options.loadAnimationCallBack = opts.loadAnimationCallBack;
+        }
+        if ((typeof opts.stopAnimationCallBack == 'function')) {
+            _options.stopAnimationCallBack = opts.stopAnimationCallBack;
+        }
+        // 默认PageSize 为 10
+        _options.pageSize = opts.pageSize || _options.pageSize;
+
+        var getPageCount = function (totalCount) {
+            totalCount = totalCount == 0 ? 1 : totalCount;
+            _options.totalPageCount = parseInt(totalCount / _options.pageSize) + ((totalCount % _options.pageSize) > 0 ? 1 : 0);
+            return _options.totalPageCount;
+        },
+        loadData = function () {
+            var paramData = _options.ajaxParams;
+            paramData.page = _options.currentPage;
+            paramData.pageSize = _options.pageSize;
+            // 开启加载动画
+            _options.loadAnimationCallBack();
+            $.ajax({
+                type: "get",
+                url: _options.ajaxUrl,
+                data: paramData,
+                dataType: "json",
+                success: function (res) {
+                    // 返回JSON格式： {data:Object, state:0, msg:"",totalCount:100 }
+                    if (res) {
+                        if (res.state == 0) {
+                            _options.loadUICallBack(res.data);
+
+                            if (_options.currentPage == 1) { // 只有当首次加载 或者 search  搜索的时候才会重新绘制 分页控件
+                                itemTexts(_options.currentPage, res.totalCount);
+                            }
+                        }
+                    }
+                    _options.stopAnimationCallBack();
+                },
+                error: function (request) {
+                    _options.stopAnimationCallBack();
+                }
+            });
+        },
+        // 绘制 分页控件
+        drawPaginator = function (currentPage, pageCount) {
+            var disabledPreviousCss = currentPage == 1 ? " disabled" : "",
+                    disabledNextCss = currentPage == pageCount ? " disabled" : "",
+                    moreAfterCss = (pageCount > 8 && (currentPage + 6) < pageCount) ? "" : " hide";
+            jqPagination.html("");
+            // 上一页按钮
+            var previous = $('<li class="page-item previous' + disabledPreviousCss + '"><a class="page-link" href="#">上页</a></li>');
+            // 下一页按钮
+            var next = $('<li class="page-item next' + disabledNextCss + '"><a class="page-link" href="#">下页</a></li>');
+            // 前 省略号 [默认 隐藏]
+            var moreBefore = $('<li class="page-more-btn page-more-btn-before hide"><a>...</a></li>');
+            // 后 省略号 默认 显示
+            var moreAfter = $('<li class="page-more-btn page-more-btn-after' + moreAfterCss + '"><a>...</a></li>');
+
+            jqPagination.append(previous);
+            // 显示第一页按钮
+            var activeCss = (1 == currentPage) ? "active" : "";
+            jqPagination.append('<li class="page-item ' + activeCss + '"><a class="page-link" href="#" tabindex="1">1</a></li>');
+            jqPagination.append(moreBefore); // 前 省略号
+            var starIndex = 2;
+            if ((currentPage - 3) > 1) {
+                starIndex = currentPage;
+                // 显示 前 省略号
+                moreBefore.removeClass("hide");
+            }
+            for (var i = starIndex; i < starIndex + 6; i++) {
+                if (starIndex >= pageCount)
+                    break;
+                activeCss = (i == currentPage) ? "active" : "";
+                var pageItem = $('<li class="page-item ' + activeCss + '"><a class="page-link" href="#" tabindex="' + i + '">' + i + '</a></li>');
+                jqPagination.append(pageItem);
+                if (i == (pageCount - 1))
+                    break;
+            }
+            jqPagination.append(moreAfter); // 后省略号
+            // 显示第最后一页按钮
+            activeCss = (pageCount == currentPage) ? "active" : "";
+            jqPagination.append('<li class="page-item ' + activeCss + '"><a class="page-link" href="#" tabindex="' + pageCount + '">' + pageCount + '</a></li>');
+
+            jqPagination.append(next);
+        },
+        pageBtnClick = function () {
+            jqPagination.find(".page-item").click(function () {
+                var jqItem = $(this),
+                    moreBtnBefore = jqPagination.find(".page-more-btn-before"),
+                    moreBtnAfter = jqPagination.find(".page-more-btn-after");
+                // 移动 page按钮 // 原则 索引 3 8 
+                var pageBtnMove = function (jqItem, newActivePage) {
+                    jqPagination.find(".page-item").removeClass("active");
+                    var itemIndex = jqItem.index();
+                    var moveCount = 3;
+                    if (itemIndex == 8 && moreBtnAfter.hasClass("hide") == false) { // 向右移动3个按钮
+                        if (newActivePage + moveCount >= _options.totalPageCount) {
+                            moveCount = _options.totalPageCount - 1 - newActivePage;
+                        }
+                        if (newActivePage + moveCount == _options.totalPageCount - 1)
+                            moreBtnAfter.addClass("hide");
+                        moreBtnBefore.removeClass("hide");
+
+                        jqPagination.find("li").each(function (index, item) {
+                            item = $(item);
+                            if (index >= 3 && index <= 8) {
+                                var page = item.find("a").attr("tabindex");
+                                page = parseInt(page);
+                                item.find("a").text(moveCount + page);
+                                item.find("a").attr("tabindex", moveCount + page);
+                            }
+                        });
+                        jqPagination.find(".page-item a[tabindex='" + newActivePage + "']").parent().addClass("active");
+                    } else if (itemIndex == 3 && moreBtnBefore.hasClass("hide") == false && _options.totalPageCount > 8) { // 向左移动3个按钮
+                        if (newActivePage - moveCount < 2) {
+                            moveCount = newActivePage - 2;
+                        }
+                        if (newActivePage - moveCount < 3) {
+                            moreBtnBefore.addClass("hide");
+                            moreBtnAfter.removeClass("hide");
+                        }
+                        moveCount = -moveCount;
+                        jqPagination.find("li").each(function (index, item) {
+                            item = $(item);
+                            if (index >= 3 && index <= 8) {
+                                var page = item.find("a").attr("tabindex");
+                                page = parseInt(page);
+                                item.find("a").text(moveCount + page);
+                                item.find("a").attr("tabindex", moveCount + page);
+                            }
+                        });
+                        jqPagination.find(".page-item a[tabindex='" + newActivePage + "']").parent().addClass("active");
+                    } else {
+                        jqItem.addClass("active");
+                    }
+                    if (newActivePage <= 1)
+                        jqPagination.find(".page-item.previous").addClass("disabled");
+                    else
+                        jqPagination.find(".page-item.previous").removeClass("disabled");
+
+                    if (newActivePage < _options.totalPageCount)
+                        jqPagination.find(".page-item.next").removeClass("disabled");
+                    else
+                        jqPagination.find(".page-item.next").addClass("disabled");
+                }
+                var activePage = jqPagination.find(".page-item.active a").attr("tabindex");
+                activePage = parseInt(activePage);
+
+                if (jqItem.hasClass("previous")) { // 上一页单击
+                    var isLoad = false;
+                    if (activePage > 1) {
+                        _options.currentPage = activePage - 1;
+                        var selectedPageItem = jqPagination.find(".page-item a[tabindex='" + _options.currentPage + "']").parent();
+                        pageBtnMove(selectedPageItem, _options.currentPage);
+                        isLoad = true;
+                    } else
+                        jqItem.addClass("disabled");
+
+                } else if (jqItem.hasClass("next")) { //下一页点击
+                    if (activePage < _options.totalPageCount) {
+                        _options.currentPage = activePage + 1;
+                        var selectedPageItem = jqPagination.find(".page-item a[tabindex='" + _options.currentPage + "']").parent();
+                        pageBtnMove(selectedPageItem, _options.currentPage);
+                        isLoad = true;
+                    } else
+                        jqItem.addClass("disabled");
+                } else { // 普通页码点击
+                    var newActivePage = parseInt(jqItem.find("a").attr("tabindex"));
+                    newActivePage = parseInt(newActivePage);
+                    _options.currentPage = newActivePage;
+                    pageBtnMove(jqItem, newActivePage);
+                    isLoad = true;
+                }
+
+                if (isLoad) { // 调用 AJax 加载数据
+                    if (_options.ajaxUrl)
+                        loadData();
+                }
+            });
+        },
+        itemTexts = function (currentPage, totalCount) {
+            var pageCount = getPageCount(totalCount);
+            if (pageCount == 1) {
+                $PaginationJQ.hide();
+                return;
+            } else {
+                $PaginationJQ.show();
+            }
+            drawPaginator(currentPage, pageCount);
+            pageBtnClick();
+        };
+        //初始加载
+        loadData();
+        return {
+            /**
+             * 搜索重新加载
+             */
+            resetLoad: function (ajaxParams) {
+                _options.currentPage = 1;
+                _options.ajaxParams = ajaxParams || {};
+                loadData();
+            },
+            getOptions: function () {
+                return _options;
+            },
+            itemTexts: function (currentPage, totalCount) {
+                itemTexts(currentPage, totalCount);
+            }
+        };
+
+    }
+
+
+    var paginator = $("#HHHHH").bootstrapPaginator("", {});
+    //var tan_news_paginate = $("#tan_news_paginate").bootstrapPaginator("", {});
+
+    paginator.itemTexts(1, 70);
+
+    $('#tan_news_paginate').bootstrapPaginator(pagedOptions);
+</script>
+</body>
+</html>

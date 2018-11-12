@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+
+
+    <script>
+
+        //bar的宽度
+        var barHeight = 60;
+        var barOthHeight = 70; //一定距离的留白
+        var APPID = 'TestE'; //div的ID
+        // app.title = '城区公司节点达成率 - 条形图';
+
+        //初始化图表组件
+        var myChart = echarts.init(document.getElementById('TestE'));
+
+        /**
+         * 绘制统计图
+         * aredata [ArrayObject]统计数据
+         * isRefresh [boolean]是否是刷新统计图
+         */
+        var loadReportEcharts = function(aredata, isRefresh) {
+            isRefresh = (isRefresh == null || isRefresh == undefined) ? false : isRefresh;
+            if (!isRefresh) {
+                //初始定义图表高度
+                $('#' + APPID).height(((aredata.length + 1) * barHeight + barOthHeight) + "px");
+            }
+
+
+            //组合自己需要数据格式  这个需要自己去组合 格式['xx','xx','xx','xx']
+            var pullArrayForJson = function(data) {
+                var dataModel = { data: [], data2: [], rename: [], rename1: [], rename2: [] };
+                $.each(data, function(i, item) {
+                    dataModel.data.push(item.zsFeePaymentRate);
+                    dataModel.data2.push(item.kbFeePaymentRate);
+                    dataModel.rename.push(item.projectName);
+                    dataModel.rename1.push(item.city);
+                    dataModel.rename2.push(item.areaCompany);
+                });
+                return dataModel;
+            }
+
+            //数据
+            var dataModel = pullArrayForJson(aredata);
+            var data = dataModel.data;
+            var data2 = dataModel.data2;
+            var rename = dataModel.rename;
+            var rename1 = dataModel.rename1;
+            var rename2 = dataModel.rename2;
+
+            //配置选项
+            var option = {
+                title: {
+                    text: '项目回款率',
+
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: function(res) {
+                        //  console.log(res);
+                        return "";
+                    }
+                },
+                legend: {
+                    data: [{ name: '展示回款率' }, { name: '开办费回款率' }] //图例的名称对应bar的name
+                },
+                grid: {
+                    left: '400',
+
+                },
+                xAxis: {
+                    type: 'value',
+                    max: 100,
+                    interval: 10,
+                    axisLabel: {
+                        //显示名称用这个进行返回
+                        show: true,
+                        formatter: function(value, index) {
+                            return value + '%';
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: { color: '#ccc' }
+                    },
+                },
+
+                yAxis: [
+                    {
+                        inverse: true,
+                        data: rename, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            show: true,
+                            interval:0, //解决数量过多  信息显示不全
+                            formatter: function(value, index) {
+                                return rename[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        },
+                        splitLine: {
+                            show: true
+                        },
+                        axisTick: {
+                            length: 140,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        axisLine: {
+                            lineStyle: { color: '#ccc' }
+                        },
+
+                    }, {
+                        name: '             城市',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '14'
+                        },
+                        position: 'left',
+                        offset: 400,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 160,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        inverse: true,
+                        data: rename2, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            interval:0, //解决数量过多  信息显示不全
+                            formatter: function(value, index) {
+                                return rename1[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        },
+                    }, {
+                        name: '                     ',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold'
+                        },
+                        position: 'left',
+                        offset: 60,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 140,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        inverse: true,
+                        data: rename2, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            interval:0, //解决数量过多  信息显示不全
+                            formatter: function(value, index) {
+                                return '';
+                            },
+                            color: '#000'
+                        },
+                    }, {
+                        name: '                区域',
+                        nameLocation: 'start',
+                        nameTextStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '14'
+                        },
+                        position: 'left',
+                        offset: 270,
+                        axisLine: {
+                            onZero: false,
+                            show: false
+                        },
+                        axisTick: {
+                            length: 180,
+                            inside: true,
+                            lineStyle: { color: '#ccc' }
+                        },
+                        inverse: true,
+                        data: rename, //这个data没有生效不知道为什么
+                        axisLabel: {
+                            //显示名称用这个进行返回
+                            inside: true,
+                            interval:0, //解决数量过多  信息显示不全
+                            formatter: function(value, index) {
+                                return rename2[index];
+                            },
+                            color: '#000',
+                            fontSize: '14'
+                        }
+                    }
+                ],
+
+                series: [
+                    {
+                        name: '展示回款率',
+                        type: 'bar',
+                        barWidth: '30%',
+                        data: data,
+                        label: {
+                            //文本显示
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{c}%',
+                            }
+                        },
+                        itemStyle: {
+                            //图形
+                            normal: {
+                                color: '#61a0a8'
+                            }
+                        }
+                    },
+                    {
+                        name: '开办费回款率',
+                        type: 'bar',
+                        barWidth: '30%',
+                        data: data2,
+                        label: {
+                            //文本显示
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{c}%',
+                            }
+                        },
+                        itemStyle: {
+                            //图形
+                            normal: {
+                                color: '#D48265'
+                            }
+                        },
+
+                    },
+                    {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 1
+                    }, {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 2
+                    },
+                    {
+                        type: 'bar', //占位
+                        data: ['-', '-', '-', '-', '-'],
+                        yAxisIndex: 3
+                    }
+                ]
+            };
+
+            if (isRefresh) {
+                myChart.clear();
+            }
+            //载入option 绘制
+            myChart.setOption(option,true);
+        }
+
+        //Ajax模拟数据
+//         var aredata = [
+//             { id: 1, projectName: '金科.天湖小镇', city: "万盛", areaCompany: '华北公司', zsFeePaymentRate: '67', kbFeePaymentRate: '30' },
+//             { id: 2, projectName: '  金科.中央公园城', city: "成都", areaCompany: '华北公司', zsFeePaymentRate: '17', kbFeePaymentRate: '12' },
+//             { id: 3, projectName: '金科.中华养生城', city: "济南", areaCompany: '华北公司', zsFeePaymentRate: '57', kbFeePaymentRate: '51' },
+//             { id: 4, projectName: '  金科.中华养生城', city: "长沙", areaCompany: '华北公司', zsFeePaymentRate: '77', kbFeePaymentRate: '22' },
+//             { id: 5, projectName: '  金科.中华养生城', city: "合川", areaCompany: '华北公司', zsFeePaymentRate: '40', kbFeePaymentRate: '3' },
+//             { id: 5, projectName: '  金科.中华养生城', city: "遵义", areaCompany: '华北公司', zsFeePaymentRate: '86', kbFeePaymentRate: '56' }
+//         ];
+
+
+
+
+
+        //加载统计图  首次加载统计图 传 false
+        var drawEChart = function(isRefresh){
+        	var param = getFilterParams();
+            $.ajax({
+                type: "POST",
+                url: "${contextPath}/report/ajax/projectDimension",
+                data: {projectNames : param},
+                async: false,
+                success: function(result) {
+    				if(result.state==0){
+    					loadReportEcharts(result.data, isRefresh);
+    					myChart.resize();
+    				}
+                },
+                error: function(request) {
+
+                }
+            });
+        },
+     	// 收集条件查询参数
+        getFilterParams = function(){
+
+        	return [];
+        },
+        //导出 Excel
+        excelExport = function(){
+        	var param = getFilterParams();
+            $.ajax({
+                type: "get",
+                url: "${contextPath}/report/ajax/projectDimensionTable",
+                data: {export : 1, projectNames : ["但是", "顶顶顶"] },
+                async: false,
+                success: function(result) {
+
+                },
+                error: function(request) {
+
+                }
+            });
+        }
+
+		$(function(){
+			//首次加载统计图 传 false
+			drawEChart(false);
+
+        	$('#ul_dropdown_menu').find('a').on('click',function(){
+        		//div_table  TestE
+        		var dataId = $(this).attr('data-id');
+        		if(dataId==="view"){
+        			if($('#TestE').hasClass("hide")){
+        				$('#TestE').removeClass("hide");
+        			}
+        			if(!$('#div_table').hasClass("hide")){
+        				$('#div_table').addClass('hide');
+        			}
+        		}else{
+        			if($('#div_table').hasClass("hide")){
+        				$('#div_table').removeClass("hide");
+        			}
+        			if(!$('#TestE').hasClass("hide")){
+        				$('#TestE').addClass('hide');
+        			}
+        		}
+        	});
+
+
+        	var tables = $("#dataTable").dataTable({
+                serverSide: true,//分页，取数据等等的都放到服务端去
+                processing: true,//载入数据的时候是否显示“载入中”
+                lengthMenu:[500,20,50],
+                pageLength: 500,  //首次加载的数据条数
+                lengthChange:false,
+                ordering: false, //排序操作在服务端进行，所以可以关了。
+                pagingType: "simple_numbers",
+                autoWidth: false,
+                stateSave: true,//保持翻页状态，和comTable.fnDraw(false);结合使用
+                searching: false,//禁用datatables搜索,
+                paging:false,
+                ajax: {
+                    url: "${contextPath}/report/ajax/projectDimensionTable",
+                    dataSrc: "data",
+                    cache:false,
+                    data: function (d) {
+                           var param = {};
+                           param.draw = d.draw;
+                           param.start = d.start;
+                           param.length =d.length;
+                           //自定义筛选条件
+                           param.projectNames = [];
+                           return param;//自定义需要传递的参数。
+                    },
+                },
+                columns: [//对应上面thead里面的序列
+                    {"data": 'projectName'},
+                    {"data": 'areaCompany' },
+                    {"data": 'city'},
+                    {"data": 'projectDoneRate' },
+                    {"data": 'zsFeePaymentRate'},
+                    {"data": 'kbFeePaymentRate'}
+                ],
+
+                language: {
+                    lengthMenu: "每页显示_MENU_条",
+                    processing: "正在加载数据...",
+                    paginate: {
+                        previous: "上页",
+                        next: "后页"
+                    },
+                    zeroRecords: "没有数据",
+                    info: "当前 _START_ 至 _END_ 行 &nbsp;&nbsp;共 _PAGES_ 页",
+                    infoEmpty: "",
+                    infoFiltered: "",
+                    sSearch: "输入关键字：",
+                },
+                //在每次table被draw完后回调函数
+                fnDrawCallback: function(){
+                	hideLoading();
+                	var $tr=$("#dataTable tbody tr");
+                	$tr.sortable();
+                	$tr.draggable();
+                	$tr.droppable({
+                		drop:function(event,ui){
+    	            		var src = $(ui.helper[0]).parents("tr");
+    	            		var tar=this;
+    	            		if ($(src[0]).html()==$(tar).html()){
+    		            		event.preventDefault();
+    	            			return;
+    	            		}
+    	            		$(tar).before(src);
+    	            		saveSort();
+    	            	}
+    	            	,activate: function( event, ui ) {
+    	            		var src = $(ui.helper[0]).parents("tr");
+    	            		$(src).css("background","#aaf")
+    	            		ui.helper=src;
+    	            	},deactivate: function( event, ui ) {
+    	            		var src = $(ui.helper[0]).parents("tr");
+    	            		$(src).css("background","")
+    	            	}
+                	});
+                }
+           });
+
+        });
+
+        //自适应改变图表的宽度
+        var flgResize = true;
+        $(window).resize(function() {
+            if (flgResize) {
+                flgResize = false;
+                window.setTimeout(function() {
+                    //可以在这里设置div长度宽度
+                    //$(xx).width  height
+                    myChart.resize();
+                    flgResize = true;
+                }, 200);
+            }
+        });
+    </script>
+</body>
+</html>

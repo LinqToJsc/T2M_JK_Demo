@@ -142,7 +142,12 @@
     <Content Include="Global.asax" />
     <Content Include="html\Add.html" />
     <Content Include="html\Details.html" />
+    <Content Include="html\HtmlPage1.html" />
+    <Content Include="html\layout\_ModalLayout.html" />
     <Content Include="html\List.html" />
+    <Content Include="html\plantask\dept_taskDetails.html" />
+    <Content Include="html\plantask\project_taskDetails.html" />
+    <Content Include="html\plantask\xt_taskDetails.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DemoJson1.json" />
@@ -153,6 +158,7 @@
     <Content Include="Scripts\Demo\DemoJson.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Demo\echarts.min.js" />
+    <Content Include="Scripts\Demo\HtmlPage2.html" />
     <Content Include="Scripts\Demo\u1264.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2270,6 +2276,7 @@
     <Content Include="Scripts\t2m_adminlte\plugins\jquery-multi-select\img\switch_original.png" />
     <Content Include="Scripts\t2m_adminlte\plugins\jquery-multi-select\js\jquery.multi-select.js" />
     <Content Include="Scripts\t2m_adminlte\plugins\jquery-multi-select\LICENSE.txt" />
+    <Content Include="Views\Demo\HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
@@ -2436,6 +2443,8 @@
     <Content Include="Views\Demo\Index6.cshtml" />
     <Content Include="Views\Demo\Index7.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\ProjectList.cshtml" />
+    <Content Include="Views\Home\NewUI.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

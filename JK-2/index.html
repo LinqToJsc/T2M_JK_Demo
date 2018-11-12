@@ -1,0 +1,1048 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #fff
+        }
+
+        .div-center {
+            margin: 0 auto;
+        }
+
+        body {
+            background-color: #0e0e0e;
+            background-image: url("./img/bj.png");
+            background-repeat: no-repeat;
+
+            background-size: cover;
+        }
+
+        .wd100 {
+            width: 100%;
+            min-height: 1px
+        }
+
+        .left {
+            float: left;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* 整个盒子 */
+
+        .This-box-boy {
+            width: 100%;
+            min-width: 1024px;
+
+        }
+
+        /* 头部 */
+
+        .head {
+            width: 100%;
+            height: 78px;
+            background-image: url("./img/headback.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* 进行中的项目 */
+
+        .tabNbg {
+            width: calc(100% - 50px);
+            margin: 0 auto;
+            min-width: 1000px;
+            height: 105px;
+            margin-top: 20px;
+            background-image: url("./img/bj-tab.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden
+        }
+
+        .left-tb {
+            width: 258px;
+
+        }
+
+        .left-tb-box {
+            padding: 25px 30px 0;
+
+
+        }
+
+        .right-tb {
+            width: calc(100% - 260px);
+            padding: 0;
+        }
+
+        /* pie */
+
+        #pie {
+            width: 107%;
+            height: 105px;
+        }
+
+        /* 仪表盘 */
+
+        .yibiao {
+            width: 100%;
+            height: 350px;
+
+        }
+
+        #list-cent-left {
+            width: 55%;
+            min-height: 500px;
+            float: left;
+            margin-top: 20px;
+        }
+
+        .bule-span>span {
+            margin-left: 20px;
+        }
+
+        .bule-span span span {
+            color: #418ae2
+        }
+
+        /*
+       list-cent-bot-bg
+        */
+
+        .list-cent-bot-bg {
+            width: 100%;
+            height: 3px;
+            background-image: url("./img/line.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin: 15px 0;
+        }
+
+        .list-cent-bot-cent {
+            width: 80%;
+            min-width: 500px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .list-cent-bot-cent-box {
+            width: 50%;
+            float: left
+        }
+
+        .list-cent-bot-cent-boxr {
+            float: right
+        }
+
+        .list-cent-bot-cent-box-l {
+            width: 40%;
+            float: left;
+            height: 70px;
+            margin-top: 15px;
+            font-size: 18px
+        }
+
+        .list-cent-bot-cent-box-r {
+            width: 60%;
+            float: right;
+            height: 70px;
+            line-height: 30px;
+            text-align: left;
+            font-size: 14px
+        }
+
+        /* 底部 */
+       #list-cent-right{
+        width: calc(45% - 50px);
+        float: left;
+       }
+        #tabListconm {
+            width: 100%;
+            text-align: center;         
+            border:1px  solid #3a3a3a ;
+            margin-top: 30px;
+            font-size: 14px;
+             float: right;
+
+        }
+        .tabtrth,.tabtrtd{
+            width: 100%;
+           float: left;
+        }
+        .tabtrth{
+           min-height: 50px;
+            border-bottom:1px  solid #3a3a3a ;
+        }
+        .tabtrtd{
+            min-height: 50px;
+            border-bottom:1px  solid #3a3a3a ;
+        }
+        .tabtrtd:last-child{
+            border-bottom: none;
+        }
+        #tabListconm .tabth {
+            width: calc(100%  / 6 - 1px);
+            float: left;
+            min-height: 50px;
+            padding-top: 10px ;
+            border-left: 1px  solid #3a3a3a ;
+           
+        }
+
+        #tabListconm .tabtrtd  .tabtd {
+            width: calc( 100% / 6 - 1px);
+            float: left;
+            min-height: 50px;
+            padding-top: 10px;
+            border-left: 1px  solid #3a3a3a ;
+        }
+
+        #tabListconm .tabtrtd{
+            position: relative;
+        }
+        #tabListconm .thdbod-line{
+           position: absolute;
+           width: 100%;
+           height: 5px;
+           background-color: #c98764;
+           top:48px;
+           left: 2px;
+           z-index: 9;
+           border-radius: 5px;
+        }
+        .bottom {
+            width: 50%;
+            min-width: 1100px;
+            margin: 0 auto;
+            height: 250px;
+            overflow: hidden
+        }
+       .This-box-boy div{
+        -moz-box-sizing: border-box;  
+        -webkit-box-sizing: border-box; 
+        -o-box-sizing: border-box; 
+        -ms-box-sizing: border-box; 
+        box-sizing: border-box;  
+        }
+    </style>
+
+
+    <body>
+        <div class="This-box-boy">
+            <div class="head">
+                <div class="div-center" style="width:600px;">
+                    <span>
+                        <img src="./img/logo.png" />
+                    </span>
+                </div>
+            </div>
+            <!-- /* 进行中的项目 */ -->
+            <div class="tabN wd100">
+                <div class="tabNbg div-center ">
+                    <div class="left-tb left">
+                        <div class="left-tb-box">
+                            <div class="left ">
+                                <span>
+                                    <img style="width:60px;height:60px;" src="./img/project.png" />
+                                </span>
+                            </div>
+                            <div class="left" style="color:#ffffff;margin-left:15px;">
+                                <span style="font-size:24px;letter-spacing:1px">330</span>
+                                <span style="font-size:16px;"> / </span>
+                                <span style="font-size:16px;color:#00b7fa">400</span>
+                                <br>
+                                <span>进行中的项目</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="float:left;margin-top:1px;height:103px;width:2px;background-color:#3b476d">
+
+                    </div>
+                    <div class="right-tb left">
+                        <div id="pie">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 仪表盘 -->
+                <div id="list-cent-left">
+                    <div class="yibiao" id="chart-gauge">
+                    </div>
+                    <div class="hetong-div" style="width:100%;margin-top:10px;">
+                        <div class="text-center" style="font-size:20px">合同回款</div>
+                        <div class="text-center bule-span" style="margin-top:15px;font-size:12px;">
+                            <span>总金额[
+                                <span>100万</span>]</span>
+                            <span>已收[
+                                <span>60万</span>]</span>
+                            <span>待收[
+                                <span>40万</span>]</span>
+                        </div>
+                    </div>
+                    <!-- 线 -->
+
+
+                    <div class="list-cent-bot-cent">
+                        <div class="list-cent-bot-bg">
+
+                        </div>
+                        <div class="list-cent-bot-cent-box list-cent-bot-cent-boxl">
+                            <div class="list-cent-bot-cent-box-l">开办费</div>
+                            <div class="list-cent-bot-cent-box-r">开办费已汇款额&nbsp;&nbsp;&nbsp;&nbsp;40万
+                                <br>开办费待汇款额&nbsp;&nbsp;&nbsp;&nbsp;40万 </div>
+
+                        </div>
+                        <div class="list-cent-bot-cent-box list-cent-bot-cent-boxr">
+                            <div class="list-cent-bot-cent-box-l">示范区</div>
+                            <div class="list-cent-bot-cent-box-r">示范区已汇款额&nbsp;&nbsp;&nbsp;&nbsp;40万
+                                <br>开办费待汇款额&nbsp;&nbsp;&nbsp;&nbsp;40万 </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 区域 -->
+                <div id="list-cent-right">
+                    <div id="tabListconm">
+                        <div class="tabtrth" >
+                            <div class="tabth">
+                                区域公司
+                            </div>
+                            <div class="tabth">
+                                开办费
+                                <br> 合同签订数
+                            </div>
+                            <div class="tabth">
+                                示范区
+                                <br> 合同签订数
+                            </div>
+                            <div class="tabth">
+                                开办费
+                                <br> 待用回款率
+                            </div>
+                            <div class="tabth">
+                                示范区
+                                <br> 待用回款率
+                            </div>
+                            <div class="tabth">
+                                节点达成率
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom" style="margin-top:20px;">
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script>
+        $(function () {
+            //单个柱状图
+            var pieChart = echarts.init(document.getElementById('pie'));
+            pieoption = {
+
+                tooltip: {
+                    show: false
+                },
+                grid: {
+                    left: '3%',
+                    right: '3%',
+                    top: '30%',
+                    bottom: '30%'
+
+                },
+                xAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#ffffff'
+                        }
+                    },
+                    axisLabel: {
+                        show: false,
+
+                    },
+                    splitLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                },
+                yAxis: {
+                    type: 'category',
+                    data: [''],
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                },
+                series: [
+                    {
+                        name: '启动期',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                formatter: "{a} {c}",
+                                fontSize: 14
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#50a9d3',
+
+                            }
+                        },
+                        data: [14]
+                    },
+                    {
+                        name: '展示期',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                formatter: "{a} {c}",
+                                fontSize: 14
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#2199d8'
+                            }
+                        },
+                        data: [20]
+                    },
+                    {
+                        name: '接房期',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                formatter: "{a} {c}",
+                                fontSize: 14
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#0479b7'
+                            }
+                        },
+                        data: [20]
+                    },
+                    {
+                        name: '入住期',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                formatter: "{a} {c}",
+                                fontSize: 14
+
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#0068b7'
+                            }
+                        },
+                        data: [20]
+                    },
+
+                ]
+            };
+
+
+            pieChart.setOption(pieoption, true);
+            //仪表盘
+            var mygaugeChart = echarts.init(document.getElementById('chart-gauge'));
+
+            gaugeoption = {
+                backgroundColor: "",
+                tooltip: {
+                    formatter: "{a} <br/>{c} {b}"
+                },
+                toolbox: {
+                    show: false
+                },
+                series: [
+                    {
+                        //中间刻度线
+                        name: '',
+                        type: 'gauge',
+                        center: ['50%', '50%'],
+                        z: 3,
+                        min: 0,
+                        max: 100,
+                        splitNumber: 10,
+                        radius: '90%',
+                        axisLine: {
+
+                            lineStyle: {
+                                opacity: 0
+                            }
+
+                        },
+                        axisLabel: {  //刻度标签
+                            show: false,
+                        },
+                        axisTick: {
+                            // 坐标轴小标记
+                            length: 14,        // 属性length控制线长
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        splitLine: {
+                            length: 15,           // 分隔线 
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        title: {
+                            show: false,
+
+                        },
+                        detail: {
+                            show: false,
+                            formatter: '',
+
+                        },
+                        itemStyle: {
+                            normal: {
+                                show: false,
+                            }
+                        },
+                        pointer: {
+                            show: false,
+                        },
+                        data: [{ value: 52, name: '' }],
+
+
+                    },
+                    {
+                        name: '节点达成率',
+                        type: 'gauge',
+                        center: ['50%', '50%'],
+                        z: 3,
+                        min: 0,
+                        max: 100,
+                        splitNumber: 10,
+                        radius: '90%',
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 10,
+                                color: [[1, new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    // 0% 处的颜色   
+                                    offset: 0, color: '#7ccdf3'
+                                },
+                                {
+                                    // 100% 处的颜色
+                                    offset: 1, color: '#036da5'
+                                }], false)]]
+                            }
+                        },
+                        axisLabel: {  //刻度标签
+                            color: "#fff",
+                            fontSize: 15
+                        },
+                        axisTick: {
+                            show: false,         // 坐标轴小标记
+                            length: 15,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[1, new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    // 0% 处的颜色   
+                                    offset: 0, color: '#7ccdf3'
+                                },
+                                {
+                                    // 100% 处的颜色
+                                    offset: 1, color: '#036da5'
+                                }], false)]]
+                            }
+                        },
+                        splitLine: {
+                            show: false,          // 分隔线
+                            length: 9,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        title: {
+
+                            offsetCenter: [0, '80%'],       // x, y，单位px
+                            color: '#fff',
+
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+
+                                fontSize: 16,
+
+                            }
+                        },
+                        detail: {
+                            formatter: '{value}%',
+                            color: "#fff",
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#fff"
+                            }
+                        },
+                        pointer: {
+                            width: 5,
+                            length: 100
+                        },
+                        data: [{ value: 52, name: '节点达成率' }],
+
+
+                    },
+
+                    {
+                        //左边刻度线
+                        name: '',
+                        type: 'gauge',
+                        center: ['19%', '63%'],
+                        z: 3,
+                        min: 0,
+                        max: 100,
+                        endAngle: 45,
+                        splitNumber: 10,
+                        radius: '55%',
+                        axisLine: {
+
+                            lineStyle: {
+                                opacity: 0
+                            }
+
+                        },
+                        axisLabel: {  //刻度标签
+                            show: false,
+                        },
+                        axisTick: {
+                            // 坐标轴小标记
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        splitLine: {
+                            length: 13,           // 分隔线 
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        title: {
+                            show: false,
+
+                        },
+                        detail: {
+                            show: false,
+                            formatter: '',
+
+                        },
+                        itemStyle: {
+                            normal: {
+                                show: false,
+                            }
+                        },
+                        pointer: {
+                            show: false,
+                        },
+                        data: [{ value: 85, name: '' }],
+
+
+                    },
+                    {
+                        name: '开办费',
+                        type: 'gauge',
+                        center: ['19%', '63%'],    // 默认全局居中
+                        radius: '55%',
+                        min: 0,
+                        max: 100,
+                        endAngle: 45,
+                        splitNumber: 10,
+                        z: 4,
+                        axisLine: {
+                            show: false,           // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 8,
+                                color: [[1, new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    // 0% 处的颜色   
+                                    offset: 0, color: '#7ccdf3'
+                                },
+                                {
+                                    // 100% 处的颜色
+                                    offset: 1, color: '#036da5'
+                                }], false)]]
+
+                            }
+                        },
+                        axisLabel: {  //刻度标签
+                            color: "#fff",
+                            fontSize: 10
+                        },
+                        axisTick: {
+                            show: false,             // 坐标轴小标记
+                            length: 7,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {
+                            show: false,           // 分隔线
+                            length: 8,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#fff",
+
+                            }
+                        },
+                        pointer: {
+                            width: 3,
+                            length: 55
+                        },
+                        title: {
+
+                            offsetCenter: [0, '90%'],       // x, y，单位px
+                            color: '#fff',
+                        },
+                        detail: {
+                            formatter: '{value}%',
+                            color: "#fff",
+                            fontSize: 20,
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            }
+                        },
+                        data: [{ value: 85, name: '(开办费)合同签约率' }],
+
+                    },
+                    {
+                        //右边刻度线
+                        name: '',
+                        type: 'gauge',
+                        center: ['80%', '63%'],    // 默认全局居中
+                        radius: '55%',
+                        min: 0,
+                        max: 100,
+                        startAngle: 135,
+                        splitNumber: 10,
+                        axisLine: {
+
+                            lineStyle: {
+                                opacity: 0
+                            }
+
+                        },
+                        axisLabel: {  //刻度标签
+                            show: false,
+                        },
+                        axisTick: {
+                            // 坐标轴小标记
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        splitLine: {
+                            length: 13,           // 分隔线 
+                            lineStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#7ccdf3' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#036da5' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        title: {
+                            show: false,
+
+                        },
+                        detail: {
+                            show: false,
+                            formatter: '',
+
+                        },
+                        itemStyle: {
+                            normal: {
+                                show: false,
+                            }
+                        },
+                        pointer: {
+                            show: false,
+                        },
+                        data: [{ value: 85, name: '' }],
+
+
+                    },
+                    {
+                        name: '示范区',
+                        type: 'gauge',
+                        center: ['80%', '63%'],    // 默认全局居中
+                        radius: '55%',
+                        min: 0,
+                        max: 100,
+                        startAngle: 135,
+                        splitNumber: 10,
+                        z: 4,
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 8,
+                                color: [[1, new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    // 0% 处的颜色   
+                                    offset: 0, color: '#7ccdf3'
+                                },
+                                {
+                                    // 100% 处的颜色
+                                    offset: 1, color: '#036da5'
+                                }], false)]]
+                            }
+                        },
+                        axisLabel: {  //刻度标签
+                            color: "#fff",
+                            fontSize: 10
+                        },
+                        axisTick: {
+                            show: false,        // 坐标轴小标记
+                            length: 9,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[1, new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    // 0% 处的颜色   
+                                    offset: 0, color: '#036da5'
+                                },
+                                {
+                                    // 100% 处的颜色
+                                    offset: 1, color: '#7ccdf3'
+                                }], false)]]
+
+                            }
+                        },
+                        splitLine: {
+                            show: false,           // 分隔线
+                            length: 9,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#fff",
+
+                            }
+                        },
+                        pointer: {
+                            width: 3,
+                            length: 55
+                        },
+                        title: {
+                            offsetCenter: [0, '90%'],       // x, y，单位px
+                            color: '#fff'
+                        },
+                        detail: {
+                            formatter: '{value}%',
+                            color: "#fff",
+                            fontSize: 20,
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            }
+                        },
+                        data: [{ value: 82, name: "(示范区)合同签约率" }],
+
+                    }
+                ]
+            };
+
+             mygaugeChart.setOption(gaugeoption,true);
+         
+
+            flgResize = true;
+            $(window).resize(function () {
+
+                if (flgResize) {
+                    flgResize = false;
+
+                    window.setTimeout(function () {
+                        mygaugeChart.resize();
+                        pieChart.resize();
+                        flgResize = true;
+                    }, 200);
+                }
+
+            });
+
+            //表格
+            var tabledata=[{
+                name : "华北区域公司1",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司2",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司3",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司4",
+                data:[56,25,56,56,30]
+            },{
+                name : "华北区域公司5",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司6",
+                data:[56,25,56,56,20]
+            },{
+                name : "华北区域公司7",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司8",
+                data:[56,25,56,56,96]
+            },{
+                name : "华北区域公司9",
+                data:[56,25,56,56,40]
+            }];
+            function tabledataForDiv(tabledata){
+               var  data = tabledata;
+               var len = data.length;
+               var com =6; //列
+               var color = ["#13b5b1","#ab8a05","#a32d70"]
+               console.log(len);
+               var dom =  $("#tabListconm");
+               for(var i =0 ; i< len;i++){
+                var str = "<div class=\"tabtrtd\">";               
+                for(var j = 0 ; j < com;j++){
+                    if(j<1){
+                    str+="<div class=\"tabtd\">"+data[i].name+"</div>";
+                    }else{                      
+                    str+="<div class=\"tabtd\">"+data[i].data[j-1]+"%</div>";
+                 }           
+                } 
+                if(data[i].data[4] >= 30&&data[i].data[4] <60){
+                    str+= "<div class=\"thdbod-line\" style=\"background-color:"+color[1]+";width:"+data[i].data[4]+"%;\"></div>"; 
+                 }else if(data[i].data[4] >= 60){
+                    str+= "<div class=\"thdbod-line\" style=\"background-color:"+color[0]+";width:"+data[i].data[4]+"%;\"></div>"; 
+                 }else{
+                    str+= "<div class=\"thdbod-line\" style=\"background-color:"+color[2]+";width:"+data[i].data[4]+"%;\"></div>"; 
+                 }
+                str+="</div>";  
+               // console.log(str);
+                dom.append(str);   
+
+               }
+               
+            }
+            tabledataForDiv(tabledata);
+        })
+    </script>
+
+</html>

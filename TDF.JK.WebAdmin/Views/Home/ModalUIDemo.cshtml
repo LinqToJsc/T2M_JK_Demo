@@ -41,9 +41,6 @@
 </section>
 <!-- Main content -->
 <section class="content">
-
-
-
     <div class="box box-primary">
 
         <div class="box-body">
@@ -54,6 +51,9 @@
                     <div class="col-md-3">
                         <button class="btn btn-default btn-xs btn-box-tool" type="button" data-toggle="modal" data-target="#autoModalDemo">
                             自动弹出框
+                        </button>
+                        <button id="btn_bootbox2" class="btn btn-default btn-xs btn-box-tool" type="button">
+                            模态框-引用局部视图
                         </button>
                     </div>
                     <div class="col-md-3">
@@ -205,7 +205,7 @@
                                                 <span class="label label-primary pull-right">12</span>
                                             </a>
                                         </li>
-                                        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                        <li><a href="#"><i class="fa fa-envelope-o" ></i> Sent</a></li>
                                         <li>
                                             <a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
                                         </li>
@@ -346,7 +346,6 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">开盘</label>
-
                                 <div class="col-sm-9 date">
                                     <input name="t2" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
                                 </div>
@@ -375,6 +374,16 @@
                 <button type="button" class="btn  btn-default btn-sm" data-dismiss="modal" aria-label="Close">取 消</button>
                 <button type="button" class="btn  btn-primary btn-sm">保 存</button>
             </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="autoModalDemo2" data-backdrop="false" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            ssss
         </div>
     </div>
 </div>
@@ -421,7 +430,7 @@
 
             });
 
-            $('#btn_filter1').click(function () {
+            $('#btn_filter1').click(function() {
                 var filterBoxId = $(this).attr('data-t2mFilterBox');
                 if ($(this).hasClass('open')) {
                     $('#' + filterBoxId).hide();
@@ -433,7 +442,13 @@
 
             });
         });
+        $("#btn_bootbox2").click(function() {
+            var modal = $('#autoModalDemo2').modal({
+                remote: "/html/layout/_ModalLayout.html"
+            });
 
+            modal.show();
+        });
     </script>
 
 

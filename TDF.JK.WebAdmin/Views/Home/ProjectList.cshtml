@@ -1,0 +1,407 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section styles{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link href="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet"/>
+    <style>
+        .project-view { font-size: 12px !important; }
+        .project-view.box { background-color: #eee; }
+        /*.project-view-row {padding-left: 15px;padding-right: 15px; } style=" padding-left: 15px; padding-right: 15px;"*/
+        .project-view-item {min-width: 368px;margin-bottom: 10px;}
+
+        .project-view-item-box {width: 96% !important;margin: auto;border-radius: 4px;border: 1px #ccc solid;}
+        .project-view-item-row { margin-bottom: 6px; }
+        .project-view-item-row.title { font-size: 14px !important; }
+        .project-view-project-name {color: #3c8dbc;padding-right: 6px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;-ms-text-overflow: ellipsis;-o-text-overflow: ellipsis;-moz-binding: url("ellipsis.xml#ellipsis"); }
+        .project-view-project-director {padding-left: 0 !important; padding-right: 5px !important;text-align: right; }
+        .project-view-project-fy {background-color: #f3f9fd; padding-top: 5px; padding-bottom: 5px; }
+    </style>
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        项目列表
+        @*<small>工作台</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-book"></i> 项目计划</a></li>
+        <li class="active">项目列表</li>
+    </ol>
+</section>
+
+
+<div class="col-md-3 project-view-item">
+    <div class="box box-solid project-view-item-box">
+        <div class="box-body">
+            <div class="col-md-3 viewCanvas">
+                <input type="text" class="knob" value="60" data-thickness="0.2" data-width="60" data-height="60" data-fgColor="#00a65a ">
+            </div>
+            <div class="col-md-9 project-view-item-row-padding0">
+                <div class="row project-view-item-row title">
+                    <div class="col-md-8 project-view-project-name">_projectName_</div>
+                    <div class="col-md-4 project-view-project-director">
+                        _projectManager_
+                    </div>
+                </div>
+                <div class="row project-view-item-row"><div class="col-md-12">区域公司：<span>_jurisdictionArea_</span></div></div>
+                <div class="row">
+                    <div class="col-md-7">面积(万方)：<span>_projectAcreage_</span></div>
+                    <div class="col-md-5">类型：<span>_estateType_</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer project-view-project-fy">
+            <div class="col-md-6 text-center" style="border-right: 1px #ccc solid;">
+                <span>开办费（万元）</span><br />
+                <span>_KB_</span>
+            </div>
+            <div class="col-md-6  text-center">
+                <span>示范区（万元）</span><br />
+                <span>_SF_</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Main content -->
+<section class="content">
+<div class="box box-primary">
+
+<div class="box-body">
+<form id="form_search" class="form-horizontal">
+    <div class="row">
+        <div class="pull-left" style="padding-left: 14px;">
+
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">筛选 <i class="fa fa-angle-down"></i></button>
+                <ul class="dropdown-menu" role="menu"style="padding: 0;">
+                    <li>
+                        <div id="HH_JJ" class="box box-solid" style="width: 500px; margin-bottom: 0;">
+                            <div class="box-header with-border" style="background-color: #f5f5f5;">
+                                <h3 class="box-title">蒋世春 简介</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool">
+                                        @*<i class="fa fa-minus"></i>*@
+                                        <span style="font-size: 14px;">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body" style="min-height: 120px;">
+                                <div class="user-panel">
+                                    <div class="pull-left image">
+                                        <img src="~/Scripts/t2m_adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    </div>
+                                    <div class="pull-left" style="margin-left: 20px;">
+                                        <p>蒋世春</p>
+                                        <a href="JavaScript:;"> 运营管理中心</a>
+                                    </div>
+                                </div>
+                                <!--此处 form 纯粹是布局需要-->
+                                <form class="form-horizontal">
+
+                                    <div class="row" style="border-top: 1px solid #f4f4f4; height: 80px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">邮箱：</label>
+                                                <p class="form-control-static">1234567@qq.com</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">邮箱：</label>
+                                                <p class="form-control-static">1234567@qq.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">岗位：</label>
+                                                <p class="form-control-static">XXXXXXX</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">岗位：</label>
+                                                <p class="form-control-static">XXXXXXX</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="border-top: 1px solid #f4f4f4; height: 80px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">邮箱：</label>
+                                                <p class="form-control-static">1234567@qq.com</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">邮箱：</label>
+                                                <p class="form-control-static">1234567@qq.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">岗位：</label>
+                                                <p class="form-control-static">XXXXXXX</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">岗位：</label>
+                                                <p class="form-control-static">XXXXXXX</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div style="clear: both;"></div>
+
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="active">
+                                        <a href="#">
+                                            <i class="fa fa-inbox"></i> Inbox
+                                            <span class="label label-primary pull-right">12</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            @*<button type="button" class="btn btn-default btn-sm">排序 <i class="fa fa-angle-down"></i></button>*@
+
+
+            <div class="input-group input-group-sm pull-right" id="searchBox" style="width: 180px; margin-left: 5px;">
+                <input type="text" class="form-control input-search" id="projectName" placeholder="根据项目名称进行搜索">
+                <span class="input-group-addon btn btn-flat" id="btnSearch"><i class="fa fa-search"></i></span>
+            </div>
+
+
+        </div>
+        <div class="pull-right" style="padding-right: 15px;">
+            <a href="@Url.Action("Index3")" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> 添加项目</a>
+        </div>
+    </div>
+
+</form>
+
+    <div class="row" style=" padding-left 15px; padding-right 15px;">
+        <div class="col-md-4">
+            <div class="box box-solid" style="width: 95%; margin: auto; border-radius: 4px; border: 1px #ccc solid;">
+
+                <div class="box-body">
+                    <div class="col-md-3 ">
+                        <input type="text" class="knob" value="30" data-thickness="0.2" data-width="60" data-height="60" data-fgColor="#f56954 ">
+                    </div>
+                    <div class="col-md-9" style="">
+                        <span>成都金科XXX小区</span><br />
+                        <span>区域公司：AAAAAA</span><br />
+                        <span>面积：100平</span><br />
+
+                    </div>
+                </div>
+
+
+                <div class="box-footer" style="background-color: #f3f9fd; padding-top: 5px; padding-bottom: 5px;">
+                    <div class="col-md-6 text-center" style="border-right: 1px #ccc solid;">
+                        <label>开办费（万元）</label><br />
+                        <label>623/4562</label>
+
+                    </div>
+                    <div class="col-md-6  text-center">
+                        <label>示范区（万元）</label><br />
+                        <label>962/10662</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="box box-solid" style="width: 95%; margin: auto; border-radius: 4px; border: 1px #ccc solid;">
+
+                <div class="box-body">
+                    <div class="col-md-3 ">
+                        <input type="text" class="knob" value="60" data-thickness="0.2" data-width="60" data-height="60" data-fgColor="#00a65a ">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row" style="margin-bottom: 6px; font-size: 14px;">
+                            <div class="col-md-8" style="color:#3c8dbc; padding-right: 1px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;-ms-text-overflow: ellipsis;-o-text-overflow: ellipsis;-moz-binding: url(" ellipsis.xml#ellipsis");">成都金科XXX小区成都金科XXX小区成都金</div>
+                            <div class="col-md-4" style="border: 1px red solid; padding-left: 5px; padding-right: 2px;">
+                                ·蒋世春
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 6px;"><div class="col-md-12">区域公司：AAAAAA</div></div>
+                        <div class="row">
+                            <div class="col-md-7">面积(万方)：<span>9999</span></div>
+                            <div class="col-md-5">类型：自建</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="box-footer" style="background-color: #f3f9fd; padding-top: 5px; padding-bottom: 5px;">
+
+                    <div class="col-md-6 text-center" style="border-right: 1px #ccc solid;">
+                        <span>开办费（万元）</span><br />
+                        <span>623/4562</span>
+
+                    </div>
+                    <div class="col-md-6  text-center">
+                        <span>示范区（万元）</span><br />
+                        <span>962/10662</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-solid" style="width: 95%; margin: auto; border-radius: 4px; border: 1px #ccc solid;">
+
+                <div class="box-body">
+                    <div class="col-md-4 ">
+                        <input type="text" class="knob" value="90" data-thickness="0.2" data-width="70" data-height="70" data-fgColor="#3c8dbc ">
+                    </div>
+                    <div class="col-md-8" style="">
+                        <label>成都金科XXX小区</label><br />
+                        <label>区域公司：AAAAAA</label><br />
+                        <label>面积：100平</label><br />
+
+                    </div>
+                </div>
+
+
+                <div class="box-footer" style="background-color: #f3f9fd; padding-top: 5px; padding-bottom: 5px;">
+                    <div class="col-md-6 text-center" style="border-right: 1px #ccc solid;">
+                        <label>开办费（万元）</label><br />
+                        <label>623/4562</label>
+
+                    </div>
+                    <div class="col-md-6  text-center">
+                        <label>示范区（万元）</label><br />
+                        <label>962/10662</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+@section scripts{
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/t2m_adminlte/bower_components/datatables.net/buttons/dataTables.buttons.js"></script>
+    <script src="~/Scripts/t2m_adminlte/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/Scripts/t2m_adminlte/bower_components/jquery-knob/js/jquery.knob.js"></script>
+    <script src="~/Scripts/t2m_adminlte/js/datatables/dataTablesForTDF.js"></script>
+    <script>
+        
+        $(function() {
+            $(".knob").knob({
+                draw: function() {
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        var a = this.angle(this.cv) // Angle
+                            ,
+                            sa = this.startAngle // Previous start angle
+                            ,
+                            sat = this.startAngle // Start angle
+                            ,
+                            ea // Previous end angle
+                            ,
+                            eat = sat + a // End angle
+                            ,
+                            r = true;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        this.o.cursor
+                            && (sat = eat - 0.3)
+                            && (eat = eat + 0.3);
+
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value);
+                            this.o.cursor
+                                && (sa = ea - 0.3)
+                                && (ea = ea + 0.3);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.previousColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+        });
+
+        $("#HH_JJ").click(function(e) {
+            e.stopPropagation();
+        });
+
+        //$("#HH_JJ").on("click", function() {
+
+        //});
+
+        var tabColumns = [
+            { "data": "Id", "title": "" }, //{}
+            { "data": "Item1", "title": "名称", orderable: true }, //
+            { "data": "Item2", "title": "管辖区域" },
+            { "data": "Item3", "title": "面积", orderable: true },
+            { "data": "Item4", "title": "拿地", orderable: true },
+            { "data": "Item5", "title": "展示", orderable: true },
+            { "data": "Item6", "title": "开盘", orderable: true },
+            { "data": "Item7", "title": "交房", orderable: true },
+            { "data": "Item8", "title": "项目经理" },
+            { "data": "Item9", "title": "状态", orderable: true },
+            //{ "data": "Id", "title": "操作", render: function (data, type, row, meta) { return "<a href=\"@Url.Action("Index4")\">详 情</a>"; } }
+        ];
+
+        //通常用于对参数的额外加工 回调函数
+        var serverParam = function(dataParams) {
+            return dataParams;
+        }
+
+        var opts = {
+            showButtons: false, // 是否显示操作按钮组
+            buttons: [], //操作按钮组 在showButtons==true时 默认会有一个 刷新按钮
+            lengthChange: true, //是否允许用户改变 PageSize
+            pageSize: 15, //PageSize 设置 默认为 10
+            searching: false, //是否开启 默认关键词搜索
+            searchPlaceholder: "关键词", //默认搜索框提示文字
+            searchTextWidth: "200px" //默认搜索框的宽度 默认值：标准宽度
+        };
+
+        var jscTable = TdfDataTableParams.CreateDataTable('example1', 'form_search', '/Scripts/DemoJson1.json', tabColumns, opts, serverParam);
+
+    </script>
+
+}

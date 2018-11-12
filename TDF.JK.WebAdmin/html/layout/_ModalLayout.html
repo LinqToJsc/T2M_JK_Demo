@@ -1,0 +1,135 @@
+﻿<div class="modal-header">
+    <div class="pull-right">
+        <div class="pull-left" style="padding-left: 3px; padding-right: 13px; height: 23px; border-right: 1px solid #ccc;">
+            <a href="JavaScript:void;"><i class="fa fa-floppy-o"></i> 保 存</a>
+        </div>
+
+        <button type="button" style="margin-left: 15px;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+
+    <h4 class="modal-title">编 辑A</h4>
+</div>
+<div class="modal-body">
+    <!-- 自定义内容表单区域 -->
+    <form id="form1" class="form-horizontal">
+
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目名称</label>
+                    <div class="col-sm-9">
+                        <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目名称</label>
+                    <div class="col-sm-9">
+                        <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">类型</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm ">
+                            <option value="住宅">住宅</option>
+                            <option value="商铺">商铺</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">所在地</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm input-inline" style="width: 50%;">
+                            <option value="">省</option>
+                            <option value="北京市">北京市</option>
+                            <option value="重庆市">重庆市</option>
+                            <option value="四川省">四川省</option>
+                        </select>
+                        <select class="form-control input-sm input-inline" style="width: 49%;">
+                            <option value="">市</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">管辖区</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm ">
+                            <option value="">选择</option>
+                            <option value="东南">东南</option>
+                            <option value="西南">西南</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">面积</label>
+                    <div class="col-sm-9">
+                        <input name="dd" type="text" class="form-control input-sm" placeholder="平方米">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">拿地</label>
+                    <div class="col-sm-9 date">
+                        <input name="t1" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">展示</label>
+                    <div class="col-sm-9 date">
+                        <input name="t3" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">开盘</label>
+                    <div class="col-sm-9 date">
+                        <input name="t2" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">交房</label>
+                    <div class="col-sm-9 date">
+                        <input name="t4" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <span style="color: red;">使用注意：<br /></span>
+                <span style="color: red;">
+                    一个页面上可以有多个这样的模态框 大小可自定义，modal-body 为内容UI自定义区域， modal-footer 不是必须的，根据自己使用情况<br /><br />
+                    模态框属性 data-backdrop="false"使用控制是否 在点击空白区域自动隐藏模态框<br /><br />
+                    通过这两个属性data-toggle="modal" data-target="#模态框的ID" 可以自动触发Open 和Close;也可以使用JS的方式手动触发；<br />更多介绍见：http://v3.bootcss.com/javascript/#modals
+                </span>
+            </div>
+        </div>
+    </form>
+</div>

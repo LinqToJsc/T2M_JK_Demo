@@ -1,0 +1,1375 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-color: #fff">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>金科大运营系统</title>
+    <!-- 已完成项目列表 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        .box-header {
+            background-color: #d7d8da;
+        }
+
+        .box-title span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .proj-info {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .task-name-box {
+            padding-top: 50px;
+            padding-bottom: 0;
+            font-size: 18px;
+            color: #333;
+            background: #fff;
+            padding-left: 10px;
+            margin-right: 5px !important;
+            border-radius: 3px;
+        }
+
+        .achieve-box {
+            font-size: 14px;
+            color:#333;
+            padding: 5px;
+        }
+
+
+        .direct-chat-messages {
+            height: auto !important;
+            background: #fff;
+        }
+
+        #CMY_expShare .row {
+            margin: 0;
+        }
+        /* 自定义com样式 */
+        .pddingClass {
+            padding: 5px 0;
+        }
+
+        .pdds {
+            padding: 5px 0px 0px 0px;
+        }
+
+        .boxId {
+            border: 1px solid #D9D9F3;
+            height: 390px;
+            position: absolute;
+            overflow: auto;
+            margin-left: 15px;
+        }
+
+        .imgClass {
+            height: 50px;
+            width: 50px;
+        }
+
+        .imgClassL {
+            height: 15px;
+            width: 15px;
+        }
+
+        .ex-max {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <style type="text/css">
+        .t-user-box-alert {
+            width: 320px !important;
+            background-color: #ffffff !important;
+            border: 1px solid #ddd !important;
+            border-top: 3px solid #0cc1fb !important;
+        }
+
+        .t-user-box-alert-top {
+            padding-left: 20px !important;
+            background-color: #f5f5f5 !important;
+            /* height: 42px !important; */
+            line-height: 40px !important;
+            color: #999999 !important;
+        }
+
+            .t-user-box-alert-top .btn {
+                padding-top: 0px !important;
+                padding-bottom: 0px !important;
+                background-color: #fff !important;
+                font-size: 16px !important;
+                padding-right: 7px !important;
+            }
+
+        .t-user-box-alert-cox {
+            padding: 0px 20px !important;
+            background-color: #ffffff !important;
+            height: 160px !important;
+        }
+
+        .t-userm-mes {
+            height: 88px !important;
+        }
+
+            .t-userm-mes .t-u-img {
+                float: left !important;
+                width: 73px !important;
+                height: 88px !important;
+                padding: 15px 15px 15px 0 !important;
+            }
+
+                .t-userm-mes .t-u-img img {
+                    height: 58px !important;
+                    width: 58px !important;
+                }
+
+            .t-userm-mes .t-u-txt {
+                padding: 25px 0 0 0 !important;
+            }
+
+                .t-userm-mes .t-u-txt .t-u-t {
+                    font-size: 16px !important;
+                    color: #666666 !important;
+                }
+
+                .t-userm-mes .t-u-txt .t-u-p {
+                    font-size: 14px !important;
+                    color: #999999 !important;
+                }
+
+        .t-user-details .t-user-opp {
+            width: 100% !important;
+            float: left !important;
+            padding-bottom: 10px !important;
+            color: #666666 !important;
+            font-size: 14px !important;
+            margin-top: 0px !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 15px;
+        }
+
+            .t-user-details .t-user-opp > span:first-child {
+                color: #999999 !important;
+                padding-right: 5px !important;
+            }
+
+        .ProjectManagerName {
+            margin-top: 5px !important;
+            display: inline-block !important;
+            font-size: 14px !important;
+            color: #3c8dbc !important;
+        }
+
+        .navdiv-left {
+            float: left !important;
+            margin-top: 20px !important;
+        }
+
+        .completedRate-box {
+            padding-right: 0 !important;
+            float: left !important;
+            width: 50px !important;
+            height: 50px !important;
+            margin-left: 10px !important;
+            margin-right: 10px !important;
+            background-color: #3c8dbc !important;
+            text-align: center !important;
+            color: #fff !important;
+            line-height: 50px !important;
+            border-radius: 5px !important;
+        }
+
+        .projectNamedbox {
+            white-space: nowrap !important;
+        }
+    </style>
+
+    <%@include file="../../common/admin_css.jsp"%>
+    <link rel="stylesheet" href="${contextPath}/static/style/project/ppm/CompleteProjectInfo.css?version=2.1.1530843110000">
+    <link rel="stylesheet" href="${contextPath}/static/style/project/ppm/projectInfo/rightAlertBox.css?version=2.1.1530843110000">
+    <style type="text/css">
+        /* 反馈的图标 */
+        .new_notice_feddbackMessage {
+            position: fixed;
+            bottom: 95px;
+            right: 10px;
+            background-image: url("${contextPath}/static/images/notice/new.png");
+            background-position: 0px -142px;
+            width: 68px;
+            height: 62px;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+        #feddbackMessage_box {
+            position: fixed;
+            z-index: 30;
+            width: 520px;
+            bottom: 50px;
+            right: 25px;
+            float: left;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding-bottom: 15px;
+            display: none;
+        }
+
+            #feddbackMessage_box .headtit {
+                background-color: #3c8dbc;
+                padding: 5px 10px;
+                border-radius: 3px;
+                margin-bottom: 25px;
+                color: #fff;
+                font-size: 16px;
+            }
+
+        .messageLBox_feddback {
+            padding: 0px 15px;
+        }
+
+            .messageLBox_feddback #messagefeddback {
+                padding-top: 5px;
+            }
+
+        #feddbackMessageTxt {
+            padding-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #feddbackMessage_close {
+            cursor: pointer;
+        }
+
+        /*#at_Message_box*/
+        #at_Message_box {
+            width: 550px;
+            height: 500px;
+            z-index: 45;
+            position: fixed;
+            top: 75px;
+            left: 0px;
+            right: 0px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+        }
+
+            #at_Message_box .headtit {
+                background-color: #3c8dbc;
+                padding: 8px 10px;
+                border-radius: 3px 3px 0 0;
+                margin-bottom: 10px;
+                color: #fff;
+                font-size: 16px;
+            }
+
+        #feddbackMessageTxt {
+            cursor: pointer;
+        }
+
+        #at_Message_box .tab_s {
+            padding-left: 55px;
+        }
+
+            #at_Message_box .tab_s > span {
+                display: inline-block;
+                margin-right: 25px;
+                cursor: pointer;
+            }
+
+                #at_Message_box .tab_s > span.active {
+                    color: #44b5d9;
+                    font-weight: 600;
+                }
+
+        #at_Message_box .con_tab {
+            width: 100%;
+            padding: 15px;
+        }
+
+        #at_Message_box_close {
+            cursor: pointer;
+        }
+
+        #at_Message_box .con_tab > div {
+            border: 1px solid #ddd;
+            height: 400px;
+            border-radius: 5px;
+        }
+
+        #name_tab {
+            /* display: none; */
+            width: 100%;
+            padding-top: 10px;
+            overflow-y: auto;
+        }
+
+        #ipn_tab {
+            display: none;
+            width: 100%;
+        }
+
+        #int_con_tre {
+            width: 55%;
+            float: left;
+            height: 400px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        #p_con_lis {
+            width: 45%;
+            height: 400px;
+            float: left;
+            overflow-y: auto;
+            margin-top: 0px;
+        }
+
+        .name_tab_lis {
+            width: 100%;
+            margin-top: 35px;
+        }
+
+            .name_tab_lis .name_tab_lis_check {
+                width: 100%;
+                padding: 5px;
+            }
+
+            .name_tab_lis .lis_tab {
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 5px;
+            }
+
+                .name_tab_lis .lis_tab img {
+                }
+
+        #p_con_lis .lis_tab img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        #searchMessageBox {
+            margin-left: 10px;
+        }
+
+        #name_tab_lis_all {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .name_tab_lis .name_tab_lis_check .ch_txt {
+            margin-left: 10px;
+        }
+
+        .name_tab_lis .lis_tab.active, .name_tab_lis .lis_tab:hover {
+            background-color: #f3f3f3;
+            position: relative;
+        }
+
+            .name_tab_lis .lis_tab.active:before {
+                content: "\f00c";
+                position: absolute;
+                color: #3da6e0;
+                font: normal normal normal 14px/1 FontAwesome;
+                right: 15px;
+                top: 15px;
+            }
+
+        .name_tab_lis img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .messageAptdel {
+            cursor: pointer;
+        }
+
+        section.content {
+        }
+
+        #dataTablesubtask .dataTables_empty {
+            border-bottom: none !important;
+        }
+
+        #tab_model {
+            padding: 10px 15px;
+        }
+
+        #dataTablesubtask.table > thead:first-child > tr:first-child > th, #dataTablesubtask .dataTables_empty {
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<!-- /Head -->
+<!-- Body -->
+
+<body style="background-color: Transparent; overflow: hidden;">
+    <!--计划任务TaskId-->
+    <input id="hidden_taskId" type="hidden" value="${param.taskId}"/>
+
+<!-- 反馈 -->
+<div class="new_notice_feddbackMessage"></div>
+<div id="feddbackMessage_box" class="alert-shadow">
+    <div class="headtit"><span style="font-size: 15px;">反馈（请只针对本节点达成标准、指引、模板的不合理、不清晰等情况）</span><div class="pull-right" id="feddbackMessage_close"><i class="fa fa-fw fa-angle-down"></i>
+        </div>
+    </div>
+    <div class="border-3 messageLBox_feddback">
+        <textarea id="feddbackMessageTxt" rows="12" cols="" class="col-md-12 col-sm-12 col-xs-12" value="" placeholder="请输入您要反馈的内容"></textarea>
+        <div id="messagefeddback"></div>
+        <div class="pull-left">
+            <div class="new_notice_alt" data-action="#messagefeddback"><span class="new_notice_txt">点击此处可以抄送给别人</span></div>
+        </div>
+        <div class="pull-right messageLBtn" style="padding: 3px 0; padding-right: 0px; margin-top: 20px;">
+            <button type="button" id="feddbackExit" class="btn btn-primary bg-eee" style="font-size: 12px; margin-right: 15px">取消</button>
+            <button type="button" id="savefeddback" class="btn btn-primary" style="font-size: 12px;">发送</button>
+        </div>
+    </div>
+</div>
+<!-- @选择框 -->
+<div id="at_Message_box" class="alert-shadow">
+    <div class="headtit"><span>选择成员</span><div class="pull-right" id="at_Message_box_close"><i class="fa fa-fw fa-close"></i>
+        </div>
+    </div>
+    <div class="tab_s"><span class="show_tab active" data-action="#name_tab">姓名</span><span>|</span><span class="show_tab" data-action="#ipn_tab">部门</span></div>
+    <div class="con_tab">
+        <div id="name_tab">
+            <div class="input-group input-group-sm pull-left" id="searchMessageBox" style="width: 180px;">
+                <input class="form-control input-search" id="searchMessageBoxTxt" data-filter-name="projectName" placeholder="根据人员名称进行搜索" type="text">
+                <span class="input-group-addon no-left-radius" id="searchMessageBoxBtn"><i class="fa fa-search"></i></span>
+            </div>
+            <div id="name_tab_lis" class="name_tab_lis">
+                <div class="name_tab_lis_check"><input id="name_tab_lis_all" class="name_tab_lis_all" type="checkbox"><span class="ch_txt">全选</span></div>
+            </div>
+        </div>
+
+        <div id="ipn_tab">
+            <div id="int_con_tre">
+                <div id="Ztb" class="ztree"></div>
+            </div>
+            <div id="p_con_lis" class="name_tab_lis">
+                <div class="name_tab_lis_check"><input id="name_tab_lis_all2" class="name_tab_lis_all" type="checkbox"><span class="ch_txt">全选</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-box" style="width: 800px; float: right; background: #fff;">
+
+<!-- Main Container -->
+<div class="wraper" style="top: 0px; position: relative; padding-left: 10px; background: #eee;">
+<div style="left: 20px; float: right; width: 800px;">
+
+    <div class="box-header">
+        <div class="box-title">
+            <span>任务节点详情</span>
+        </div>
+        <div class="box-tools pull-right" id="boxBottonId" style="display: none; padding-right: 20px;">
+            <div class="btn-group" id="btnTaskId">
+                <a class="btn " id="completedTask" onclick="completedTask()"><i class="fa fa-check"></i> 完成</a>
+                <a class="btn " id="addChildenTask" onclick="addChildenTask()"><i class="fa fa-plus"></i> 新增子任务</a>
+                <a class="btn" id="removeGuide" onclick="removeGuide()"><i class="fa fa-edit"></i> 移除</a>
+            </div>
+        </div>
+        <div class="box-tools pull-right">
+            <button id="btnCloseDlg" class="btn btn-box-tool" data-widget="remove">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row task-name-box" id="task-name-box">
+    <i class="" id="icon-taskName"></i>&nbsp;&nbsp;<span property="taskName" id="taskNameById"></span>
+</div>
+<div class="row" style="margin-left: -10px; margin-right: -2px;">
+<div class="nav-tabs-custom" style="margin-bottom: 0px;">
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_particulars" data-toggle="tab">详情</a></li>
+    <li><a href="#tab_dynamics" data-toggle="tab">留言板</a></li>
+    <li><a href="#tab_model" data-toggle="tab">模板&指引</a></li>
+    <li><a href="#tab_fruits" data-toggle="tab">工作成果</a></li>
+    <li><a href="#tab_log" data-toggle="tab">日志</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="tab_particulars" isHasId="true">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="box-body">
+                <div class="form-title">
+                    <div class="CMY_form_item">
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass">阶段</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="stage" class="proj-info"></span>
+                            </div>
+                            <label class="col-md-2 col-sm-2 col-xs-2  control-label pddingClass">类别</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="category" class="proj-info"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2 col-xs-2  control-label pddingClass">责任主体</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="directorName" class="proj-info"></span>
+                            </div>
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass ">执行主体</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass ex-max">
+                                <span property="executeDept" title="" class="proj-info"></span>
+                                <span>(<span property="executorName" class="proj-info"></span>)</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2 col-xs-2  control-label pddingClass">标准计划开始</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="standardPlanStartDateStr" class="proj-info" id="standardPlanStartDate"></span>
+                            </div>
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass ">标准计划结束</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass ex-max">
+                                <span property="standardPlanEndDateStr" class="proj-info" id="standardPlanEndDate"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass">计划开始</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="planStartDate" id="planStartDateId" class="proj-info"></span>
+                            </div>
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass ">计划结束</label>
+                            <div class="col-md-4 col-sm-4  col-xs-4 pddingClass">
+                                <span property="planEndDate" id="planEndDateId" class="proj-info"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="finishDateDivID">
+                            <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass">完成时间</label>
+                            <div class="col-md-10 col-sm-10  col-xs-10 pddingClass">
+                                <span property="finishDate" id="finishDateId" class="proj-info"></span>
+                                <span id="spanAssessment" class="proj-info" title="" style="display: none;">(不纳入考核)</span>&nbsp;&nbsp;&nbsp;
+                                <h:tag id="ExperienceSetTopTask">
+
+                                    <button id="editAssessment" type="button" class="btn btn-primary btn-info  btn-xs"><i class="fa fa-play"></i>&nbsp;纳入考核</button>
+
+                                </h:tag>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass"></label>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass"></label>
+                    </div>
+                    <div class="row">
+                        <div class="z_label_box">
+                            <div class="z_label_box_lit ">
+                                <span id="labelCountId" class="col-md-2 col-sm-2 col-xs-2 control-label pddingClass"></span>
+                                <span class="col-md-7 col-sm-7 col-xs-7 control-label pddingClass" style="width: 68.5%;"></span>
+                                <a class="btn btn-default  labelCountId_dis_btn" style="margin-left: 15px" onclick="hideGantt()"><span id=spanIds>隐藏</span> <i class="fa fa-caret-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dataTablesubtask_box">
+                        <table id="dataTablesubtask" class="table table-bordered table-hover table-striped">
+                            <thead class="bordered-darkorange">
+                            <tr role="row">
+                                <th class="tableHead ">完成状态</th>
+                                <th width="220px" class="tableHead ">子任务</th>
+                                <th width="" class="tableHead">负责人</th>
+                                <th width="" class="tableHead">结束时间</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row Experiencebox">
+                        <input type="hidden" id="achieveStandardIds" value=""/>
+                        <div class="col-md-12 col-sm-12 CMY_btnMoreExperience" style="padding: 0 !important; margin-top: 30px;">
+                            <div class="col-md-12 col-sm-12 col-xs-12" style="height: 45px; line-height: 16px; background-color: #f5f5f5;">
+                                <span class="col-md-5 col-sm-5 col-xs-5 pddingClass box-header-title" style="padding-left: 5px;">经验分享</span>
+                                <span class="col-md-7 col-sm-7 col-xs-7 control-label pddingClass" style="padding-right: 20px; padding-top: 7px;">
+                                                            <span>
+                                                                <form id="" class="form-horizontal" onsubmit="return false">
+                                                                    <div class="input-group input-group-sm " id="searchBox" style="width: 300px;">
+                                                                        <input type="text" class="form-control input-search" id="keyword" placeholder="请输入项目经理姓名或项目名称">
+                                                                        <span class="input-group-btn">
+                                                                            <button type="button" class="btn btn-flat" id="btnSearch"><i class="fa fa-search"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </form>
+                                                            </span>
+                                                        </span>
+
+                            </div>
+                            <div class="boxId col-md-12 col-sm-12 col-xs-12 no-padding-both" id="CMY_expShare">
+
+                                <table id="dataTable" class="table table-bordered table-hover table-striped">
+                                    <thead class="bordered-darkorange">
+                                    <tr role="row">
+                                        <th width="50" class="tableHead text-center"> </th>
+                                        <th width="150" class="tableHead  text-center">名称</th>
+                                        <th width="150" class="tableHead  text-center">管辖区域</th>
+                                        <th width="100" class="tableHead text-center" style="text-align: center">项目经理</th>
+                                        <th width="" class="tableHead text-center">经验详情</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <!-- Modal -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane" id="tab_dynamics">
+    <div id="tab_dynamicsSlBar">
+        <div class="row border-3 messageLBox">
+            <textarea id="txtId" rows="3" cols="" class="col-md-12 col-sm-12 col-xs-12" value="" placeholder="请输入您要留言的内容"></textarea>
+            <div id="messageApt"></div>
+            <div class="pull-left" class="message_a_alert ">
+                <div class="new_notice_alt" data-action="#messageApt"><span class="new_notice_txt">点击此处可以抄送给别人</span></div>
+            </div>
+            <div class="pull-right messageLBtn" style="padding: 3px 0; padding-right: 0px;">
+                <button type="button" onclick="clearMessege()" class="btn btn-primary bg-eee" style="font-size: 12px; margin-right: 15px">取消</button><button type="button" onclick="sendMessege()" class="btn btn-primary" style="font-size: 12px;">发送</button>
+            </div>
+
+        </div>
+        <div class="box box-danger direct-chat direct-chat-danger" style="border-radius: 0px;">
+            <div class="box-body" style="padding: 0; padding-top: 0px;">
+                <div class="direct-chat-messages" id="showTaskNewId" style="margin: 0; padding: 1px">
+                    <!-- <pre id="showTaskNewId" >
+                                            </pre> -->
+                </div>
+            </div>
+            <div id="taskMessage" style="color: blue; text-align: center;"><a href="javascript:void(0)" onclick="getFeedbackDate()">查看更多</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane" id="tab_model">
+    <div id="tab_model_slbar">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 border-3" style="background: #fff; border: 1px solid #ddd; padding-left: 0; padding-right: 0">
+                <div class="col-md-12 col-sm-12 col-xs-12 bg-color-f5" style="padding: 10px; border-bottom: 1px solid #ddd;">
+                    <span class="box-header-title">达成标准</span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12" id="editorDivId" style="padding: 10px; word-break: break-all; word-wrap: break-word;">
+                    <!-- <script id="editor" type="text/plain" style="width:100%;height:249px;"></script> -->
+                    <span id="achieveStandardId"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 border-3" style="background: #fff; border: 1px solid #ddd; padding-left: 0; padding-right: 0; margin-top: 30px">
+                <div class="col-md-12 col-sm-12 col-xs-12 bg-color-f5" style="padding: 10px; border-bottom: 1px solid #ddd;">
+                    <span class="box-header-title">指引</span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12" id="editorDivId" style="padding: 10px; word-break: break-all; word-wrap: break-word;">
+                    <!-- <script id="editor" type="text/plain" style="width:100%;height:249px;"></script> -->
+                    <span id="editorDivIds"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 border-3" style="background: #fff; border: 1px solid #ddd; padding-left: 0; padding-right: 0; margin-top: 30px">
+                <div class="col-md-12 col-sm-12 col-xs-12 bg-color-f5" style="padding: 10px; border-bottom: 1px solid #ddd">
+                    <span class="box-header-title">模板</span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="bordered-darkorange">
+                        <tr role="row">
+                            <th>文件名</th>
+                            <th>创建人</th>
+                            <th>创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody id="resourceListBox"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane" id="tab_fruits">
+    <div class="taskAchieve row" id="taskAchieve">
+        <div class="col-md-12 col-sm-12 col-xs-12 border-3" style="background: #fff; border: 1px solid #ddd; padding-left: 0; padding-right: 0;">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f5f5f5;">
+                <span class="box-header-title">经验分享</span>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 10px;" id="taskExperience"></div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 border-3" style="background: #fff; border: 1px solid #ddd; padding-left: 0; padding-right: 0; margin-top: 30px;">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f5f5f5;">
+                <span class="box-header-title">上传文件</span>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px; min-height: 20px;">
+                <table class="table table-bordered table-hover table-striped nomargin">
+                    <thead class="bordered-darkorange">
+                    <tr role="row">
+                        <th>文件名</th>
+                        <th width="100">自定义文件名</th>
+                        <th width="180">上传时间</th>
+                        <th width="100">上传人</th>
+                        <th width="200">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="achieveListBox" class="isMust"></tbody>
+                </table>
+            </div>
+
+            <table class="table table-bordered table-hover table-striped nomargin">
+                <thead class="bordered-darkorange">
+                <tr role="row">
+                    <th></th>
+                    <th>自定义文件名</th>
+                    <th width="180">上传时间</th>
+                    <th width="100">上传人</th>
+                    <th width="200">操作</th>
+                </tr>
+                </thead>
+
+                <tbody style="border-top: none;" id="resourceOtherTempBox">
+
+                </tbody>
+
+                <tbody class="uploadTbdy">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="wd100">
+                        <p class="pull-right" style="padding-right: 20px;"><span id="btnUpload" class=""><i class="fa fa-upload"></i> 其它附件</span></p>
+                    </td>
+                </tr>
+                </tbody>
+
+
+                <!-- end -->
+            </table>
+            <span class="pull-right" style="padding-bottom: 5px" id="file_max_size"></span>
+        </div>
+        <!-- <iframe id="iframeTaskAchId" frameborder="0" scrolling="no"
+                     width="100%" height="350px" src=""></iframe> -->
+    </div>
+</div>
+<div class="tab-pane" id="tab_log">
+    <div class="logList" id="logListBox"></div>
+</div>
+</div>
+<!-- /tab-content -->
+</div>
+</div>
+</div>
+</div>
+<div id="tmplTip" class="t2m-filter-box box box-widget alert-shadow" style="width: 320px !important; display: none; border: none; margin: 0; overflow-y: auto; z-index: 4000; padding: 0"> </div>
+
+<iframe id="downLoadIframe" style="display: none;"></iframe>
+<%@include file="../../common/admin_js.jsp"%>
+<!-- 员工信息 -->
+<script type="text/javascript" src="${contextPath}/static/jqplugins/jquery.tmpl.js?version=2.1.1530843110000"></script>
+<link rel="stylesheet" href="${contextPath}/static/webuploader/webuploader.css?version=2.1.1530843110000">
+<script type="text/javascript" src="${contextPath}/static/webuploader/webuploader.min.js?version=2.1.1530843110000"></script>
+<!--ztree -->
+<link rel="stylesheet" href="${contextPath}/static/Ztree/css/zTreeStyle/zTreeStyle.css?version=2.1.1530843110000" type="text/css">
+<link href="${contextPath}/static/style/ztree/ztree-icon.css?version=2.1.1530843110000" rel="stylesheet"/>
+<script type="text/javascript" src="${contextPath}/static/Ztree/js/jquery.ztree.core.js?version=2.1.1530843110000"></script>
+<script type="text/javascript" src="${contextPath}/static/Ztree/js/jquery.ztree.exhide.min.js?version=2.1.1530843110000"></script>
+<script type="text/javascript" src="${contextPath}/static/Ztree/js/fuzzysearch.js?version=2.1.1530843110000"></script>
+
+<script>
+    // 在 ProjectTask Page 中表示：是否是项目经理； 在 部门计划 中表示：是否是任务负责人
+    var _isProjectManager = ${isProjectManager};
+
+    // 计划任务 TaskId
+    var _taskId = $("#hidden_taskId").val();
+    // 经验分享列表对象
+    var _tableShare;
+    // 子任务列表对象
+    var _tablesSubTask;
+    /**
+     * 初始化页面控件的高度
+     */
+    function initPage() {
+        $("#btnCloseDlg").click(function() {
+            parent.hideDetail();
+        });
+        var winHeight = $(window.parent).height();
+        var tabHeight = winHeight - $(".task-name-box").outerHeight() - $(".nav-tabs").outerHeight() - 30;
+        //tab高度
+        $(".tab-content").height(tabHeight);
+        $("#tab_particulars").height(tabHeight - 20);
+        $(".tab-pane iframe").height(tabHeight);
+        //模板
+        $("#tab_model").height(tabHeight - 20);
+        //留言
+        $("#tab_dynamics").height(tabHeight - 20)
+        //工作成果
+        $("#tab_fruits").height(tabHeight - 20);
+        //日志高度
+        $("#tab_log").height(tabHeight - 20);
+
+        // 经验分享 Table 搜索
+        $("#btnSearch").on("click", function () {
+            reloadDataTableShare();
+        });
+        /* 留言反馈 */
+        $(".new_notice_feddbackMessage").on("click",function(){
+            $("#feddbackMessage_box").show();
+        })
+        $("#feddbackMessage_close").on("click", function() {
+            $("#feddbackMessage_box").hide();
+        });
+        $(".show_tab").on("click",function(){
+            $("#at_Message_box .con_tab>div").hide();
+            $(".show_tab").removeClass("active");
+            $($(this).addClass("active").attr("data-action")).show();
+        })
+        $("#searchMessageBoxBtn").on("click",function(){
+            showName_tab_lis($("#searchMessageBoxTxt").val())
+        })
+        /* 显示艾特@ */
+        $(".new_notice_alt").on("click",function(){
+            $("#at_Message_box").show().attr("data-action",$(this).attr("data-action"));
+        })
+        /* 全選 */
+        $(".name_tab_lis_all").on("click",function(){
+            if($(this).is(':checked')){
+                $(this).parent().parent().find(".lis_tab").removeClass("active").addClass("active");
+                $(this).parent().parent().find(".lis_tab").each(function(){
+                    var divid=$("#at_Message_box").attr("data-action");
+                    var id = $(this).attr("data-id");
+                    var name =$(this).attr("data-name");
+                    if(!$(""+divid+" .messageAptdel[data-id='"+id+"']").length>0){
+                        atToDiv(name,id,divid);
+                    }
+                })
+            }else{
+                $(this).parent().parent().find(".lis_tab").addClass("active").removeClass("active");
+                $(this).parent().parent().find(".lis_tab").each(function(){
+                    var divid=$("#at_Message_box").attr("data-action");
+                    var id = $(this).attr("data-id");
+                    //console.log($(this));
+                    $(""+divid+" .messageAptdel[data-id='"+id+"']").parent().remove();
+
+
+                })
+            }
+        })
+        /* 人員選中 */
+        $(document).on("click",".name_tab_lis .lis_tab",function(){
+            var divid=$("#at_Message_box").attr("data-action");
+            var id = $(this).attr("data-id");
+            var name =$(this).attr("data-name");
+            /* 判断是否重复选中 */
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(""+divid+" .messageAptdel[data-id='"+id+"']").parent().remove();
+            }else{
+                $(this).addClass("active");
+                if(!$(""+divid+" .messageAptdel[data-id='"+id+"']").length>0){
+                    atToDiv(name,id,divid);
+                }
+            }
+        })
+    }
+
+    // 加载任务基础数据
+    var loadPlannedTaskInfo = function() {
+        $.getJSON(window.jinkeContextPath + '/ppm/projectTaskInfo/ajax/getByTaskId', { taskId: _taskId }, function (res, textStatus, jqXHR) {
+            if (res.state == 0) {
+                //已完成，则不显示按钮
+                if (res.data.approvalState == 6 || res.data.approvalState == 1) {
+                    $("#boxBottonId").hide();
+                }
+                //不是已完成状态，则显示按钮
+                if (res.data.state != 3) {
+                    $("#boxBottonId").show();
+                }
+                // 绑定UI
+                bindTaskInfoToUI(res.data);
+                // 加载任务经验
+                loadTaskExperience(res.data);
+            }
+        });
+    }
+    // 绑定任务基础数据
+    var bindTaskInfoToUI = function(data) {
+        for (var key in data) {
+            if (data[key] != null) {
+                $("span[property='" + key + "']").text(data[key]);
+            } else {
+                $("span[property='" + key + "']").text("");
+            }
+
+            if (key == "achieveStandard") {
+                $("#achieveStandardId").html(data[key]);
+                $("#achieveStandardIds").val(data[key]);
+            } else if (key == "guide") {
+
+                $("#editorDivIds").html(data[key]);
+            }
+        }
+        //设置任务图标
+        //icon-taskName
+        var $icon = $("#icon-taskName");
+        var clsName = "", color = "0a0";
+        if (data.overdueFlag == 1) {
+            clsName = "fa fa-exclamation-circle";
+            color = "#f90";
+        } else {
+            if (data.approvalState == 2) {
+                clsName = "fa fa-question-circle";
+                color = "brown";
+            } else {
+                if (data.state == 4) {
+                    clsName = "fa fa-hourglass-start";
+                    color = "#0a0";
+                } else if (data.state == 5) {
+                    clsName = "fa fa-clock-o";
+                    color = "#0a0";
+                } else if (data.state == 6) {
+                    clsName = "fa fa-check-circle";
+                    color = "#0a0";
+                }
+            }
+        }
+        $icon.removeClass();
+        $icon.addClass(clsName).css("color", color);
+    }
+
+    // 加载任务经验
+    var loadTaskExperience = function (taskModel) {
+        if (taskModel) {
+            if (taskModel.state == 6) { //若任务已完成 则加载任务经验
+                $.ajax({
+                    url: window.jinkeContextPath + "/ppm/taskExperienceInfo/ajax/loadTaskExperienceInfoByOne",
+                    data: { taskId: taskModel.taskId },
+                    success: function (res) {
+                        $("#taskExperience").html(res.data.content);
+                    }
+                });
+            }
+        }
+    }
+
+    var reloadDataTableShare = function () {
+        if (_tableShare)
+            _tableShare.DataTable().ajax.reload();
+    }
+
+    // 加载经验分享列表
+    var loadTableShare = function() {
+        _tableShare = $("#dataTable").dataTable({
+            "scrollX": true,
+            "scrollY": "300px",
+            serverSide: true,//分页，取数据等等的都放到服务端去
+            //processing: true,//载入数据的时候是否显示“载入中”
+            lengthMenu:[5,10,20,30,40,50],
+            pageLength: 10,  //首次加载的数据条数
+            lengthChange:true,
+            //ordering: true, //排序操作在服务端进行，所以可以关了。
+            pagingType: "simple_numbers",
+            autoWidth: false,
+            stateSave: false,//保持翻页状态，和comTable.fnDraw(false);结合使用
+            searching: false,//禁用datatables搜索,
+            sort: false,
+            ajax: {
+                url: window.jinkeContextPath + "/ppm/taskExperienceInfo/ajax/loadTaskExperienceInfoForTable",
+                dataSrc: "data",
+                cache:false,
+                data: function (d) {
+                    var param = {};
+                    param.draw = d.draw;
+                    param.start = d.start;
+                    param.length =d.length;
+                    var keyword=$("#keyword").val();
+                    param["taskId"] = _taskId;
+                    param["keyword"]=keyword;
+                    return param;//自定义需要传递的参数。
+                },
+                error:function(){
+                    if (arguments[0].status==500){
+                        top.bootbox.alert("系统忙，请稍候再试！");
+                    }
+                    else if(arguments[1]=="parsererror"){
+                        top.bootbox.alert({buttons: {ok:{label: '确定',className:'btn-primary'}},message: '登录已失效，请重新登录！',
+                            callback : function() {
+                                top.location.reload();
+                            }
+                        });
+                    }
+                }
+            },
+            columns: [//对应上面thead里面的序列
+                {"data": 'projectId',"class":"text-center","render": function(data, type, row, meta) {
+                    if(row.sort==1){
+                        return "<img src='" + window.jinkeContextPath + "/static/images/icon/panel_top.png'/>";
+                    }else{
+                        return " ";
+                    }
+                }},
+                {"data": 'projectName',"class":"text-left"},
+                {"data": 'jurisdictionArea',"class":"text-center" },
+
+                {"data": 'projectManagerCname',"class":"text-center","render": function(data, type, row, meta) {
+                    //console.log(row);
+                    return "<span class='projectManagerAlert' data='"+row.projectManager+"' >"+row.projectManagerCname+"</span>";
+                }  },
+                {"data": 'content',"class":"text-left","render": function(data, type, row, meta) {
+                    //console.log(row);
+                    var strcontent="";
+                    if(row.content.length>=10){
+                        strcontent= row.content.substring(0,9)+"...";
+                    }else{
+                        strcontent=row.content;
+                    }
+                    return "<span class='content' data='"+row.content+"' title='"+row.content+"'>"+strcontent+"</span>";
+                }  },
+            ],
+            //操作按钮
+            columnDefs: [
+                {
+                }
+
+            ],
+            language: {
+                lengthMenu: "每页显示_MENU_行",
+                processing: "正在加载数据...",
+                paginate: {
+                    previous: "上页",
+                    next: "后页"
+                },
+                zeroRecords: "没有数据",
+                info: "当前 _START_ 至 _END_ 行 &nbsp;&nbsp;共 _PAGES_ 页",
+                infoEmpty: "",
+                infoFiltered: "",
+                sSearch: "输入关键字：",
+            },
+            rowCallback: function (row, data, index) {
+                $(row).attr("data-expId", data.experienceId);
+                $(row).attr("data-sort", data.sort);
+                $(row).on('click', function () {
+                    onclickExperienceInfo($(this).attr("data-expId"), $(this).attr("data-sort"));
+                });
+            },
+            //在每次table被draw完后回调函数
+            fnDrawCallback: function(row, data, dataIndex ){
+                $("#dataTable_length").css({"display":"inline"});
+                $("#dataTable_info").css({"display":"inline"});
+                $("#dataTable_info").append("&nbsp;&nbsp;&nbsp");
+                $("#dataTable_info").after($("#dataTable_length"));
+                $("#dataTable_info").parent().css({"white-space":"nowrap"});
+                $("#dataTable").width("100%");
+                //by CMY 滚动条
+                $('.dataTables_scrollBody').css('overflow','hidden');
+                if($('.dataTables_scrollBody').attr('id')=='CMY_dataTables_scrollBody_scroll'){
+                    CMY_dataTables_scroll.setSize();
+                }else{
+                    $('.dataTables_scrollBody').attr('id','CMY_dataTables_scrollBody_scroll');
+                    $('.dataTables_scrollBody').css('overflow','hidden');
+                    CMY_dataTables_scroll = new MyScrollBar({
+                        selId: 'CMY_dataTables_scrollBody_scroll',
+                        hasX: false,
+                        hasY: true,
+                        width: 4
+                    });
+                }
+                hideLoading();
+            },
+            fnInitComplete:function(){
+                dataTableScrollBar($("#tab_particulars"));
+            }
+        });
+    }
+    // 经验分享列表 点击查看 经验详情 模态框
+    var onclickExperienceInfo = function(expId, sort) {
+        var sortSetUp = 0;
+        var sortName = '';
+        if (sort == "1") {
+            sortName = '取消置顶';
+            sortSetUp = "0";
+        } else {
+            sortName = '置顶';
+            sortSetUp = "1";
+        }
+        var src = window.jinkeContextPath + "/ppm/taskExperienceInfo/showTaskExperienceInfo?experienceId=" + expId; //+"&achieveStandard="+achieveStandard;
+        top.showTopDialogs('经验详情', src, 20, 700, 550, [
+            <h:tag id="ExperienceSetTopTask">
+        {
+            caption:sortName,
+            className:"btn",
+            icon:"icon icon-panel_top",
+            click:function(){
+                var thisdata = this;
+                $.ajax({
+                    url:"${contextPath}/ppm/taskExperienceInfo/ajax/updateSort",
+                    data:{experienceId:expId,sort:sortSetUp},
+                    cache:false,
+                    success:function(res){
+                        thisdata.closeDlg();
+                        reloadData();
+                    },
+                    error:function(){
+                        thisdata.closeDlg();
+                        reloadDataTableShare();
+                    }
+                });
+            }
+        },
+        </h:tag>
+        {
+            caption: "&times;",
+            className: "btn",
+            click: function() {
+                this.closeDlg();
+                reloadData();
+            }
+        }
+        ], window);
+    }
+
+    // 加载 子任务的个数
+    var loadSubTaskCount= function() {
+        $.ajax({
+            url: window.jinkeContextPath +"/ppm/subTaskInfo/ajax/countSubTask",
+            data: { taskId: _taskId },
+            type: "get",
+            cache: false,
+            success: function(res) {
+                $("#labelCountId").css({ "font-size": "16px", "color": "#333" }).text("子任务(" + res + ")");
+            }
+        });
+    }
+    // 完成子任务 操作
+    var completeSubTask = function(subTaskId, taskState) {
+        if(!_isProjectManager||taskState==1){
+            return false;
+        }
+        top.bootbox.confirm({
+            buttons: {
+                confirm: {
+                    label: '确定',
+                    className: 'btn-primary'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-default'
+                }
+            },
+            message: '确定完成子任务吗？',
+            callback: function(result) {
+                if(result) {
+                    var data={"subTaskId":subTaskId,taskState:1};
+                    $.ajax({
+                        url:window.jinkeContextPath +"/ppm/subTaskInfo/ajax/updateTaskState",
+                        data:data,
+                        cache:false,
+                        success:function(res){
+                            if(res.state==0) {
+                                window.location.reload();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+    // 编辑子任务
+    var editSubTask = function(subTaskId, taskState) {
+        var src="${contextPath}/ppm/subTaskInfo/toEditSubTaskInfo?subTaskId="+subTaskId+"&taskId="+  _taskId;
+        var srcView="${contextPath}/ppm/subTaskInfo/toViewSubTaskInfo?subTaskId="+subTaskId+"&taskId="+ _taskId;
+        var btns=[];
+        if (taskState==0){
+            btns=[
+                <h:tag id="btnCompleteSubTask">
+                {
+                    caption:"完成",
+                    className:"btn",
+                    icon:"fa fa-flag",
+                    click:function(){
+                        this.iframe.contentWindow.completeChilden(this.win);
+                    }
+                }
+                ,
+            </h:tag>
+                <h:tag id="btnSave">
+                {
+                    caption:"保存",
+                    className:"btn",
+                    icon:"fa fa-floppy-o",
+                    click:function(){
+                        this.iframe.contentWindow.eidtChildens(this.win);
+                    }
+                }
+                ,
+            </h:tag>
+                <h:tag id="btnDelete">
+                {
+                    caption:"删除",
+                    className:"btn",
+                    icon:"fa fa-close",
+                    click:function(){
+                        this.iframe.contentWindow.deleteChildens(this.win);
+                    }
+                }
+                ,
+            </h:tag>
+            {
+                caption:"&times;",
+                className:"btn",
+                //icon:"fa fa-minus-square-o",
+                click:function(){
+                    this.closeDlg();
+                }
+            }];
+            top.showTopDialogs('编辑子任务',src,20,700,500
+                ,btns
+                ,window);
+        } else {
+            btns=[{
+                caption:"取消",
+                className:"btn",
+                icon:"fa fa-minus-square-o",
+                click:function(){
+                    this.closeDlg();
+                }
+            }];
+            top.showTopDialogs('查看子任务',srcView,20,700,500
+                ,btns
+                ,window);
+        }
+    }
+    // 加载子任务 列表
+    var loadTableSubTask = function() {
+        _tablesSubTask = $("#dataTablesubtask").dataTable({
+            serverSide: true, //分页，取数据等等的都放到服务端去
+            lengthMenu: false,
+            pageLength: 50, //首次加载的数据条数
+            lengthChange: false,
+            pagingType: "simple_numbers",
+            autoWidth: false,
+            stateSave: false,
+            searching: false, //禁用datatables搜索,
+            sort: false,
+            ajax: {
+                url: window.jinkeContextPath +"/ppm/subTaskInfo/ajax/listSubTaskInfo",
+                dataSrc: "data",
+                cache: false,
+                type: "GET",
+                data: function(d) {
+                    var param = {};
+                    param.draw = d.draw;
+                    param.start = d.start;
+                    param.length = d.length;
+                    param["taskId"] = _taskId;
+                    return param; //自定义需要传递的参数。
+                },
+                error: function() {
+                    if (arguments[0].status == 500) {
+                        top.bootbox.alert("系统忙，请稍候再试！");
+                    } else if (arguments[1] == "parsererror") {
+                        top.bootbox.alert({
+                            buttons: { ok: { label: '确定', className: 'btn-primary' } },
+                            message: '登录已失效，请重新登录！',
+                            callback: function() {
+                                top.location.reload();
+                            }
+                        });
+                    }
+                }
+            },
+            columns: [
+                {"data": 'subTaskId', "render": function(data, type, row, meta) {
+                        var classStr;
+                        if (row.taskState == 0) {
+                            classStr = "fa fa-check-square ";
+                        } else {
+                            classStr = "fa fa-check-square isOver";
+                        }
+                        var srctr = "<a href='javascript:void(0)' onclick='completeSubTask(" + row.subTaskId + "," + row.taskState + ")'> " + '<i class="' + classStr + '" style="font-size:20px;" data="184"></i>' + "</a>";
+                        return srctr;
+                    }
+                },
+                {"data": 'title', "render": function(data, type, row, meta) {
+                        var srctr = "<a href='javascript:void(0)' onclick='editSubTask(" + row.subTaskId + "," + row.taskState + ")'> " + data + "</a>";
+                        return srctr;
+                    }
+                },
+                { "data": 'cname' },
+                {
+                    "data": 'subTaskEnd',
+                    "render": function(data, type, row, meta) {
+                        return data.substring(0, 10);
+                    }
+                }
+            ],
+            language: {
+                lengthMenu: "每页显示_MENU_行",
+                processing: "正在加载数据...",
+                paginate: {
+                    previous: "上页",
+                    next: "后页"
+                },
+                zeroRecords: "没有数据",
+                info: "当前 _START_ 至 _END_ 行 &nbsp;&nbsp;共 _PAGES_ 页",
+                infoEmpty: "",
+                infoFiltered: "",
+                sSearch: "输入关键字："
+            },
+            //在每次table被draw完后回调函数
+            fnDrawCallback: function(row, data, dataIndex) {
+                $("#dataTablesubtask_paginate").parent().css({ "display": "none" });
+                $("#dataTablesubtask_info").parent().css({ "display": "none" });
+                hideLoading();
+            }
+        });
+    }
+    // 子任务UI 隐藏/显示
+    var hideGantt= function() {
+        if ($("#dataTablesubtask_wrapper").is(":hidden")) {
+            $("#dataTablesubtask_wrapper").show();
+            $("#spanIds").text("隐藏");
+        } else {
+            $("#dataTablesubtask_wrapper").hide();
+            $("#spanIds").text("显示");
+        }
+    }
+</script>
+
+
+<script>
+    $(function() {
+        initPage();
+        loadPlannedTaskInfo();
+        loadTableShare();
+        loadTableSubTask();
+        loadSubTaskCount();
+
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+﻿<div class="modal-header">
+    <div class="pull-right">
+        <div class="pull-left" style="padding-left: 3px; padding-right: 13px; height: 23px; border-right: 1px solid #ccc;">
+            <a href="JavaScript:void;"><i class="fa fa-floppy-o"></i> 保 存</a>
+        </div>
+
+        <button type="button" style="margin-left: 15px;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+
+    <h4 class="modal-title">编 辑A</h4>
+</div>
+<div class="modal-body">
+    <!-- 自定义内容表单区域 -->
+    <form id="form1" class="form-horizontal">
+
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目名称</label>
+                    <div class="col-sm-9">
+                        <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">项目名称</label>
+                    <div class="col-sm-9">
+                        <input name="ff3" type="text" class="form-control input-sm" placeholder="请输入项目名称">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">类型</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm ">
+                            <option value="住宅">住宅</option>
+                            <option value="商铺">商铺</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">所在地</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm input-inline" style="width: 50%;">
+                            <option value="">省</option>
+                            <option value="北京市">北京市</option>
+                            <option value="重庆市">重庆市</option>
+                            <option value="四川省">四川省</option>
+                        </select>
+                        <select class="form-control input-sm input-inline" style="width: 49%;">
+                            <option value="">市</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">管辖区</label>
+                    <div class="col-sm-9">
+                        <select class="form-control input-sm ">
+                            <option value="">选择</option>
+                            <option value="东南">东南</option>
+                            <option value="西南">西南</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">面积</label>
+                    <div class="col-sm-9">
+                        <input name="dd" type="text" class="form-control input-sm" placeholder="平方米">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">拿地</label>
+                    <div class="col-sm-9 date">
+                        <input name="t1" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">展示</label>
+                    <div class="col-sm-9 date">
+                        <input name="t3" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">开盘</label>
+                    <div class="col-sm-9 date">
+                        <input name="t2" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">交房</label>
+                    <div class="col-sm-9 date">
+                        <input name="t4" type="text" class="form-control input-sm input_time" readonly="readonly" data-date-format="yyyy-mm-dd" placeholder="请选择日期">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <span style="color: red;">使用注意：<br /></span>
+                <span style="color: red;">
+                    一个页面上可以有多个这样的模态框 大小可自定义，modal-body 为内容UI自定义区域， modal-footer 不是必须的，根据自己使用情况<br /><br />
+                    模态框属性 data-backdrop="false"使用控制是否 在点击空白区域自动隐藏模态框<br /><br />
+                    通过这两个属性data-toggle="modal" data-target="#模态框的ID" 可以自动触发Open 和Close;也可以使用JS的方式手动触发；<br />更多介绍见：http://v3.bootcss.com/javascript/#modals
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<div class="task-dashboard-view">
+    <div id="CMY_task-dashboard-view" class="view-tab-2">
+        <!-- 项目计划 -->
+        <div class="col-md-4 col-sm-4 col-xs-4 col-task">
+            <div class="box box-default box-solid tasklist">
+                <div class="box-header with-border string">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6 box-title">
+                            项目计划<i class="fa fa-circle task-count-dot"></i><span id="spGoingTotal">0</span>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <span class="pull-right" title="进行中">
+                                <img class="img-icon" src="${contextPath}/static/images/icon/panel_going.png" /> <span id="spGoingNormalCount" class="task-count">0</span>
+                            </span>
+                            <span class="pull-right" title="逾期">
+                                <img class="img-icon" src="${contextPath}/static/images/icon/panel_overdued.png"> <span id="spGoingOverdueCount" class="task-count">0</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div id="executingTaskBox-bar">
+                    <div class="box-body" id="executingTaskBox">
+                        <div class="callout box box-default box-solid">
+                            <a href="javascript:void(0)" class="task" data="11517">
+                                <img title="进行中" class="img-icon" src="${contextPath}/static/images/icon/panel_go.png">
+                                <span class="tab-star-2"><i class="fa fa-star-o text-666 pull-right" onclick="changeColor(this)"></i></span>
+                                <span class="company-name">重区域公司-十年城</span>
+                                <div class="col-sm-12 task-company">确定储备xxx1-12</div>
+                            </a>
+                            <div class="row task-tip">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    开始130天
+                                    剩余9天
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                                    <span class="pull-right staff no_br" data="">未指定</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /项目计划 -->
+        <!-- 部门计划 -->
+        <div class="col-md-4 col-sm-4 col-xs-4 col-task">
+            <div class="box box-default box-solid tasklist">
+                <div class="box-header with-border over">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6 box-title">
+                            部门计划<i class="fa fa-circle task-count-dot"></i><span id="spCompleteTotal">0</span>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <span class="pull-right" title="逾期完成"><img class="img-icon" src="${contextPath}/static/images/icon/panel_overdue.png"> <span id="spCompleteOverdueCount" class="task-count">0</span> </span>
+                            <span class="pull-right" title="已完成"><img class="img-icon" src="${contextPath}/static/images/icon/panel_doned.png"> <span id="spCompleteNormalCount" class="task-count">0</span> </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- 为了做滚动条包裹一个层 -->
+                <div id="completeTaskBox-bar">
+                    <div class="box-body" id="completeTaskBox">
+                        <div class="callout box box-default box-solid">
+                            <a href="javascript:void(0)" class="task" data="11517">
+                                <img title="逾期" class="img-icon" src="${contextPath}/static/images/icon/panel_overdue.png">
+                                <span class="tab-star-2"><i class="fa fa-star-o text-666 pull-right" onclick="changeColor(this)"></i></span>
+                                <span class="company-name">重区域公司-十年城</span>
+                                <div class="col-sm-12 task-company">确定储备xxx1-12</div>
+                            </a>
+                            <div class="row task-tip">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    开始130天
+                                    剩余9天
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                                    <span class="pull-right staff no_br" data="">未指定</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="callout box box-default box-solid">
+                            <a href="javascript:void(0)" class="task" data="_TASK_ID_">
+                                _IMGICON_
+                                <span class="tab-star-2"><i class="fa fa-star-o text-666 pull-right" onclick="_StarClick_"></i></span>
+                                <span class="company-name">_ProjectName_</span>
+                                <div class="col-sm-12 task-company">_TASK_NAME_</div>
+                            </a>
+                            <div class="row task-tip">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    _DAY_MSG_
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                                    <span class="pull-right staff no_br" data="_ZXZT_ID_">_ZXZT_</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /部门计划 -->
+        <!-- 协同任务 -->
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="box box-default box-solid tasklist">
+                <div class="box-header with-border nostr">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6 box-title">
+                            协同任务<i class="fa fa-circle task-count-dot"></i><span id="spNotStartTotal">0</span>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <span class="pull-right" title="未开始"><img class="img-icon" src="${contextPath}/static/images/icon/panel_notstarted.png"> <span id="spNotStartNormalCount" class="task-count">0</span> </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- 加了一个div包裹为了适应滚动条 -->
+                <div id="notStartTaskBox-bar">
+                    <div class="box-body" id="notStartTaskBox">
+                        <div class="callout box box-default box-solid">
+                            <a href="javascript:void(0)" class="task" data="11517">
+                                <img title="逾期" class="img-icon" src="${contextPath}/static/images/icon/panel_notstart.png">
+                                <span class="tab-star-2"><i class="fa fa-star-o text-666 pull-right" onclick="changeColor(this)"></i></span>
+                                <span class="company-name">重区域公司-十年城</span>
+                                <div class="col-sm-12 task-company">确定储备xxx1-12</div>
+                            </a>
+                            <div class="row task-tip">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    开始130天
+                                    剩余9天
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+                                    <span class="pull-right staff no_br" data="">未指定</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /协同任务 -->
+    </div>
+
+</div>
+<script>
+    /* 收集参数 */
+    var getFilterParam = function (isTable, prams) {
+        var dataParam = { deptId: $('#hidd_deptId').val() };
+        if (isTable == true) {
+            dataParam.draw = prams.draw;
+            dataParam.start = prams.start;
+            dataParam.length = prams.length;
+        }
+        var $form = $("#formQuery");
+        var formData = $form.serializeArray();//把form里面的数据序列化成数组
+        formData.forEach(function (e) {
+            dataParam[e.name] = e.value;
+        });
+        return dataParam;
+    }
+    // 加载任务计划 By 列表视图
+    var $plannedTaskTable;
+    var plannedTaskTableColumns = [
+        {
+            data: null, "title": "序号", width: "3%", orderable: false, className: "text-center", render: function (data, type, full, meta) {
+                return meta.row + 1;
+            }
+        },
+      {
+          data: "taskName", title: "名称", width: "21%", orderable: false, className: "", render: function (data, type, full, meta) {
+              var stx = "<span style=\"color:rgba(0, 153, 51, 0.87843137254902);\">【部门计划】</span>"
+              if (full.taskInfoType == 1) {
+                  stx = "<span style=\"color:rgba(22, 155, 213, 0.87843137254902);\">【项目计划】</span>"
+              }
+              return '<a href="JavaScript:;" title="' + data + '" style="color:#666;">' + stx + ' ' + subStrBylength(data, 16) + '</a>';
+          }
+      },
+      { data: "company", "title": "所属公司", width: "14%", className: "text-center" },
+      { data: "", "title": "责任部门", width: "14%", className: "text-center", render: function (data, type, full, meta) { return "？？？"; } },
+      {
+          data: null, "title": "状态", width: "6%", className: "text-center", render: function (data, type, full, meta) {
+              var res = ""
+              if (full.completionStatus == 4)
+                  res = "未开始";
+              if (full.completionStatus == 5)
+                  res = "进行中";
+              if (full.completionStatus == 6) {
+                  res = "已经完成";
+                  if (full.overdueFlag == 1)
+                      res = "逾期完成";
+              }
+              return res;
+          }
+      },
+      {
+          data: "remainDays", "title": "逾期天数", width: "6%", className: "text-center", render: function (data, type, full, meta) {
+              if (full.completionStatus == 5 || full.completionStatus == 6) {
+                  if (data < 0)
+                      return data * -1;
+                  return 0;
+              }
+              return "";
+          }
+      },
+      { data: "planStartDateStr", "title": "计划开始", width: "8%", className: "text-center" },
+      { data: "planEndDateStr", "title": "计划完成", width: "8%", className: "text-center" },
+      { data: "finishDateStr", "title": "实际完成", width: "8%", className: "text-center" },
+      { data: "directorName", "title": "责任人", width: "6%", className: "text-center" },
+      { data: "executorName", "title": "执行人", width: "6%", className: "text-center" }
+    ];
+    /** 加载列表数据 */
+    var loadPlannedTaskByTableList = function () {
+        var tableHeight = $(top).height() - parseInt($(".content-header").outerHeight()) - 190;
+
+        $plannedTaskTable = $("#taskListDataTable").dataTable({
+            "scrollX": true,
+            "scrollY": tableHeight + "px",
+            serverSide: true,//分页，取数据等等的都放到服务端去
+            //processing: true,//载入数据的时候是否显示“载入中”
+            lengthMenu: [20, 40, 60],
+            pageLength: 20,  //首次加载的数据条数
+            lengthChange: true,
+            ordering: false, //排序操作在服务端进行，所以可以关了。
+            pagingType: "simple_numbers",
+            autoWidth: false,
+            stateSave: false,//保持翻页状态，和comTable.fnDraw(false);结合使用
+            searching: false,//禁用datatables搜索,
+            ajax: {
+                url: window.jinkeContextPath + "/ppm/plannedTask/ajax/PlanTable",
+                dataSrc: "data",
+                cache: false,
+                data: function (d) {
+                    showLoading();
+
+                    var param = getFilterParam(true, d);
+                    return param;//自定义需要传递的参数。
+                },
+                error: function () {
+                    hideLoading();
+                    if (arguments[0].status == 500) {
+                        top.bootbox.alert("系统忙，请稍候再试！");
+                    }
+                    else if (arguments[1] == "parsererror") {
+                        top.bootbox.alert({
+                            buttons: { ok: { label: '确定', className: 'btn-primary' } }, message: '登录已失效，请重新登录！',
+                            callback: function () {
+                                top.location.reload();
+                            }
+                        });
+                    }
+                }
+            },
+            columns: plannedTaskTableColumns,
+            language: {
+                lengthMenu: "每页显示_MENU_行",
+                processing: "正在加载数据...",
+                paginate: {
+                    previous: "上页",
+                    next: "后页"
+                },
+                zeroRecords: "没有数据",
+                info: "当前 _START_ 至 _END_ 行 &nbsp;&nbsp;共 _PAGES_ 页",
+                infoEmpty: "",
+                infoFiltered: "",
+                sSearch: "输入关键字：",
+            },
+            rowCallback: function (row, data, index) {
+            },
+            //在每次table被draw完后回调函数
+            fnDrawCallback: function (row, data, dataIndex) {
+                hideLoading();
+                //改变页码在左下角
+                dataTableShow_length("taskListDataTable");
+                //绘制滚动条
+                dataTableScrollBar($('.dataTables_scrollBody'), "CMY_dataTables_scrollBody_scroll");
+                hideLoading();
+            }
+        });
+
+    }
+
+
+    var $viewItemTempletHTML = '<div class="callout box box-default box-solid">' +
+    '<a href="javascript:void(0)" class="task" data="_TASK_ID_">_IMGICON_ ' +
+    '<span class="tab-star-2"><i class="fa fa-star-o text-666 pull-right" onclick="_StarClick_"></i></span>' +
+    '<span class="company-name">_TASK_Titel_</span>' +
+    '<div class="col-sm-12 task-company">_TASK_NAME_</div>' +
+    '</a>' +
+  '<div class="row task-tip">' +
+   '<div class="col-md-8 col-sm-8 col-xs-8">_DAY_MSG_</div>' +
+   '<div class="col-md-4 col-sm-4 col-xs-4 pull-right">' +
+    '<span class="pull-right staff no_br" data="_ZXZT_ID_">_ZXZT_</span>' +
+   '</div>' +
+  '</div></div>';
+
+    /**
+     * 获取 看板 Item布局HTML
+     */
+    var getPlannedViewItem = function (model) {
+        //window.jinkeContextPath
+        var imgIcon = '<img title="进行中" class="img-icon" src="' + window.jinkeContextPath + '/static/images/icon/panel_go.png">';
+        if (model.completionStatus == 4) {
+            imgIcon = '<img title="未开始" class="img-icon" src="' + window.jinkeContextPath + '/static/images/icon/panel_notstart.png">';
+        } else if (model.completionStatus == 5) {
+            imgIcon = '<img title="进行中" class="img-icon" src="' + window.jinkeContextPath + '/static/images/icon/panel_go.png">';
+        } else if (model.completionStatus == 6) {
+            imgIcon = '<i class="fa fa-check-square-o" title="已完成" style="color:#03b0ee;"></i>';
+        }
+
+        var taskTitle = "";
+        if (model.taskInfoType == 1)
+            taskTitle = model.projectName;
+        else
+            taskTitle = "_Company_ " + model.executeDeptname;
+        var dayMsg = "";
+        if (model.completionStatus == 5) {
+            if (model.remainDays < 0)
+                dayMsg = "开始" + model.haveStartDays + "天 逾期<span style=\"color:#ff9900;\">" + (model.remainDays * -1) + "</span>天";
+            else
+                dayMsg = "开始" + model.haveStartDays + "天 剩余" + model.remainDays + "天";
+        }
+
+        var itemHtml = $viewItemTempletHTML;
+        itemHtml = itemHtml.replace(/_TASK_ID_/ig, model.taskId).replace(/_IMGICON_/ig, imgIcon).replace(/_TASK_Titel_/ig, taskTitle).replace(/_TASK_NAME_/ig, model.taskName)
+        .replace(/_DAY_MSG_/ig, dayMsg).replace(/_ZXZT_ID_/ig, (model.executor || "")).replace(/_ZXZT_/ig, model.executorName || "未指定");
+
+        return itemHtml;
+    }
+
+
+    // 看板 By 项目任务列表
+    var loadViewByProjectPlannedTask = function () {
+        var prams = getFilterParam(false);
+        prams.planType = "ProjectPlan";
+        // executingTaskBox
+        $.getJSON(window.jinkeContextPath + '/ppm/plannedTask/ajax/viewByProjectPlannedTask', prams, function (res, textStatus, jqXHR) {
+            if (res.state == 0) {
+                $("#executingTaskBox").html("");
+                $.each(res.data, function (i, item) {
+                    $("#executingTaskBox").append(getPlannedViewItem(item));
+                });
+            }
+        });
+    }
+    // 看板 By 部门任务列表
+    var loadViewByDepartmentPlannedTask = function () {
+        var prams = getFilterParam(false);
+        prams.projectTaskType = 1; // 部门任务都是线性任务
+        prams.planType = "DepartmentPlan";
+        //completeTaskBox
+        $.getJSON(window.jinkeContextPath + '/ppm/plannedTask/ajax/viewByDepartmentPlannedTask', prams, function (res, textStatus, jqXHR) {
+            if (res.state == 0) {
+                $("#completeTaskBox").html("");
+                $.each(res.data, function (i, item) {
+                    $("#completeTaskBox").append(getPlannedViewItem(item));
+                });
+            }
+        });
+    }
+    // 看吧 By 协同任务列表
+    var loadViewByXTPlannedTask = function () {
+        var prams = getFilterParam(false);
+        // ?? 协调的逻辑不一样
+        // 			  $.getJSON(window.jinkeContextPath+'/ppm/plannedTask/ajax/viewByXTPlannedTask', prams , function(res, textStatus, jqXHR) {
+
+        // 		      });
+    }
+
+
+
+</script>
+

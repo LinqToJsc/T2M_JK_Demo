@@ -4597,6 +4597,9 @@ table.text-center th {
 .text-gray {
   color: #d2d6de !important;
 }
+.text-666 {
+     color: #666 !important;
+}
 .text-navy {
   color: #001f3f !important;
 }
