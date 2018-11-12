@@ -47,8 +47,12 @@ namespace TDF.JK.WebAdmin.Controllers
         {
             return View();
         }
+        //jk展示
+        public ActionResult Indexjk()
+        {
+            return View();
+        }
 
-      
 
     }
 }

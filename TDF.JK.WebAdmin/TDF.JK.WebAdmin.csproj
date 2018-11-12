@@ -2445,6 +2445,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ProjectList.cshtml" />
     <Content Include="Views\Home\NewUI.cshtml" />
+    <Content Include="Views\Demo\Indexjk.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
